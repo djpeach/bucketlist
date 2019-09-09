@@ -4,7 +4,7 @@
   "description": "\"A node server for the bucketlist app\"",
   "main": "index.js",
   "scripts": {
-    "start": "DEBUG=app:* nodemon ./bin/www"
+    "start": "DB_USER=$BL_DB_USER DB_PW=$BL_DB_PW DEBUG=app:* nodemon ./bin/www"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,7 @@
     "easy-log": "0.0.6",
     "express": "^4.17.1",
     "express-graphql": "^0.9.0",
+    "graphql": "^14.5.4",
     "lodash": "^4.17.15",
     "mongoose": "^5.7.0",
     "nodemon": "^1.19.2"
