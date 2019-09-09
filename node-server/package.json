@@ -1,0 +1,33 @@
+{
+  "name": "bucketlist",
+  "version": "0.0.0",
+  "description": "\"A node server for the bucketlist app\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/djpeach/bucketlist.git"
+  },
+  "keywords": [
+    "bucketlist",
+    "list",
+    "todo"
+  ],
+  "author": "Daniel Peach, Trent Spice, Jayden Thrasher, Nathalie Kroeker, Steven Camp",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/djpeach/bucketlist/issues"
+  },
+  "homepage": "https://github.com/djpeach/bucketlist#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "easy-log": "0.0.6",
+    "express": "^4.17.1",
+    "express-graphql": "^0.9.0",
+    "lodash": "^4.17.15",
+    "mongoose": "^5.7.0",
+    "nodemon": "^1.19.2"
+  }
+}
