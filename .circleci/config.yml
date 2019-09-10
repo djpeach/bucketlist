@@ -25,8 +25,8 @@ jobs:
             - v1-dependencies-{{ checksum "package.json" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
-      - run: cd node-server/
-      - run: npm install
+
+      - run: cd node-server/ && npm install
 
       - save_cache:
           paths:
@@ -34,7 +34,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run start app!
-      - run: npm start
+      - run: cd node-server/ && npm install
 workflows:
   version: 2
   node_server:
