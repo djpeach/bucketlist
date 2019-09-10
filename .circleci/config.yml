@@ -19,10 +19,14 @@ jobs:
     steps:
       - checkout
 
-      - run: cd node-server/ && npm install
+      - run:
+          name: npm-install
+          command: cd node-server/ && npm install
 
       # run start app!
-      - run: cd node-server/ && npm start
+      - run:
+          name: npm-start
+          command: cd node-server/ && npm start
 workflows:
   version: 2
   node_server:
