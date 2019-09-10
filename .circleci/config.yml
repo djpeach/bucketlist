@@ -18,27 +18,13 @@ jobs:
 
     steps:
       - checkout
-      - run:
-          name: setting nvm
-          command: |
-                  echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
-                  echo ' [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
-      - run:
-          name: testing node version
-          command: node --version
-      - run:
-          name: aliasing nvm
-          command: node --version
-      - run:
-          name: installing and aliasing v12.9
-          command: |
-                nvm install v12.6
-                node --version
-                nvm alias default v12.6
-      - run:
-          name: testing node version
-          command: node --version
 
+      - run:
+          name: testing node version
+          command: node --version
+      - run:
+          name: testing npm version
+          command: npm --version
 
       - run:
           name: npm-install
@@ -46,7 +32,6 @@ jobs:
                 cd node-server
                 npm install
 
-      # run start app!
       - run:
           name: npm-start
           command: |
