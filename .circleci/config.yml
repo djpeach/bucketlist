@@ -35,3 +35,8 @@ jobs:
 
       # run start app!
       - run: yarn start
+workflows:
+  version: 1
+  node_server:
+    jobs:
+      - build_node_server
