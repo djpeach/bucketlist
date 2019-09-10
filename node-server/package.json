@@ -24,7 +24,7 @@
   "dependencies": {
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
-    "easy-log": "0.1.0",
+    "easy-log": "0.1.1",
     "express": "^4.17.1",
     "express-graphql": "^0.9.0",
     "graphql": "^14.5.4",
