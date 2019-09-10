@@ -4,7 +4,9 @@
   "description": "\"A node server for the bucketlist app\"",
   "main": "index.js",
   "scripts": {
-    "start": "DB_USER=$BL_DB_USER DB_PW=$BL_DB_PW DEBUG=app:* nodemon ./bin/www"
+    "start": "DB_USER=$BL_DB_USER DB_PW=$BL_DB_PW DEBUG=app:* nodemon ./bin/www",
+    "test": "mocha",
+    "ci": "server-test 9000"
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,7 @@
   },
   "homepage": "https://github.com/djpeach/bucketlist#readme",
   "dependencies": {
+    "chai": "^4.2.0",
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
     "easy-log": "0.1.1",
@@ -29,8 +32,10 @@
     "express-graphql": "^0.9.0",
     "graphql": "^14.5.4",
     "lodash": "^4.17.15",
+    "mocha": "^6.2.0",
     "mongoose": "^5.7.0",
-    "nodemon": "^1.19.2"
+    "nodemon": "^1.19.2",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "start-server-and-test": "^1.10.0"

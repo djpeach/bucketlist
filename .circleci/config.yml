@@ -20,16 +20,16 @@ jobs:
       - checkout
 
       - run:
-          name: npm-install
+          name: npm install
           command: |
                 cd node-server
                 npm install
 
       - run:
-          name: npm-start
+          name: npm start and test
           command: |
                 cd node-server
-                npm start
+                npm run ci
 workflows:
   version: 2
   node_server:
