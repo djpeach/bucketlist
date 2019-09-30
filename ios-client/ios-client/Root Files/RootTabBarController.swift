@@ -25,6 +25,7 @@ class RootTabBarController: UITabBarController, UITabBarControllerDelegate {
         moreVC.tabBarItem.image = UIImage(named: "profile")?.withRenderingMode(.automatic)
         
         viewControllers = [listVC, newVC, moreVC]
+        selectedIndex = 1
         
         guard let items = tabBar.items else { return }
         
