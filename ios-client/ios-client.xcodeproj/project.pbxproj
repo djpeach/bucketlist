@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DAA75E102342959E00F4D058 /* UnAuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA75E0F2342959E00F4D058 /* UnAuthController.swift */; };
+		DAA75E13234296FF00F4D058 /* UnAuthDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA75E12234296FF00F4D058 /* UnAuthDelegate.swift */; };
+		DAA75E152342970800F4D058 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA75E142342970800F4D058 /* LoginView.swift */; };
+		DAA75E172342971400F4D058 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA75E162342971400F4D058 /* RegistrationView.swift */; };
 		DAAAA9CD2342760900B29F9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAAA9CC2342760900B29F9E /* AppDelegate.swift */; };
 		DAAAA9CF2342760900B29F9E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAAA9CE2342760900B29F9E /* SceneDelegate.swift */; };
 		DAAAA9D82342760B00B29F9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAAAA9D72342760B00B29F9E /* Assets.xcassets */; };
@@ -37,6 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DAA75E0F2342959E00F4D058 /* UnAuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnAuthController.swift; sourceTree = "<group>"; };
+		DAA75E12234296FF00F4D058 /* UnAuthDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnAuthDelegate.swift; sourceTree = "<group>"; };
+		DAA75E142342970800F4D058 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		DAA75E162342971400F4D058 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		DAAAA9C92342760900B29F9E /* ios-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAAAA9CC2342760900B29F9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DAAAA9CE2342760900B29F9E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +88,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DAA75E11234296D000F4D058 /* UnAuth */ = {
+			isa = PBXGroup;
+			children = (
+				DAA75E0F2342959E00F4D058 /* UnAuthController.swift */,
+				DAA75E12234296FF00F4D058 /* UnAuthDelegate.swift */,
+				DAA75E142342970800F4D058 /* LoginView.swift */,
+				DAA75E162342971400F4D058 /* RegistrationView.swift */,
+			);
+			path = UnAuth;
+			sourceTree = "<group>";
+		};
 		DAAAA9C02342760900B29F9E = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +156,7 @@
 		DAAAA9FE2342779800B29F9E /* Root Files */ = {
 			isa = PBXGroup;
 			children = (
+				DAA75E11234296D000F4D058 /* UnAuth */,
 				DAAAA9FF234277B600B29F9E /* RootTabBarController.swift */,
 			);
 			path = "Root Files";
@@ -297,11 +317,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAAAAA05234278DD00B29F9E /* ListManagerVC.swift in Sources */,
+				DAA75E102342959E00F4D058 /* UnAuthController.swift in Sources */,
 				DAAAA9CD2342760900B29F9E /* AppDelegate.swift in Sources */,
+				DAA75E152342970800F4D058 /* LoginView.swift in Sources */,
 				DAAAAA00234277B600B29F9E /* RootTabBarController.swift in Sources */,
 				DAAAAA072342792D00B29F9E /* NewSuggestionVC.swift in Sources */,
 				DAAAA9CF2342760900B29F9E /* SceneDelegate.swift in Sources */,
 				DAAAAA092342798D00B29F9E /* MoreTabVC.swift in Sources */,
+				DAA75E13234296FF00F4D058 /* UnAuthDelegate.swift in Sources */,
+				DAA75E172342971400F4D058 /* RegistrationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

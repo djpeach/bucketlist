@@ -11,14 +11,19 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    let authorized = false
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         if let windowScene = scene as? UIWindowScene {
-           let window = UIWindow(windowScene: windowScene)
-           window.rootViewController = RootTabBarController()
-           self.window = window
-           window.makeKeyAndVisible()
+            let window = UIWindow(windowScene: windowScene)
+            if authorized {
+                window.rootViewController = RootTabBarController()
+            } else {
+                window.rootViewController = UnAuthController()
+            }
+            self.window = window
+            window.makeKeyAndVisible()
         }
     }
 
