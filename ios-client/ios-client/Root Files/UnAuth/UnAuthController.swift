@@ -7,27 +7,9 @@
 //
 
 import UIKit
+import Firebase
 
-class UnAuthController: UIViewController, UnAuthDelegate {
-    @objc func showLogin() {
-        let loginView = LoginView()
-        loginView.delegate = self
-        view = loginView
-    }
-    
-    @objc func showRegistration() {
-        let registrationView = RegistrationView()
-        registrationView.delegate = self
-        view = registrationView
-    }
-    
-    func login() {
-        print("login")
-    }
-    
-    func register() {
-        print("register")
-    }
+class UnAuthController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,4 +20,39 @@ class UnAuthController: UIViewController, UnAuthDelegate {
         
     }
     
+}
+
+// MARK: UnAuthDelegate functions
+extension UnAuthController: UnAuthDelegate {
+    
+    func showLogin() {
+        let loginView = LoginView()
+        loginView.delegate = self
+        view = loginView
+    }
+    
+    func showRegistration() {
+        let registrationView = RegistrationView()
+        registrationView.delegate = self
+        view = registrationView
+    }
+    
+    func login(withEmail email: String, withPassword password: String) {
+        print(email)
+        print(password)
+    }
+    
+    func register(withEmail email: String, withPassword password: String) {
+        print(email)
+        print(password)
+        Auth.auth().createUser(withEmail: email, password: password) { res, err in
+            
+            if let err = err {
+                print("Failed to create user: ", err)
+                return
+            }
+            
+            print("Created user: ", res?.user.uid)
+        }
+    }
 }
