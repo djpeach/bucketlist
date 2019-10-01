@@ -7,23 +7,22 @@
 //
 
 import UIKit
+import Firebase
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    var authorized = false
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            if authorized {
+            if Auth.auth().currentUser != nil {
                 window.rootViewController = RootTabBarController()
             } else {
                 window.rootViewController = UnAuthController()
             }
             self.window = window
-            authorized = true
             window.makeKeyAndVisible()
         }
     }
@@ -61,8 +60,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 extension SceneDelegate {
     public func reloadRootViewController() {
-        print("reloading")
-        if authorized {
+        if Auth.auth().currentUser != nil {
             window?.rootViewController = RootTabBarController()
         } else {
             window?.rootViewController = UnAuthController()
