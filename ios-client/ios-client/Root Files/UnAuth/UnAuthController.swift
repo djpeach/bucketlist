@@ -38,9 +38,16 @@ extension UnAuthController: UnAuthDelegate {
         view = registrationView
     }
     
-    func login(withEmail email: String, withPassword password: String) {
-        print(email)
-        print(password)
+    func login(withEmail email: String, withPassword password: String, closure: @escaping (_ err: String?) -> Void) {
+        Auth.auth().signIn(withEmail: email, password: password) {res, err in
+            if let e = err {
+                closure(e.localizedDescription)
+                return
+            }
+            
+            let sceneDelegate = self.view.window?.windowScene?.delegate as! SceneDelegate
+            sceneDelegate.coordinator?.reloadRootVC()
+        }
     }
     
     func register(withEmail email: String, withPassword password: String, closure: @escaping (_ err: String?) -> Void) {

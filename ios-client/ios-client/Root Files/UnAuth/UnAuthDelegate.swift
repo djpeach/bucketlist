@@ -12,6 +12,6 @@ import Firebase
 protocol UnAuthDelegate {
     func showLogin()
     func showRegistration()
-    func login(withEmail email: String, withPassword password: String)
-    func register(withEmail email: String, withPassword password: String, closure: @escaping (_ err: String?) -> Void)
+    func login(withEmail email: String, withPassword password: String, closure: @escaping (String?) -> Void)
+    func register(withEmail email: String, withPassword password: String, closure: @escaping (String?) -> Void)
 }
