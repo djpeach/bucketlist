@@ -11,15 +11,43 @@ import UIKit
 class RegistrationView: UIView {
     var delegate: UnAuthDelegate?
     
-    let showLoginBtn: UIButton = {
-        let btn = UIButton(type: UIButton.ButtonType.system)
-        btn.backgroundColor = .white
-        btn.clipsToBounds = true
-        btn.layer.cornerRadius = 4
-        btn.setTitle("Login instead", for: .normal)
-        btn.addTarget(self, action: #selector(showLogin), for: .touchUpInside)
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        return btn
+    let errorText: UILabel = {
+        let label = UILabel()
+        label.textColor = .systemRed
+        label.textAlignment = .center
+        return label
+    }()
+    
+    let emailField: UITextField = {
+        let field = UITextField()
+        field.keyboardType = .emailAddress
+        field.autocapitalizationType = .none
+        field.backgroundColor = .white
+        field.borderStyle = .roundedRect
+        field.placeholder = "Email"
+        return field
+    }()
+    
+    let password: UITextField = {
+        let field = UITextField()
+        field.keyboardType = .asciiCapable
+        field.isSecureTextEntry = true
+        field.autocapitalizationType = .none
+        field.backgroundColor = .white
+        field.borderStyle = .roundedRect
+        field.placeholder = "Password"
+        return field
+    }()
+    
+    let passwordConfirmation: UITextField = {
+        let field = UITextField()
+        field.keyboardType = .emailAddress
+        field.isSecureTextEntry = true
+        field.autocapitalizationType = .none
+        field.backgroundColor = .white
+        field.borderStyle = .roundedRect
+        field.placeholder = "Confirm Password"
+        return field
     }()
     
     let registerBtn: UIButton = {
@@ -33,33 +61,59 @@ class RegistrationView: UIView {
         return btn
     }()
     
+    let switchToLoginBtn: UIButton = {
+        let btn = UIButton(type: UIButton.ButtonType.system)
+        let attributedTitle = NSMutableAttributedString(string: "Already have an account? ", attributes: [NSMutableAttributedString.Key.foregroundColor: UIColor.lightGray])
+        attributedTitle.append(NSAttributedString(string: "Login", attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemBlue]))
+        btn.clipsToBounds = true
+        btn.layer.cornerRadius = 4
+        btn.setAttributedTitle(attributedTitle, for: .normal)
+        btn.addTarget(self, action: #selector(showLogin), for: .touchUpInside)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        return btn
+    }()
+    
     @objc private func showLogin() {
         delegate?.showLogin()
     }
     
     @objc private func register() {
-        delegate?.register(withEmail: "dummy@gmail.com", withPassword: "pass123!")
+        guard let emailText = emailField.text else { return }
+        guard let passwordText = password.text else { return }
+        guard let passwordConfirmationText = passwordConfirmation.text else { return }
+        
+        if passwordText == passwordConfirmationText {
+            errorText.text = ""
+            delegate?.register(withEmail: emailText, withPassword: passwordText) { err in
+                if let e = err {
+                    self.errorText.text = e
+                }
+            }
+        } else {
+            errorText.text = "Passwords do not match"
+        }
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .purple
+        backgroundColor = UIColor(white: 40, alpha: 0.01)
         
-        addSubview(showLoginBtn)
-        addSubview(registerBtn)
+        addRegistrationForm()
+    }
+    
+    private func addRegistrationForm() {
+        let stack = UIStackView(arrangedSubviews: [errorText, emailField, password, passwordConfirmation, registerBtn, switchToLoginBtn])
         
+        stack.distribution = .fillEqually
+        stack.spacing = 10
+        stack.axis = .vertical
+        
+        addSubview(stack)
+        stack.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            showLoginBtn.centerXAnchor.constraint(equalTo: centerXAnchor),
-            showLoginBtn.centerYAnchor.constraint(equalTo: centerYAnchor),
-            showLoginBtn.heightAnchor.constraint(equalToConstant: 40),
-            showLoginBtn.widthAnchor.constraint(equalToConstant: 200)
-        ])
-        
-        NSLayoutConstraint.activate([
-            registerBtn.topAnchor.constraint(equalTo: showLoginBtn.bottomAnchor, constant: 20),
-            registerBtn.centerXAnchor.constraint(equalTo: centerXAnchor),
-            registerBtn.heightAnchor.constraint(equalToConstant: 40),
-            registerBtn.widthAnchor.constraint(equalToConstant: 200)
+            stack.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            stack.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
+            stack.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor, multiplier: 0.8)
         ])
     }
     

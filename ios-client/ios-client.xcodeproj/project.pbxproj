@@ -3,12 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		364B146E48F0C7245B719CD8 /* Pods_ios_client_ios_clientUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 645536AAA5CE4783AB5A2855 /* Pods_ios_client_ios_clientUITests.framework */; };
 		9CCD95EE29D4E93B760DDEDD /* Pods_ios_client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5ED777856A218942686717 /* Pods_ios_client.framework */; };
+		DA730B132342D9130028C6B9 /* UIColor+theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA730B122342D9130028C6B9 /* UIColor+theme.swift */; };
 		DAA75E102342959E00F4D058 /* UnAuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA75E0F2342959E00F4D058 /* UnAuthController.swift */; };
 		DAA75E13234296FF00F4D058 /* UnAuthDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA75E12234296FF00F4D058 /* UnAuthDelegate.swift */; };
 		DAA75E152342970800F4D058 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA75E142342970800F4D058 /* LoginView.swift */; };
@@ -53,6 +54,7 @@
 		A82822ABA1450B736A32AD29 /* Pods-ios-client-ios-clientUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-client-ios-clientUITests.debug.xcconfig"; path = "Target Support Files/Pods-ios-client-ios-clientUITests/Pods-ios-client-ios-clientUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BD514C14E15264978E4984F4 /* Pods-ios-client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-client.debug.xcconfig"; path = "Target Support Files/Pods-ios-client/Pods-ios-client.debug.xcconfig"; sourceTree = "<group>"; };
 		D8C6ABCB220407AD8D7F8444 /* Pods-ios-client-ios-clientUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-client-ios-clientUITests.release.xcconfig"; path = "Target Support Files/Pods-ios-client-ios-clientUITests/Pods-ios-client-ios-clientUITests.release.xcconfig"; sourceTree = "<group>"; };
+		DA730B122342D9130028C6B9 /* UIColor+theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+theme.swift"; sourceTree = "<group>"; };
 		DAA75E0F2342959E00F4D058 /* UnAuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnAuthController.swift; sourceTree = "<group>"; };
 		DAA75E12234296FF00F4D058 /* UnAuthDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnAuthDelegate.swift; sourceTree = "<group>"; };
 		DAA75E142342970800F4D058 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -125,8 +127,15 @@
 				4EFA1DEC8F530C3EFDCF6BB0 /* Pods-ios-clientTests.debug.xcconfig */,
 				A7B637B45901F3556512CABE /* Pods-ios-clientTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		DA730B112342D9000028C6B9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DA730B122342D9130028C6B9 /* UIColor+theme.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		DAA75E11234296D000F4D058 /* UnAuth */ = {
@@ -165,6 +174,7 @@
 		DAAAA9CB2342760900B29F9E /* ios-client */ = {
 			isa = PBXGroup;
 			children = (
+				DA730B112342D9000028C6B9 /* Extensions */,
 				DAA75E182342A10E00F4D058 /* GoogleService-Info.plist */,
 				DAAAA9D92342760B00B29F9E /* LaunchScreen.storyboard */,
 				DAAAA9CC2342760900B29F9E /* AppDelegate.swift */,
@@ -470,6 +480,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAAAAA05234278DD00B29F9E /* ListManagerVC.swift in Sources */,
+				DA730B132342D9130028C6B9 /* UIColor+theme.swift in Sources */,
 				DAA75E102342959E00F4D058 /* UnAuthController.swift in Sources */,
 				DAAAA9CD2342760900B29F9E /* AppDelegate.swift in Sources */,
 				DAA75E152342970800F4D058 /* LoginView.swift in Sources */,

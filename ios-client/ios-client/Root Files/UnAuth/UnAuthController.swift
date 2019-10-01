@@ -25,6 +25,7 @@ class UnAuthController: UIViewController {
 // MARK: UnAuthDelegate functions
 extension UnAuthController: UnAuthDelegate {
     
+    
     func showLogin() {
         let loginView = LoginView()
         loginView.delegate = self
@@ -42,17 +43,16 @@ extension UnAuthController: UnAuthDelegate {
         print(password)
     }
     
-    func register(withEmail email: String, withPassword password: String) {
-        print(email)
-        print(password)
+    func register(withEmail email: String, withPassword password: String, closure: @escaping (_ err: String?) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { res, err in
             
-            if let err = err {
-                print("Failed to create user: ", err)
+            if let e = err {
+                closure(e.localizedDescription)
                 return
             }
             
-            print("Created user: ", res?.user.uid)
+            let sceneDelegate = self.view.window?.windowScene?.delegate as! SceneDelegate
+            sceneDelegate.reloadRootViewController()
         }
     }
 }
