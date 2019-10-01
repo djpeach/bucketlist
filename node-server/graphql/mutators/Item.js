@@ -10,7 +10,7 @@ module.exports.createItem = {
     recipientId: { type: gql.GraphQLNonNull(gql.GraphQLID) },
     message: { type: gql.GraphQLNonNull(gql.GraphQLString) },
     link: { type: gql.GraphQLString },
-    listId: { type: gql.GraphQLNonNull(gql.GraphQLID) },
+    listId: { type: gql.GraphQLID },
   },
   resolve(parent, { ...args }) {
     gqlLogger(`creating new item with message: ${args.message}`)

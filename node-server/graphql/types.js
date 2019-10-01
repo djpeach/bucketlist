@@ -1,5 +1,6 @@
 const {GraphQLID, GraphQLString, GraphQLObjectType, GraphQLList} = require('graphql')
 const {UserModel, ItemModel, ListModel} = require('../mongodb')
+const gqlLogger = require('easy-log')('app:gql')
 
 const UserType = new GraphQLObjectType({
   name: 'User',
@@ -12,12 +13,14 @@ const UserType = new GraphQLObjectType({
       lists: {
         type: new GraphQLList(ListType),
         resolve(parent, args) {
+          gqlLogger(`resolving lists for user: ${parent.id}`)
           return ListModel.find({userId: parent.id})
         }
       },
       newItems: {
         type: new GraphQLList(ItemType),
         resolve(parent, args) {
+          gqlLogger(`resolving newItems for user: ${parent.id}`)
           return ItemModel.find({recipientId: parent.id, listId: null})
         }
       }
@@ -34,6 +37,7 @@ const ListType = new GraphQLObjectType({
       items: {
         type: new GraphQLList(ItemType),
         resolve(parent, args) {
+          gqlLogger(`resolving items for list: ${parent.id}`)
           return ItemModel.find({listId: parent.id})
         }
       }
@@ -49,12 +53,14 @@ const ItemType = new GraphQLObjectType({
       from: {
         type: UserType,
         resolve(parent, args) {
+          gqlLogger(`resolving sender for item: ${parent.id}`)
           return UserModel.findById(parent.senderId)
         }
       },
       to: {
         type: UserType,
         resolve(parent, args) {
+          gqlLogger(`resolving reciever for item: ${parent.id}`)
           return UserModel.findById(parent.recipientId)
         }
       },
