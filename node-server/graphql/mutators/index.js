@@ -1,9 +1,13 @@
 const gql = require('graphql')
-const {createSuggestion} = require('./SuggestionMutator')
+const {createUser} = require('./User')
+const {createList} = require('./List')
+const {createItem} = require('./Item')
 
 module.exports = new gql.GraphQLObjectType({
   name: 'Mutators',
   fields: {
-    createSuggestion,
+    createUser,
+    createList,
+    createItem,
   }
 })
