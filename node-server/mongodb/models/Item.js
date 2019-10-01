@@ -2,11 +2,11 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const ItemSchema = new Schema({
-  from: { type: Schema.Types.ObjectId, ref: 'User' },
-  to: { type: Schema.Types.ObjectId, ref: 'User' },
+  senderId: { type: String },
+  recipientId: { type: String },
   message: { type: String },
   link: { type: String },
-  accepted: { type: Boolean }
+  listId: { type: String }
 })
 
 module.exports = mongoose.model('Item', ItemSchema)

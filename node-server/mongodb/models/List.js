@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 const ListSchema = new Schema({
   title: { type: String },
-  items: [{ type: Schema.Types.ObjectId, ref: 'Item' }]
+  userId: { type: String }
 })
 
 module.exports = mongoose.model('List', ListSchema)

@@ -1,1 +1,0 @@
-module.exports.SuggestionType = require('./Suggestion')
