@@ -12,16 +12,16 @@ import Firebase
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    var coordinator: Coordinator?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            if Auth.auth().currentUser != nil {
-                window.rootViewController = RootTabBarController()
-            } else {
-                window.rootViewController = UnAuthController()
-            }
+            let navController = UINavigationController()
+            navController.setNavigationBarHidden(true, animated: false)
+            coordinator = Coordinator(navController: navController)
+            coordinator?.reloadRootVC()
+            window.rootViewController = navController
             self.window = window
             window.makeKeyAndVisible()
         }
@@ -57,14 +57,3 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
 }
-
-extension SceneDelegate {
-    public func reloadRootViewController() {
-        if Auth.auth().currentUser != nil {
-            window?.rootViewController = RootTabBarController()
-        } else {
-            window?.rootViewController = UnAuthController()
-        }
-    }
-}
-

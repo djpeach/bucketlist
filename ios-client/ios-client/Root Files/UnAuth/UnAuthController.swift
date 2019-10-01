@@ -52,7 +52,7 @@ extension UnAuthController: UnAuthDelegate {
             }
             
             let sceneDelegate = self.view.window?.windowScene?.delegate as! SceneDelegate
-            sceneDelegate.reloadRootViewController()
+            sceneDelegate.coordinator?.reloadRootVC()
         }
     }
 }

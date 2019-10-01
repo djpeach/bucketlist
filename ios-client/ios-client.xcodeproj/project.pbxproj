@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		364B146E48F0C7245B719CD8 /* Pods_ios_client_ios_clientUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 645536AAA5CE4783AB5A2855 /* Pods_ios_client_ios_clientUITests.framework */; };
 		9CCD95EE29D4E93B760DDEDD /* Pods_ios_client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5ED777856A218942686717 /* Pods_ios_client.framework */; };
+		DA005ADB23437EDC00B7A87D /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA005ADA23437EDC00B7A87D /* Coordinator.swift */; };
 		DA730B132342D9130028C6B9 /* UIColor+theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA730B122342D9130028C6B9 /* UIColor+theme.swift */; };
 		DAA75E102342959E00F4D058 /* UnAuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA75E0F2342959E00F4D058 /* UnAuthController.swift */; };
 		DAA75E13234296FF00F4D058 /* UnAuthDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA75E12234296FF00F4D058 /* UnAuthDelegate.swift */; };
@@ -54,6 +55,7 @@
 		A82822ABA1450B736A32AD29 /* Pods-ios-client-ios-clientUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-client-ios-clientUITests.debug.xcconfig"; path = "Target Support Files/Pods-ios-client-ios-clientUITests/Pods-ios-client-ios-clientUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BD514C14E15264978E4984F4 /* Pods-ios-client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-client.debug.xcconfig"; path = "Target Support Files/Pods-ios-client/Pods-ios-client.debug.xcconfig"; sourceTree = "<group>"; };
 		D8C6ABCB220407AD8D7F8444 /* Pods-ios-client-ios-clientUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-client-ios-clientUITests.release.xcconfig"; path = "Target Support Files/Pods-ios-client-ios-clientUITests/Pods-ios-client-ios-clientUITests.release.xcconfig"; sourceTree = "<group>"; };
+		DA005ADA23437EDC00B7A87D /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		DA730B122342D9130028C6B9 /* UIColor+theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+theme.swift"; sourceTree = "<group>"; };
 		DAA75E0F2342959E00F4D058 /* UnAuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnAuthController.swift; sourceTree = "<group>"; };
 		DAA75E12234296FF00F4D058 /* UnAuthDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnAuthDelegate.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 			children = (
 				DAA75E11234296D000F4D058 /* UnAuth */,
 				DAAAA9FF234277B600B29F9E /* RootTabBarController.swift */,
+				DA005ADA23437EDC00B7A87D /* Coordinator.swift */,
 			);
 			path = "Root Files";
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 				DAAAAA00234277B600B29F9E /* RootTabBarController.swift in Sources */,
 				DAAAAA072342792D00B29F9E /* NewSuggestionVC.swift in Sources */,
 				DAAAA9CF2342760900B29F9E /* SceneDelegate.swift in Sources */,
+				DA005ADB23437EDC00B7A87D /* Coordinator.swift in Sources */,
 				DAAAAA092342798D00B29F9E /* MoreTabVC.swift in Sources */,
 				DAA75E13234296FF00F4D058 /* UnAuthDelegate.swift in Sources */,
 				DAA75E172342971400F4D058 /* RegistrationView.swift in Sources */,

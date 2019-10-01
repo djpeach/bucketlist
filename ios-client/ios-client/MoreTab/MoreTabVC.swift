@@ -26,7 +26,7 @@ class MoreTabVC: UIViewController {
         do {
             try Auth.auth().signOut()
             let sceneDelegate = view.window?.windowScene?.delegate as! SceneDelegate
-            sceneDelegate.reloadRootViewController()
+            sceneDelegate.coordinator?.reloadRootVC()
         }  catch let signOutErr {
            print("Failed to sign out with error: \(signOutErr)")
         }
