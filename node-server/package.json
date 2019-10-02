@@ -4,7 +4,7 @@
   "description": "\"A node server for the bucketlist app\"",
   "main": "index.js",
   "scripts": {
-    "start": "DB_USER=test DB_PW='test' DEBUG=app:* nodemon ./bin/www",
+    "start": "DB_USER=$BL_DB_USER DB_PW=$BL_DB_PW DEBUG=app:* nodemon ./bin/www",
     "test": "mocha",
     "ci": "server-test 9000"
   },
