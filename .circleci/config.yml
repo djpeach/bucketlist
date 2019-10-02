@@ -34,5 +34,5 @@ workflows:
   version: 2
   node_server:
     jobs:
-      - build_node_server
+      - build_node_server:
         context: node-server
