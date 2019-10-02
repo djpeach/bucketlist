@@ -5,7 +5,28 @@ const cookieParser = require('cookie-parser')
 const mongoose = require('mongoose')
 const infoLogger = require('easy-log')('app:info')
 const dbLogger = require('easy-log')('app:db')
+const authLogger = require('easy-log')('app:auth')
 const schema = require('./graphql')
+
+var admin = require("firebase-admin")
+
+var serviceAccount = require("./config/firebaseServiceAccount.json")
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://bucketlist-96454.firebaseio.com"
+})
+
+let token = ""
+
+// idToken comes from the client app
+// admin.auth().verifyIdToken(token).then((decodedToken) => {
+//   authLogger(`decodedToken: ${decodedToken}`)
+// }).catch((error) => {
+//   authLogger('Error validating token:')
+//   authLogger(error)
+// })
+
 
 mongoose.connect(`mongodb://root:root123!@ds235401.mlab.com:35401/node-bucketlist`)
 mongoose.connection.once('open', () => {
@@ -25,7 +46,9 @@ app.use('/graphql', graphqlHTTP({
 }))
 
 app.get('/', function (req, res) {
-  res.send('Hello World!');
+  res.json({
+    msg: 'Hello World!'
+  });
 });
 
 module.exports = app
