@@ -11,6 +11,8 @@
 		9CCD95EE29D4E93B760DDEDD /* Pods_ios_client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5ED777856A218942686717 /* Pods_ios_client.framework */; };
 		DA005ADB23437EDC00B7A87D /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA005ADA23437EDC00B7A87D /* Coordinator.swift */; };
 		DA730B132342D9130028C6B9 /* UIColor+theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA730B122342D9130028C6B9 /* UIColor+theme.swift */; };
+		DA9CF14F23443C89003E69F4 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9CF14E23443C89003E69F4 /* Server.swift */; };
+		DA9CF1522344401F003E69F4 /* TestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9CF1512344401F003E69F4 /* TestResponse.swift */; };
 		DAA75E102342959E00F4D058 /* UnAuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA75E0F2342959E00F4D058 /* UnAuthController.swift */; };
 		DAA75E13234296FF00F4D058 /* UnAuthDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA75E12234296FF00F4D058 /* UnAuthDelegate.swift */; };
 		DAA75E152342970800F4D058 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA75E142342970800F4D058 /* LoginView.swift */; };
@@ -57,6 +59,8 @@
 		D8C6ABCB220407AD8D7F8444 /* Pods-ios-client-ios-clientUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-client-ios-clientUITests.release.xcconfig"; path = "Target Support Files/Pods-ios-client-ios-clientUITests/Pods-ios-client-ios-clientUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DA005ADA23437EDC00B7A87D /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		DA730B122342D9130028C6B9 /* UIColor+theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+theme.swift"; sourceTree = "<group>"; };
+		DA9CF14E23443C89003E69F4 /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
+		DA9CF1512344401F003E69F4 /* TestResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResponse.swift; sourceTree = "<group>"; };
 		DAA75E0F2342959E00F4D058 /* UnAuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnAuthController.swift; sourceTree = "<group>"; };
 		DAA75E12234296FF00F4D058 /* UnAuthDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnAuthDelegate.swift; sourceTree = "<group>"; };
 		DAA75E142342970800F4D058 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -140,6 +144,22 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		DA9CF14D23443C6A003E69F4 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				DA9CF14E23443C89003E69F4 /* Server.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		DA9CF1502344400C003E69F4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DA9CF1512344401F003E69F4 /* TestResponse.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		DAA75E11234296D000F4D058 /* UnAuth */ = {
 			isa = PBXGroup;
 			children = (
@@ -176,6 +196,8 @@
 		DAAAA9CB2342760900B29F9E /* ios-client */ = {
 			isa = PBXGroup;
 			children = (
+				DA9CF1502344400C003E69F4 /* Models */,
+				DA9CF14D23443C6A003E69F4 /* Util */,
 				DA730B112342D9000028C6B9 /* Extensions */,
 				DAA75E182342A10E00F4D058 /* GoogleService-Info.plist */,
 				DAAAA9D92342760B00B29F9E /* LaunchScreen.storyboard */,
@@ -493,6 +515,8 @@
 				DA005ADB23437EDC00B7A87D /* Coordinator.swift in Sources */,
 				DAAAAA092342798D00B29F9E /* MoreTabVC.swift in Sources */,
 				DAA75E13234296FF00F4D058 /* UnAuthDelegate.swift in Sources */,
+				DA9CF14F23443C89003E69F4 /* Server.swift in Sources */,
+				DA9CF1522344401F003E69F4 /* TestResponse.swift in Sources */,
 				DAA75E172342971400F4D058 /* RegistrationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
