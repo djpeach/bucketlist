@@ -43,24 +43,15 @@ class MoreTabVC: UIViewController {
     }()
     
     @objc private func test() {
-        
-        let urlString = "http://149.162.182.139:9000/"
-        guard let url = URL(string: urlString) else { return }
-        URLSession.shared.dataTask(with: url) { (data, resp, err) in
+        Server.shared.sendTestRequest { (res, err) in
             if let err = err {
-                print("Failed to fetch courses:", err)
+                print("Error sending request: ", err)
                 return
             }
             
-            // check response
-            
-            guard let data = data else { return }
-            do {
-                print(try JSONSerialization.jsonObject(with: data, options: []))
-            } catch let jsonErr {
-                print("Failed to decode:", jsonErr)
-            }
-        }.resume()
+            guard let res = res else { return }
+            print(res.msg)
+        }
     }
     
     override func viewDidLoad() {
