@@ -12,6 +12,8 @@ var admin = require("firebase-admin")
 admin.initializeApp()
 
 const checkAuth = async (req, res, next) => {
+  authLogger(req.headers)
+
   if (!req.headers.authtoken) {
     res.status(403).send('Unauthorized')
     return

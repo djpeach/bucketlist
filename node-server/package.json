@@ -25,6 +25,7 @@
   "homepage": "https://github.com/djpeach/bucketlist#readme",
   "dependencies": {
     "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
     "easy-log": "0.1.1",
@@ -35,8 +36,7 @@
     "lodash": "^4.17.15",
     "mocha": "^6.2.0",
     "mongoose": "^5.7.0",
-    "nodemon": "^1.19.2",
-    "request": "^2.88.0"
+    "nodemon": "^1.19.2"
   },
   "devDependencies": {
     "start-server-and-test": "^1.10.0"
