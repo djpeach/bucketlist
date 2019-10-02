@@ -17,16 +17,21 @@ admin.initializeApp({
   databaseURL: "https://bucketlist-96454.firebaseio.com"
 })
 
-let token = ""
+const checkAuth = async (req, res, next) => {
+  if (!req.headers.authtoken) {
+    res.status(403).send('Unauthorized')
+    return
+  }
 
-// idToken comes from the client app
-// admin.auth().verifyIdToken(token).then((decodedToken) => {
-//   authLogger(`decodedToken: ${decodedToken}`)
-// }).catch((error) => {
-//   authLogger('Error validating token:')
-//   authLogger(error)
-// })
-
+  admin.auth().verifyIdToken(req.headers.authtoken).then((decodedToken) => {
+    authLogger(`User: ${decodedToken.uid} is authorized`)
+    next()
+  }).catch((error) => {
+    authLogger('Error validating token:')
+    authLogger(error)
+    res.status(403).send('Unauthorized')
+  })
+}
 
 mongoose.connect(`mongodb://root:root123!@ds235401.mlab.com:35401/node-bucketlist`)
 mongoose.connection.once('open', () => {
@@ -40,6 +45,7 @@ app.use(cors())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 
+app.use('/graphql', checkAuth)
 app.use('/graphql', graphqlHTTP({
   schema,
   graphiql: true,
