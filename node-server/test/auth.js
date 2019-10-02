@@ -1,11 +1,32 @@
-const chai = require('chai')
-const expect = chai.expect
-const chaiHTTP = require('chai-http')
+const expect  = require('chai').expect;
+const request = require('request');
 
-chai.use(chaiHTTP)
+describe('Auth Tests', function(done) {
+  describe('Authorized', function(done) {
+    it('should allow authorized users, with 400', function(done) {
+      let req = {
+        url: 'http://localhost:9000/graphql',
+        headers: {
+          'AuthToken': process.env.AUTH_TOKEN
+        }
+      }
 
-describe("Testing Authorizatoin", function() {
-  chai.request('http://localhost:9000').get('/graphql').end(function(err, res) {
-    expect(res.status).to.equal(403)
+        request(req , function(error, response, body) {
+            expect(response.statusCode).to.equal(400);
+            done();
+        });
+    });
+  })
+  describe('Unauthorized', function(done) {
+    it('should block unauthorized users, with 403', function(done) {
+      let req = {
+        url: 'http://localhost:9000/graphql'
+      }
+
+        request(req , function(error, response, body) {
+            expect(response.statusCode).to.equal(403);
+            done();
+        });
+    });
   })
 })
