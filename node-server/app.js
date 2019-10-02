@@ -9,13 +9,7 @@ const authLogger = require('easy-log')('app:auth')
 const schema = require('./graphql')
 
 var admin = require("firebase-admin")
-
-var serviceAccount = require("./config/firebaseServiceAccount.json")
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://bucketlist-96454.firebaseio.com"
-})
+admin.initializeApp()
 
 const checkAuth = async (req, res, next) => {
   if (!req.headers.authtoken) {
