@@ -1,10 +1,9 @@
 const gql = require('graphql')
-const {getAllSuggestions, getSuggestionById} = require('./SuggestionAccessor')
+const {getUserById} = require('./User')
 
 module.exports = new gql.GraphQLObjectType({
   name: 'Accessors',
   fields: {
-    getAllSuggestions,
-    getSuggestionById,
+    getUserById,
   }
 })
