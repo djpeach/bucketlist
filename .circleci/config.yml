@@ -35,4 +35,4 @@ workflows:
   node_server:
     jobs:
       - build_node_server
-          context: node-server
+        context: node-server
