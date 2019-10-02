@@ -7,18 +7,23 @@
 //
 
 import UIKit
+import Firebase
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    var coordinator: Coordinator?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         if let windowScene = scene as? UIWindowScene {
-           let window = UIWindow(windowScene: windowScene)
-           window.rootViewController = RootTabBarController()
-           self.window = window
-           window.makeKeyAndVisible()
+            let window = UIWindow(windowScene: windowScene)
+            let navController = UINavigationController()
+            navController.setNavigationBarHidden(true, animated: false)
+            coordinator = Coordinator(navController: navController)
+            coordinator?.reloadRootVC()
+            window.rootViewController = navController
+            self.window = window
+            window.makeKeyAndVisible()
         }
     }
 
@@ -52,4 +57,3 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
 }
-
