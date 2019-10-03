@@ -24,7 +24,7 @@ jobs:
           command: |
                 cd node-server
                 npm install
-                
+
       - run:
           name: setup firebase config
           command: |
@@ -32,7 +32,6 @@ jobs:
                 mkdir config
                 cd config
                 echo $FIREBASE_CONFIG > bucketlistFirebase.json
-                cat bucketlistFirebase.json
 
       - run:
           name: npm start and test
