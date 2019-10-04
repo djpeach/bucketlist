@@ -9,7 +9,10 @@ const authLogger = require('easy-log')('app:auth')
 const schema = require('./graphql')
 
 var admin = require("firebase-admin")
-admin.initializeApp()
+admin.initializeApp({
+  credential: admin.credential.applicationDefault(),
+  databaseURL: "https://bucketlist-96454.firebaseio.com"
+});
 
 const checkAuth = async (req, res, next) => {
   if (!req.headers.authtoken) {
@@ -26,7 +29,7 @@ const checkAuth = async (req, res, next) => {
     res.status(403).send('Unauthorized')
   })
 }
-mongoose.connect(`mongodb://${ process.env.DB_USER }:${ process.env.DB_PW }@ds235401.mlab.com:35401/node-bucketlist`)
+mongoose.connect(`mongodb://${ process.env.DB_USER }:${ process.env.DB_PW }@ds235401.mlab.com:35401/node-bucketlist`, { useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.connection.once('open', () => {
   dbLogger(`Connected to mongodb`)
 })
