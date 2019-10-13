@@ -1,5 +1,7 @@
 const expect  = require('chai').expect;
 const request = require('request');
+const { getConnectionString } = require('../mongodb')
+const mongoose = require('mongoose')
 
 describe('Auth Tests', function(done) {
   describe('Authorized', function(done) {
@@ -28,5 +30,17 @@ describe('Auth Tests', function(done) {
             done();
         });
     });
+  })
+})
+
+describe('Service Connection Tests', function(done) {
+  describe('MongoDB', function(done) {
+    it('should return true for connection', function(done) {
+      mongoose.connect(getConnectionString(), { useNewUrlParser: true, useUnifiedTopology: true })
+      mongoose.connection.once('open', () => {
+        console.log(mongoose.connection.readyState)
+        done()
+      })
+    })
   })
 })

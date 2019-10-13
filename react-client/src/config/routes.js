@@ -1,6 +1,6 @@
 export default {
   index: '/',
   example: {
-    suggestions: '/example/suggestions',
+    suggestions: '/example/new-suggestions',
   }
 }
