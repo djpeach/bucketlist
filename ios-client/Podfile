@@ -8,6 +8,7 @@ target 'ios-client' do
   # Pods for ios-client
   pod 'Firebase/Auth'
   pod 'JGProgressHUD','~>2.0.3'
+  pod 'Apollo'
 
   target 'ios-clientTests' do
     inherit! :search_paths

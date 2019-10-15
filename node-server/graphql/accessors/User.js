@@ -13,3 +13,11 @@ module.exports.getUserById = {
     return UserModel.findById(id)
   }
 }
+
+module.exports.getAllUsers = {
+  type: new gql.GraphQLList(UserType),
+  resolve(parent, args) {
+    gqlLogger(`getting all users`)
+    return UserModel.find()
+  }
+}
