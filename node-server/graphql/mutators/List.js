@@ -20,9 +20,9 @@ module.exports.deleteList = {
   args: {
     id: { type: GraphQLID }
   },
-  resolve(parent, { id }) {
+  async resolve(parent, { id }) {
     gqlLogger(`deleting list with id: ${id}`)
-    ItemModel.deleteMany({ listId: id })
+    await ItemModel.deleteMany({ listId: id })
     return ListModel.findByIdAndDelete(id)
   }
 }

@@ -13,3 +13,16 @@ module.exports.getListsByUser = {
     return ListModel.find({ userId: userId })
   }
 }
+
+module.exports.getListsByQuery = {
+  type: new GraphQLList(ListType),
+  args: {
+    userId: { type: GraphQLNonNull(GraphQLID) },
+    query: { type: GraphQLNonNull(GraphQLString) },
+    limit: { type: GraphQLInt, defaultValue: 10 }
+  },
+  resolve(parent, { userId, query, limit }) {
+    gqlLogger(`getting ${limit} lists that belong to user ${userId}, and match query ${query}`)
+    return ListModel.find({userId: userId, title: { $regex: query, $options: 'i' }}).limit(limit)
+  }
+}
