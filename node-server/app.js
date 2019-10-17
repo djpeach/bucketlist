@@ -41,7 +41,11 @@ app.use(cors())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 
-app.use('/graphql', checkAuth)
+const utils = require('./routes/utils')
+
+app.use('/utils', utils)
+
+// app.use('/graphql', checkAuth)
 app.use('/graphql', graphqlHTTP({
   schema,
   graphiql: true,

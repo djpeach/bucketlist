@@ -1,4 +1,4 @@
-import {getAllSuggestions, createSuggestion} from "./queries/SuggestionQueries"
+import {createUser, createList, createItem, createItemWithLink, getUserById} from "./queries"
 
 export {
   getAllSuggestions,
