@@ -13,3 +13,14 @@ module.exports.getItemsByList = {
     return ItemModel.find({ listId: listId })
   }
 }
+
+module.exports.getNewItemsByUser = {
+  type: new GraphQLList(ItemType),
+  args: {
+    userId: { type: GraphQLNonNull(GraphQLID) }
+  },
+  resolve(parent, { userId }) {
+    gqlLogger(`getting all items that belong to user ${userId}, and have no listId`)
+    return ItemModel.find({ recipientId: userId, listId: null })
+  }
+}

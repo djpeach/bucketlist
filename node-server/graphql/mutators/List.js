@@ -15,7 +15,7 @@ module.exports.createList = {
   }
 }
 
-module.exports.deleteItem = {
+module.exports.deleteList = {
   type: ListType,
   args: {
     id: { type: GraphQLID }
