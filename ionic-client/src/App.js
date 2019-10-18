@@ -1,22 +1,15 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import {
-  IonApp,
-  IonIcon,
-  IonLabel,
-  IonRouterOutlet,
-  IonTabBar,
-  IonTabButton,
-  IonTabs
-} from '@ionic/react';
+import { IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { list, addCircleOutline, person } from 'ionicons/icons';
-import Lists from './pages/Lists';
-import NewSuggestion from './pages/NewSuggestion';
-import More from './pages/More';
+// import { Home, List, NewSuggestion, More } from './pages';
+import Home from './pages/Home'
 import List from './pages/List'
+import NewSuggestion from './pages/NewSuggestion'
+import More from './pages/More'
 
-/* Core CSS required for Ionic components to work properly */
+/* Core CSS required for Ionic pages to work properly */
 import '@ionic/react/css/core.css';
 
 /* Basic CSS for apps built with Ionic */
@@ -37,18 +30,18 @@ const App = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route exact path="/lists" component={Lists} />
-          <Route exact path="/suggestion/new" component={NewSuggestion} />
-          <Route exact path="/moreTab" component={More} />
-          <Route exact path="/" render={() => <Redirect to="/suggestion/new" />} />
-          <Route exact path="/list/:index" component={List} />
+          <Route path="/home" component={Home} />
+          <Route path="/lists/:index" component={List} />
+          <Route path="/newSuggestion" component={NewSuggestion} />
+          <Route path="/more" component={More} />
+          <Route exact path="/" render={() => <Redirect to="/newSuggestion" />} />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
-          <IonTabButton tab="lists" href="/lists">
+          <IonTabButton tab="lists" href="/home">
             <IonIcon icon={list} />
             <IonLabel>Your Lists</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="newSuggestion" href="/suggestion/new">
+          <IonTabButton tab="newSuggestion" href="/newSuggestion">
             <IonIcon icon={addCircleOutline} />
             <IonLabel>New Suggestion</IonLabel>
           </IonTabButton>

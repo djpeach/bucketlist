@@ -1,17 +1,11 @@
 import React from 'react';
-import { IonHeader, IonToolbar, IonPage, IonTitle, IonContent } from '@ionic/react';
 
-const More = () => {
-  return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Tab Three</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent />
-    </IonPage>
-  );
-};
+class More extends React.Component {
+  render() {
+    return (
+      <h1>More</h1>
+    )
+  }
+}
 
-export default More;
+export default More
