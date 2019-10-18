@@ -1,7 +1,7 @@
 import React from 'react';
 import { IonHeader, IonToolbar, IonPage, IonTitle, IonContent } from '@ionic/react';
 
-const Tab3Page = () => {
+const More = () => {
   return (
     <IonPage>
       <IonHeader>
@@ -14,4 +14,4 @@ const Tab3Page = () => {
   );
 };
 
-export default Tab3Page;
+export default More;

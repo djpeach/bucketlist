@@ -10,11 +10,11 @@ import {
   IonTabs
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { apps, flash, send } from 'ionicons/icons';
-import Tab1 from './pages/Tab1';
-import Tab2 from './pages/Tab2';
-import Tab3 from './pages/Tab3';
-import Details from './pages/Details';
+import { list, addCircleOutline, person } from 'ionicons/icons';
+import Lists from './pages/Lists';
+import NewSuggestion from './pages/NewSuggestion';
+import More from './pages/More';
+import List from './pages/List'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -32,32 +32,29 @@ import '@ionic/react/css/text-transformation.css';
 import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
 
-/* Theme variables */
-import './theme/variables.css';
-
 const App = () => (
   <IonApp>
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route path="/tab1" component={Tab1} exact={true} />
-          <Route path="/tab2" component={Tab2} exact={true} />
-          <Route path="/tab2/details" component={Details} />
-          <Route path="/tab3" component={Tab3} />
-          <Route exact path="/" render={() => <Redirect to="/tab1" />} />
+          <Route exact path="/lists" component={Lists} />
+          <Route exact path="/suggestion/new" component={NewSuggestion} />
+          <Route exact path="/moreTab" component={More} />
+          <Route exact path="/" render={() => <Redirect to="/suggestion/new" />} />
+          <Route exact path="/list/:index" component={List} />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
-          <IonTabButton tab="tab1" href="/tab1">
-            <IonIcon icon={flash} />
-            <IonLabel>Tab One</IonLabel>
+          <IonTabButton tab="lists" href="/lists">
+            <IonIcon icon={list} />
+            <IonLabel>Your Lists</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2">
-            <IonIcon icon={apps} />
-            <IonLabel>Tab Two</IonLabel>
+          <IonTabButton tab="newSuggestion" href="/suggestion/new">
+            <IonIcon icon={addCircleOutline} />
+            <IonLabel>New Suggestion</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon icon={send} />
-            <IonLabel>Tab Three</IonLabel>
+          <IonTabButton tab="more" href="/more">
+            <IonIcon icon={person} />
+            <IonLabel>Profile &amp; Settings</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>

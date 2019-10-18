@@ -1,7 +1,7 @@
 import React from 'react';
 import { IonContent, IonHeader, IonItem, IonLabel, IonList, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 
-const Tab2 = () => {
+const NewSuggestion = () => {
   return (
     <IonPage>
       <IonHeader>
@@ -22,4 +22,4 @@ const Tab2 = () => {
   );
 };
 
-export default Tab2;
+export default NewSuggestion;
