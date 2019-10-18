@@ -2,23 +2,22 @@
 //  AppDelegate.swift
 //  ios-client
 //
-//  Created by Daniel Peach on 9/30/19.
-//  Copyright © 2019 Daniel Peach. All rights reserved.
+//  Created by Peach, Daniel on 10/15/19.
+//  Copyright © 2019 Peach, Daniel. All rights reserved.
 //
 
 import UIKit
 import Firebase
+import Apollo
+
+let apollo = ApolloClient(url: URL(string: "http://localhost:9000/graphql")!)
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
         FirebaseApp.configure()
-        
         return true
     }
 

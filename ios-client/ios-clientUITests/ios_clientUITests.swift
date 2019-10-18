@@ -2,8 +2,8 @@
 //  ios_clientUITests.swift
 //  ios-clientUITests
 //
-//  Created by Daniel Peach on 9/30/19.
-//  Copyright © 2019 Daniel Peach. All rights reserved.
+//  Created by Peach, Daniel on 10/15/19.
+//  Copyright © 2019 Peach, Daniel. All rights reserved.
 //
 
 import XCTest

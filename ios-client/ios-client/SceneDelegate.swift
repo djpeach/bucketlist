@@ -2,12 +2,11 @@
 //  SceneDelegate.swift
 //  ios-client
 //
-//  Created by Daniel Peach on 9/30/19.
-//  Copyright © 2019 Daniel Peach. All rights reserved.
+//  Created by Peach, Daniel on 10/15/19.
+//  Copyright © 2019 Peach, Daniel. All rights reserved.
 //
 
 import UIKit
-import Firebase
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -15,16 +14,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var coordinator: Coordinator?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        if let windowScene = scene as? UIWindowScene {
-            let window = UIWindow(windowScene: windowScene)
-            let navController = UINavigationController()
-            navController.setNavigationBarHidden(true, animated: false)
-            coordinator = Coordinator(navController: navController)
-            coordinator?.reloadRootVC()
-            window.rootViewController = navController
-            self.window = window
-            window.makeKeyAndVisible()
-        }
+        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
+        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
+        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(windowScene: windowScene)
+        let navController = UINavigationController()
+        navController.setNavigationBarHidden(true, animated: false)
+        coordinator = Coordinator(navController: navController)
+        coordinator?.authStateChanged()
+        window?.rootViewController = navController
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -57,3 +57,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
 }
+
