@@ -41,7 +41,7 @@ class Home extends React.Component {
                     {
                       lists.map((list, index) => {
                         return (
-                          <IonItem routerLink={`/lists/${index}`} detail >
+                          <IonItem routerLink={`/list/${index}`} detail >
                             <IonLabel>
                               <p>{list.name}</p>
                             </IonLabel>

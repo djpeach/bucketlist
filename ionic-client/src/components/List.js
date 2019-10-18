@@ -1,5 +1,5 @@
 import React from 'react';
-// import { IonPage } from "@ionic/react";
+import { IonPage } from "@ionic/react";
 
 import {lists} from '../dummydata';
 
@@ -8,7 +8,9 @@ class List extends React.Component {
     let list = lists[this.props.match.params.index];
 
     return (
-      <p>{list.name}</p>
+      <IonPage>
+        <p>{list.name}</p>
+      </IonPage>
     )
   }
 }

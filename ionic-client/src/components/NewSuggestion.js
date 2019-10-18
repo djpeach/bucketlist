@@ -1,9 +1,12 @@
 import React from 'react';
+import { IonPage } from "@ionic/react";
 
 class NewSuggestion extends React.Component {
   render() {
     return (
-      <h1>New Suggestion</h1>
+      <IonPage>
+        <p>New Suggestion Tab</p>
+      </IonPage>
     )
   }
 }

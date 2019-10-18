@@ -3,13 +3,9 @@ import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { list, addCircleOutline, person } from 'ionicons/icons';
-// import { Home, List, NewSuggestion, More } from './pages';
-import Home from './pages/Home'
-import List from './pages/List'
-import NewSuggestion from './pages/NewSuggestion'
-import More from './pages/More'
+import { Home, List, NewSuggestion, More } from './components';
 
-/* Core CSS required for Ionic pages to work properly */
+/* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
 
 /* Basic CSS for apps built with Ionic */
@@ -30,11 +26,11 @@ const App = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route path="/home" component={Home} />
-          <Route path="/lists/:index" component={List} />
-          <Route path="/newSuggestion" component={NewSuggestion} />
-          <Route path="/more" component={More} />
-          <Route exact path="/" render={() => <Redirect to="/newSuggestion" />} />
+          <Route exact path="/home" component={Home} />
+          <Route exact path="/list/:index" component={List} />
+          <Route exact path="/newSuggestion" component={NewSuggestion} />
+          <Route exact path="/more" component={More} />
+          <Redirect exact from="/" to="/newSuggestion" />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="lists" href="/home">

@@ -1,9 +1,12 @@
 import React from 'react';
+import { IonPage } from "@ionic/react";
 
 class More extends React.Component {
   render() {
     return (
-      <h1>More</h1>
+      <IonPage>
+        <p>More Tab</p>
+      </IonPage>
     )
   }
 }
