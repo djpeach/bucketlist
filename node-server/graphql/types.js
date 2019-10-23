@@ -23,6 +23,13 @@ const UserType = new GraphQLObjectType({
           gqlLogger(`resolving newItems for user: ${parent.id}`)
           return ItemModel.find({recipientId: parent.id, listId: null})
         }
+      },
+      friends: {
+        type: new GraphQLList(UserType),
+        resolve(parent, args) {
+          gqlLogger(`resolving the friends for user: ${parent.id}`)
+          return UserModel.find({_id: {$in: parent.friends}})
+        }
       }
     }
   }
