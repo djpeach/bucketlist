@@ -35,11 +35,11 @@ module.exports.addFriend = {
   },
   async resolve(parent, { friendId, userId }) {
     gqlLogger(`adding friend with id ${friendId} to user with id: ${userId}`)
-    await UserModel.findByIdAndUpdate(friendId, { "$push": {
-      "friends": userId
+    await UserModel.findByIdAndUpdate(friendId, { $push: {
+      friends: userId
     }})
-    await UserModel.findByIdAndUpdate(userId, { "$push": {
-      "friends": friendId
+    await UserModel.findByIdAndUpdate(userId, { $push: {
+      friends: friendId
     }})
     return UserModel.findById(userId)
   }
@@ -53,11 +53,11 @@ module.exports.removeFriend = {
   },
   async resolve(parent, { friendId, userId }) {
     gqlLogger(`removing friend with id ${friendId} to user with id: ${userId}`)
-    await UserModel.findByIdAndUpdate(friendId, { "$pull": {
-      "friends": userId
+    await UserModel.findByIdAndUpdate(friendId, { $pull: {
+      friends: userId
     }})
-    let user = await UserModel.findByIdAndUpdate(userId, { "$pull": {
-      "friends": friendId
+    let user = await UserModel.findByIdAndUpdate(userId, { $pull: {
+      friends: friendId
     }})
     return UserModel.findById(userId)
   }
