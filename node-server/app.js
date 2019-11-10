@@ -7,8 +7,9 @@ const infoLogger = require('easy-log')('app:info')
 const dbLogger = require('easy-log')('app:db')
 const authLogger = require('easy-log')('app:auth')
 const schema = require('./graphql')
+const keys = require('./conf/secret-keys')
 
-mongoose.connect(`mongodb://root:root123!@ds235401.mlab.com:35401/node-bucketlist`, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(keys.mlab.uri, { useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.connection.once('open', () => {
   dbLogger(`Connected to mongodb`)
 })
