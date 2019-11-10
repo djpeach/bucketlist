@@ -1,5 +1,6 @@
 import React from 'react'
 import {BrowserRouter, Route, Switch} from "react-router-dom"
+
 import {Navbar, Home, Suggestions} from './components'
 import routes from './conf/routes'
 

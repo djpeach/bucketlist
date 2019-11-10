@@ -6,7 +6,6 @@ import { list, addCircleOutline, person } from 'ionicons/icons';
 
 import { Dashboard, List, NewSuggestion, More, Login } from './components';
 import routes from './conf/routes'
-import {user} from './dummydata'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -31,7 +30,9 @@ const App = () => (
         <IonRouterOutlet>
           <Route exact path={routes.home} component={Dashboard} />
           <Route exact path={routes.lists.detail} component={List} />
-          <Route exact path={routes.suggestions.create} component={NewSuggestion} />
+          <Route exact path={routes.suggestions.create} render={(props) => {
+            return false ? ( <NewSuggestion></NewSuggestion> ) : ( <Redirect to={routes.auth.login} />)
+          }} />
           <Route exact path={routes.more} component={More} />
           <Route exact path={routes.auth.login} component={Login} />
           <Redirect exact from={routes.index} to={routes.suggestions.create} />

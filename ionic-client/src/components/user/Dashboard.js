@@ -24,7 +24,7 @@ class Dashboard extends React.Component {
                     {
                       newItems.map((item) => {
                         return (
-                          <IonItem>
+                          <IonItem key={item.message}>
                             <IonLabel>
                               <p>From: {item.from}</p>
                               <h3>{item.message}</h3>
@@ -43,7 +43,7 @@ class Dashboard extends React.Component {
                     {
                       lists.map((list, index) => {
                         return (
-                          <IonItem routerLink={routeWithParams(routes.lists.detail, index)} detail >
+                          <IonItem routerLink={routeWithParams(routes.lists.detail, index)} detail key={index} >
                             <IonLabel>
                               <p>{list.name}</p>
                             </IonLabel>
