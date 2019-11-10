@@ -1,5 +1,6 @@
 **/node_modules
 **/package-lock.json
+**/secret-keys.js
 .idea/**
 .DS_Store
 **/.DS_Store
