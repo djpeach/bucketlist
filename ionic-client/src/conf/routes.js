@@ -1,6 +1,7 @@
 export default {
   index: '/',
   home: '/home',
+  more: '/more',
   lists: {
     create: '/lists/new',
     list: '/lists',
@@ -13,7 +14,10 @@ export default {
     detail: '/suggestions/:id',
     delete: '/suggestions/delete'
   },
-  more: '/more',
+  auth: {
+    login: '/auth/login',
+    register: '/auth/register'
+  }
 }
 
 export const routeWithParams = (route, ...params) => {

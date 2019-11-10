@@ -1,11 +1,11 @@
 import React from 'react'
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonList, IonItem, IonLabel, IonGrid, IonRow, IonCol, IonInput, IonButton } from "@ionic/react";
 
-import { lists, newItems } from "../dummydata";
+import { lists, newItems } from "../../dummydata";
 
-import routes, {routeWithParams} from "../conf/routes"
+import routes, {routeWithParams} from "../../conf/routes"
 
-class Home extends React.Component {
+class Dashboard extends React.Component {
   render() {
     return (
       <IonPage>
@@ -76,4 +76,4 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+export default Dashboard;

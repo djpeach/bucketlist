@@ -1,11 +1,12 @@
 import React from 'react';
 import { IonPage } from "@ionic/react";
 
-import {lists} from '../dummydata';
+import {lists} from '../../dummydata';
 
 class List extends React.Component {
   render() {
-    let list = lists[this.props.match.params.index];
+    console.log(this.props.match.params)
+    let list = lists[this.props.match.params.id];
 
     return (
       <IonPage>

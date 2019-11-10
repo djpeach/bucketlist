@@ -47,3 +47,7 @@ export const lists = [
     ]
   }
 ]
+
+export const state = {
+  user: null
+}

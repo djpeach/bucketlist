@@ -1,11 +1,13 @@
-import Home from "./Home";
-import List from "./List";
-import NewSuggestion from "./NewSuggestion";
-import More from "./More";
+import Dashboard from "./user/Dashboard";
+import List from "./user/List";
+import NewSuggestion from "./user/NewSuggestion";
+import More from "./user/More";
+import Login from "./auth/Login";
 
 export {
-  Home,
+  Dashboard,
   List,
   NewSuggestion,
   More,
+  Login
 }
