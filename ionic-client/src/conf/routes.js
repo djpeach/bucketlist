@@ -1,8 +1,19 @@
 export default {
   index: '/',
-  example: {
-    suggestions: '/example/suggestions',
-  }
+  home: '/home',
+  lists: {
+    create: '/lists/new',
+    list: '/lists',
+    detail: '/lists/:id',
+    delete: '/lists/delete'
+  },
+  suggestions: {
+    create: '/suggestions/new',
+    list: '/suggestions',
+    detail: '/suggestions/:id',
+    delete: '/suggestions/delete'
+  },
+  more: '/more',
 }
 
 export const routeWithParams = (route, ...params) => {

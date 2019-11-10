@@ -3,7 +3,9 @@ import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { list, addCircleOutline, person } from 'ionicons/icons';
+
 import { Home, List, NewSuggestion, More } from './components';
+import routes from './conf/routes'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -26,22 +28,22 @@ const App = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route exact path="/home" component={Home} />
-          <Route exact path="/list/:index" component={List} />
-          <Route exact path="/newSuggestion" component={NewSuggestion} />
-          <Route exact path="/more" component={More} />
-          <Redirect exact from="/" to="/newSuggestion" />
+          <Route exact path={routes.home} component={Home} />
+          <Route exact path={routes.lists.details} component={List} />
+          <Route exact path={routes.suggestions.create} component={NewSuggestion} />
+          <Route exact path={routes.more} component={More} />
+          <Redirect exact from={routes.index} to={routes.suggestions.create} />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
-          <IonTabButton tab="lists" href="/home">
+          <IonTabButton tab="lists" href={routes.home}>
             <IonIcon icon={list} />
             <IonLabel>Your Lists</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="newSuggestion" href="/newSuggestion">
+          <IonTabButton tab="newSuggestion" href={routes.suggestions.create}>
             <IonIcon icon={addCircleOutline} />
             <IonLabel>New Suggestion</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="more" href="/more">
+          <IonTabButton tab="more" href={routes.more}>
             <IonIcon icon={person} />
             <IonLabel>Profile &amp; Settings</IonLabel>
           </IonTabButton>

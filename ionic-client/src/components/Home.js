@@ -3,6 +3,8 @@ import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonList,
 
 import { lists, newItems } from "../dummydata";
 
+import routes, {routeWithParams} from "../conf/routes"
+
 class Home extends React.Component {
   render() {
     return (
@@ -41,7 +43,7 @@ class Home extends React.Component {
                     {
                       lists.map((list, index) => {
                         return (
-                          <IonItem routerLink={`/list/${index}`} detail >
+                          <IonItem routerLink={routeWithParams(routes.lists.detail, index)} detail >
                             <IonLabel>
                               <p>{list.name}</p>
                             </IonLabel>
