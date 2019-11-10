@@ -32,9 +32,9 @@ module.exports.getUsersByQuery = {
     if (query === "") {
       return []
     }
-    
+
     gqlLogger(`getting ${limit} users that match query: ${query}`)
-    return UserModel.find({$or: [
+    return UserModel.find({ $or: [
       { firstName: { $regex: query, $options: 'i' }},
       { lastName: { $regex: query, $options: 'i' }},
     ]}).limit(limit)

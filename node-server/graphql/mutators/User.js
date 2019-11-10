@@ -27,6 +27,8 @@ module.exports.deleteUser = {
   }
 }
 
+// ToDo: only add if not already in array: https://stackoverflow.com/questions/26328891/push-value-to-array-if-key-does-not-exist-mongoose/26330406
+
 module.exports.addFriend = {
   type: UserType,
   args: {
