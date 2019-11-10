@@ -1,7 +1,8 @@
 const {GraphQLNonNull, GraphQLID, GraphQLString} = require('graphql')
+
 const { UserType } = require('../types')
-const { UserModel } = require('../../mongodb')
-const gqlLogger = require('easy-log')('app:gql')
+const { UserModel } = require('../../models')
+const {gqlLog} = require('../../conf/loggers')
 
 module.exports.createUser = {
   type: UserType,
@@ -11,7 +12,7 @@ module.exports.createUser = {
     email: { type: GraphQLNonNull(GraphQLString) },
   },
   resolve(parent, { firstName, lastName, email }) {
-    gqlLogger(`creating new user with email: ${email}`)
+    gqlLog(`creating new user with email: ${email}`)
     return new UserModel({ firstName, lastName, email }).save()
   }
 }
@@ -22,7 +23,7 @@ module.exports.deleteUser = {
     id: { type: GraphQLID }
   },
   resolve(parent, { id }) {
-    gqlLogger(`deleting user with id: ${id}`)
+    gqlLog(`deleting user with id: ${id}`)
     return UserModel.findByIdAndDelete(id)
   }
 }
@@ -36,7 +37,7 @@ module.exports.addFriend = {
     friendId: { type: GraphQLID }
   },
   async resolve(parent, { friendId, userId }) {
-    gqlLogger(`adding friend with id ${friendId} to user with id: ${userId}`)
+    gqlLog(`adding friend with id ${friendId} to user with id: ${userId}`)
     await UserModel.findByIdAndUpdate(friendId, { $push: {
       friends: userId
     }})
@@ -54,7 +55,7 @@ module.exports.removeFriend = {
     friendId: { type: GraphQLID }
   },
   async resolve(parent, { friendId, userId }) {
-    gqlLogger(`removing friend with id ${friendId} to user with id: ${userId}`)
+    gqlLog(`removing friend with id ${friendId} to user with id: ${userId}`)
     await UserModel.findByIdAndUpdate(friendId, { $pull: {
       friends: userId
     }})

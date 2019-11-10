@@ -1,6 +1,6 @@
 const {GraphQLID, GraphQLString, GraphQLObjectType, GraphQLList} = require('graphql')
-const {UserModel, ItemModel, ListModel} = require('../mongodb')
-const gqlLogger = require('easy-log')('app:gql')
+const {UserModel, ItemModel, ListModel} = require('../models')
+const {gqlLog} = require('../conf/loggers')
 
 const UserType = new GraphQLObjectType({
   name: 'User',

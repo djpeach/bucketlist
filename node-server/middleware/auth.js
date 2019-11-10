@@ -1,4 +1,4 @@
-const authLogger = require('easy-log')('app:auth')
+const {authLog} = require('../conf/loggers')
 
 const admin = require("firebase-admin")
 admin.initializeApp({
@@ -7,7 +7,7 @@ admin.initializeApp({
 });
 
 module.exports.checkAuth = async (req, res, next) => {
-  if (process.env.ENV == "dev") {
+  if (process.env.ENV === "dev") {
     next()
     return
   }
@@ -18,11 +18,10 @@ module.exports.checkAuth = async (req, res, next) => {
   }
 
   admin.auth().verifyIdToken(req.headers.authtoken).then((decodedToken) => {
-    authLogger(`User: ${decodedToken.uid} is authorized`)
+    authLog(`User: ${decodedToken.uid} is authorized`)
     next()
   }).catch((error) => {
-    authLogger('Error validating token:')
-    authLogger(error)
+    authLog(`Error validating token: ${error}`)
     res.status(403).send('Unauthorized')
   })
 }

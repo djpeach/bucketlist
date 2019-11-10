@@ -1,7 +1,8 @@
 const {GraphQLNonNull, GraphQLID, GraphQLString} = require('graphql')
+
 const { ListType } = require('../types')
-const { ListModel, ItemModel } = require('../../mongodb')
-const gqlLogger = require('easy-log')('app:gql')
+const { ListModel, ItemModel } = require('../../models')
+const {gqlLog} = require('../../conf/loggers')
 
 module.exports.createList = {
   type: ListType,
@@ -10,7 +11,7 @@ module.exports.createList = {
     userId: { type: GraphQLNonNull(GraphQLID) },
   },
   resolve(parent, { title, userId }) {
-    gqlLogger(`creating new list with title: ${title}`)
+    gqlLog(`creating new list with title: ${title}`)
     return new ListModel({ title, userId }).save()
   }
 }
@@ -21,7 +22,7 @@ module.exports.deleteList = {
     id: { type: GraphQLID }
   },
   async resolve(parent, { id }) {
-    gqlLogger(`deleting list with id: ${id}`)
+    gqlLog(`deleting list with id: ${id}`)
     await ItemModel.deleteMany({ listId: id })
     return ListModel.findByIdAndDelete(id)
   }

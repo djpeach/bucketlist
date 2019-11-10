@@ -1,7 +1,8 @@
 const {GraphQLNonNull, GraphQLList, GraphQLID, GraphQLString, GraphQLInt} = require('graphql')
+
 const { ItemType } = require('../types')
-const { ItemModel } = require('../../mongodb')
-const gqlLogger = require('easy-log')('app:gql')
+const { ItemModel } = require('../../models')
+const {gqlLog} = require('../../conf/loggers')
 
 module.exports.getItemsByList = {
   type: new GraphQLList(ItemType),
@@ -9,7 +10,7 @@ module.exports.getItemsByList = {
     listId: { type: GraphQLNonNull(GraphQLID) }
   },
   resolve(parent, { listId }) {
-    gqlLogger(`getting all items that belong to list ${listId}`)
+    gqlLog(`getting all items that belong to list ${listId}`)
     return ItemModel.find({ listId: listId })
   }
 }
@@ -20,7 +21,7 @@ module.exports.getNewItemsByUser = {
     userId: { type: GraphQLNonNull(GraphQLID) }
   },
   resolve(parent, { userId }) {
-    gqlLogger(`getting all items that belong to user ${userId}, and have no listId`)
+    gqlLog(`getting all items that belong to user ${userId}, and have no listId`)
     return ItemModel.find({ recipientId: userId, listId: null })
   }
 }

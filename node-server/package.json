@@ -4,8 +4,8 @@
   "description": "\"A node server for the bucketlist app\"",
   "main": "index.js",
   "scripts": {
-    "start": "GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_CREDENTIALS DB_USER=$BL_DB_USER DB_PW=$BL_DB_PW DEBUG=app:* nodemon ./bin/www",
-    "devstart": "ENV=dev GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_CREDENTIALS DB_USER=$BL_DB_USER DB_PW=$BL_DB_PW DEBUG=app:* nodemon ./bin/www",
+    "start": "GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_CREDENTIALS DEBUG=app:* nodemon ./bin/www",
+    "devstart": "ENV=dev GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_CREDENTIALS DEBUG=app:* nodemon ./bin/www",
     "test": "AUTH_TOKEN=$AUTH_TOKEN mocha",
     "ci": "server-test 9000"
   },

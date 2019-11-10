@@ -1,7 +1,8 @@
 const {GraphQLNonNull, GraphQLList, GraphQLID, GraphQLString, GraphQLInt} = require('graphql')
+
 const { UserType } = require('../types')
-const { UserModel } = require('../../mongodb')
-const gqlLogger = require('easy-log')('app:gql')
+const { UserModel } = require('../../models')
+const {gqlLog} = require('../../conf/loggers')
 
 module.exports.getUserById = {
   type: UserType,
@@ -9,7 +10,7 @@ module.exports.getUserById = {
     id: { type: GraphQLNonNull(GraphQLID)}
   },
   resolve(parent, { id }) {
-    gqlLogger(`getting user with id: ${id}`)
+    gqlLog(`getting user with id: ${id}`)
     return UserModel.findById(id)
   }
 }
@@ -17,7 +18,7 @@ module.exports.getUserById = {
 module.exports.getAllUsers = {
   type: new GraphQLList(UserType),
   resolve(parent, args) {
-    gqlLogger(`getting all users`)
+    gqlLog(`getting all users`)
     return UserModel.find()
   }
 }
@@ -33,7 +34,7 @@ module.exports.getUsersByQuery = {
       return []
     }
 
-    gqlLogger(`getting ${limit} users that match query: ${query}`)
+    gqlLog(`getting ${limit} users that match query: ${query}`)
     return UserModel.find({ $or: [
       { firstName: { $regex: query, $options: 'i' }},
       { lastName: { $regex: query, $options: 'i' }},
@@ -54,7 +55,7 @@ module.exports.getFriendsByQuery = {
       return []
     }
 
-    gqlLogger(`getting ${limit} friends that match query: ${query}`)
+    gqlLog(`getting ${limit} friends that match query: ${query}`)
     return UserModel.find({ $and: [
       {$or: [
         { firstName: { $regex: query, $options: 'i' }},

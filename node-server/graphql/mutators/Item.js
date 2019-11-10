@@ -1,7 +1,8 @@
 const {GraphQLNonNull, GraphQLID, GraphQLString} = require('graphql')
+
 const { ItemType } = require('../types')
-const { ItemModel } = require('../../mongodb')
-const gqlLogger = require('easy-log')('app:gql')
+const { ItemModel } = require('../../models')
+const {gqlLog} = require('../../conf/loggers')
 
 module.exports.createItem = {
   type: ItemType,
@@ -13,7 +14,7 @@ module.exports.createItem = {
     listId: { type: GraphQLID },
   },
   resolve(parent, { ...args }) {
-    gqlLogger(`creating new item with message: ${args.message}`)
+    gqlLog(`creating new item with message: ${args.message}`)
     return new ItemModel({ ...args }).save()
   }
 }
@@ -25,7 +26,7 @@ module.exports.assignItemToList = {
     listId: { type: GraphQLNonNull(GraphQLID) }
   },
   resolve(parent, { id, listId }) {
-    gqlLogger(`Adding item ${id} to list ${listId}`)
+    gqlLog(`Adding item ${id} to list ${listId}`)
     return ItemModel.findByIdAndUpdate(id, { listId: listId })
   }
 }
@@ -36,7 +37,7 @@ module.exports.deleteItem = {
     id: { type: GraphQLID }
   },
   resolve(parent, { id }) {
-    gqlLogger(`deleting item with id: ${id}`)
+    gqlLog(`deleting item with id: ${id}`)
     return ItemModel.findByIdAndDelete(id)
   }
 }
