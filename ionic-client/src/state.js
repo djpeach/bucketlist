@@ -49,5 +49,6 @@ export const lists = [
 ]
 
 export const state = {
+  // TODO: use a real flux pattern
   user: null
 }

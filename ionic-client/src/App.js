@@ -4,8 +4,9 @@ import { IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, Io
 import { IonReactRouter } from '@ionic/react-router';
 import { list, addCircleOutline, person } from 'ionicons/icons';
 
-import { Dashboard, List, NewSuggestion, More, Login } from './components';
+import { Dashboard, List, NewSuggestion, More, Login, Register } from './components';
 import routes from './conf/routes'
+import {state} from './state'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -28,13 +29,20 @@ const App = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route exact path={routes.home} component={Dashboard} />
-          <Route exact path={routes.lists.detail} component={List} />
+          <Route exact path={routes.home} render={(props) => {
+            return state.user ? ( <Dashboard></Dashboard> ) : ( <Redirect to={routes.auth.login} />)
+          }}  />
+          <Route exact path={routes.lists.detail} render={(props) => {
+            return state.user ? ( <List></List> ) : ( <Redirect to={routes.auth.login} />)
+          }}  />
           <Route exact path={routes.suggestions.create} render={(props) => {
-            return false ? ( <NewSuggestion></NewSuggestion> ) : ( <Redirect to={routes.auth.login} />)
+            return state.user ? ( <NewSuggestion></NewSuggestion> ) : ( <Redirect to={routes.auth.login} />)
           }} />
-          <Route exact path={routes.more} component={More} />
+          <Route exact path={routes.more} render={(props) => {
+            return state.user ? ( <More></More> ) : ( <Redirect to={routes.auth.login} />)
+          }}  />
           <Route exact path={routes.auth.login} component={Login} />
+          <Route exact path={routes.auth.register} component={Register} />
           <Redirect exact from={routes.index} to={routes.suggestions.create} />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">

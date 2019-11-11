@@ -1,7 +1,7 @@
 import React from 'react'
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonList, IonItem, IonLabel, IonGrid, IonRow, IonCol, IonInput, IonButton } from "@ionic/react";
 
-import { lists, newItems } from "../../dummydata";
+import { lists, newItems } from "../../state";
 
 import routes, {routeWithParams} from "../../conf/routes"
 

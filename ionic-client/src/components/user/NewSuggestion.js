@@ -3,7 +3,7 @@ import { IonPage } from "@ionic/react";
 import { Redirect } from 'react-router-dom';
 
 import routes from "../../conf/routes";
-import {state} from '../../dummydata'
+import {state} from '../../state'
 
 class NewSuggestion extends React.Component {
   render() {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { IonPage } from "@ionic/react";
 
-import {lists} from '../../dummydata';
+import {lists} from '../../state';
 
 class List extends React.Component {
   render() {
