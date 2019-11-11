@@ -50,5 +50,7 @@ export const lists = [
 
 export const state = {
   // TODO: use a real flux pattern
-  user: null
+  user: {
+    uid: 'Y090y3m61IeJtLFgZ5qwOam0Xlb2'
+  }
 }

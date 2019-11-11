@@ -27,7 +27,9 @@ app.use(requestLogger)
 app.use('/', routes)
 app.use('/graphql', authMiddleware.checkAuth)
 app.use('/graphql', (req, res, next) => {
-  gqlLog(`Query: ${req.body.query.replace(/(\r\n|\n|\r)/gm, "")}`)
+  if (req.body.query) {
+    gqlLog(`Query: ${req.body.query.replace(/(\r\n|\n|\r)/gm, "")}`)
+  }
   next()
 }, graphqlHTTP({
   schema,

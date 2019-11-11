@@ -10,8 +10,8 @@ import App from './App';
 firebase.initializeApp(keys.firebaseConfig)
 
 const apolloClient = new ApolloClient({
-  uri: 'localhost:9000/graphql'
+  uri: 'http://localhost:9000/graphql'
 });
 
-// ReactDOM.render(<ApolloProvider client={ apolloClient }><App /></ApolloProvider>, document.getElementById('root'));
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<ApolloProvider client={ apolloClient }><App /></ApolloProvider>, document.getElementById('root'));
+// ReactDOM.render(<App />, document.getElementById('root'));
