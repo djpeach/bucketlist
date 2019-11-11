@@ -20,7 +20,6 @@ class Login extends React.Component {
         uid: res.user.uid
       }
       // TODO: Push to dashboard route
-      console.log(res)
     }).catch((error) => {
       // TODO: User error and IonAlertControl to show alert
     })

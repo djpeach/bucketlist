@@ -22,7 +22,6 @@ const ListUsers = ({getAllusers}) => {
         <IonList>
           {
             users.map((user) => {
-              console.log(user)
               return (
                 <IonItem key={user.id}>
                   <IonLabel>Id: {user.id}</IonLabel>

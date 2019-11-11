@@ -1,6 +1,8 @@
 import {gql} from 'apollo-boost'
 
-export const getAllUsers = gql`
+
+export default {
+  getAllUsers: gql`
   {
     getAllUsers {
       id
@@ -10,7 +12,4 @@ export const getAllUsers = gql`
     }
   }
 `
-
-export default {
-  getAllUsers
 }

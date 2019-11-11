@@ -3,6 +3,7 @@ import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { list, addCircleOutline, person } from 'ionicons/icons';
+import firebase from "firebase";
 
 import { Dashboard, List, NewSuggestion, More, Login, Register } from './components';
 import routes from './conf/routes'
@@ -24,25 +25,31 @@ import '@ionic/react/css/text-transformation.css';
 import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
 
+// TODO: Write wrapper component for auth guards
+
 const App = () => (
   <IonApp>
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route exact path={routes.home} render={(props) => {
-            return state.user ? ( <Dashboard></Dashboard> ) : ( <Redirect to={routes.auth.login} />)
-          }}  />
-          <Route exact path={routes.lists.detail} render={(props) => {
-            return state.user ? ( <List></List> ) : ( <Redirect to={routes.auth.login} />)
-          }}  />
-          <Route exact path={routes.suggestions.create} render={(props) => {
-            return state.user ? ( <NewSuggestion></NewSuggestion> ) : ( <Redirect to={routes.auth.login} />)
+          <Route exact path={routes.auth.login} render={props => {
+            return !!firebase.auth().currentUser ? <Dashboard {...props} /> : <Login />;
           }} />
-          <Route exact path={routes.more} render={(props) => {
-            return state.user ? ( <More></More> ) : ( <Redirect to={routes.auth.login} />)
-          }}  />
-          <Route exact path={routes.auth.login} component={Login} />
-          <Route exact path={routes.auth.register} component={Register} />
+          <Route exact path={routes.auth.register} render={props => {
+            return !!firebase.auth().currentUser ? <Dashboard {...props} /> : <Register />;
+          }} />
+          <Route exact path={routes.home} render={props => {
+              return !!firebase.auth().currentUser ? <Dashboard {...props} /> : <Login />;
+          }} />
+          <Route exact path={routes.lists.detail} render={props => {
+            return !!firebase.auth().currentUser ? <List {...props} /> : <Login />;
+          }} />
+          <Route exact path={routes.suggestions.create} render={props => {
+            return !!firebase.auth().currentUser ? <Dashboard {...props} /> : <Login />;
+          }} />
+          <Route exact path={routes.more} render={props => {
+            return !!firebase.auth().currentUser ? <More {...props} /> : <Login />;
+          }} />
           <Redirect exact from={routes.index} to={routes.suggestions.create} />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
