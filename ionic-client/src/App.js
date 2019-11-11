@@ -45,7 +45,7 @@ const App = () => (
             return !!firebase.auth().currentUser ? <List {...props} /> : <Login />;
           }} />
           <Route exact path={routes.suggestions.create} render={props => {
-            return !!firebase.auth().currentUser ? <Dashboard {...props} /> : <Login />;
+            return !!firebase.auth().currentUser ? <NewSuggestion {...props} /> : <Login />;
           }} />
           <Route exact path={routes.more} render={props => {
             return !!firebase.auth().currentUser ? <More {...props} /> : <Login />;
