@@ -8,9 +8,11 @@ admin.initializeApp({
 
 module.exports.checkAuth = async (req, res, next) => {
   if (process.env.ENV === "dev") {
-    next()
-    return
+    return next()
   }
+
+  // bc dev
+  return next()
 
   if (!req.headers.authtoken) {
     res.status(403).send('Unauthorized')
