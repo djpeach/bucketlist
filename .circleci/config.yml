@@ -43,7 +43,7 @@ jobs:
           name: npm start and test
           command: |
                 cd node-server
-                npm run ci
+                npm start
 
 workflows:
   version: 2

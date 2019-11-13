@@ -6,8 +6,8 @@
   "scripts": {
     "start": "DEBUG=app:*,-app:graphql nodemon ./bin/www",
     "devstart": "ENV=dev DEBUG=app:*,-app:graphql nodemon ./bin/www",
-    "test": "AUTH_TOKEN=$AUTH_TOKEN mocha",
-    "ci": "server-test 9000"
+    "test": "mocha",
+    "ci": "server-test 8081"
   },
   "repository": {
     "type": "git",
