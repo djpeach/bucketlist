@@ -2,5 +2,7 @@ query GetAllUsers {
     getAllUsers {
         firstName
         lastName
+        email
+        id
     }
 }

@@ -9,9 +9,14 @@
 /* Begin PBXBuildFile section */
 		1834846BD3A138686EDA874A /* Pods_ios_client_ios_clientUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551EC6371F17337FC4038D83 /* Pods_ios_client_ios_clientUITests.framework */; };
 		32D1FC9822D4A282FF77AC49 /* Pods_ios_client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1578782071145975FD00E0B8 /* Pods_ios_client.framework */; };
+		5508E084237B63BF00CE1F35 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5508E083237B63BF00CE1F35 /* API.swift */; };
+		5508E086237B63C800CE1F35 /* api.json in Resources */ = {isa = PBXBuildFile; fileRef = 5508E085237B63C800CE1F35 /* api.json */; };
+		5508E08C237B654B00CE1F35 /* DashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5508E08B237B654B00CE1F35 /* DashboardVC.swift */; };
+		5508E08E237B65A300CE1F35 /* CreateSuggestionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5508E08D237B65A300CE1F35 /* CreateSuggestionVC.swift */; };
+		5508E090237B667500CE1F35 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5508E08F237B667500CE1F35 /* ProfileVC.swift */; };
+		5508E092237B690E00CE1F35 /* NewSuggestionsPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5508E091237B690E00CE1F35 /* NewSuggestionsPreview.swift */; };
+		5508E094237B6A6B00CE1F35 /* SuggestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5508E093237B6A6B00CE1F35 /* SuggestionCell.swift */; };
 		552595B62356468E006BCD46 /* ViewController.gql in Resources */ = {isa = PBXBuildFile; fileRef = 552595B52356468E006BCD46 /* ViewController.gql */; };
-		552595B9235648C3006BCD46 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552595B8235648C3006BCD46 /* API.swift */; };
-		552595BD23564C6C006BCD46 /* api.json in Resources */ = {isa = PBXBuildFile; fileRef = 552595BC23564C6B006BCD46 /* api.json */; };
 		552C350B23561A8000EC7EAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552C350A23561A8000EC7EAD /* AppDelegate.swift */; };
 		552C350D23561A8000EC7EAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552C350C23561A8000EC7EAD /* SceneDelegate.swift */; };
 		552C350F23561A8000EC7EAD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552C350E23561A8000EC7EAD /* ViewController.swift */; };
@@ -50,10 +55,15 @@
 /* Begin PBXFileReference section */
 		1578782071145975FD00E0B8 /* Pods_ios_client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios_client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FFC55665DB158A8926B0284 /* Pods-ios-client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-client.release.xcconfig"; path = "Target Support Files/Pods-ios-client/Pods-ios-client.release.xcconfig"; sourceTree = "<group>"; };
+		5508E083237B63BF00CE1F35 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		5508E085237B63C800CE1F35 /* api.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = api.json; sourceTree = "<group>"; };
+		5508E08B237B654B00CE1F35 /* DashboardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardVC.swift; sourceTree = "<group>"; };
+		5508E08D237B65A300CE1F35 /* CreateSuggestionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSuggestionVC.swift; sourceTree = "<group>"; };
+		5508E08F237B667500CE1F35 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		5508E091237B690E00CE1F35 /* NewSuggestionsPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSuggestionsPreview.swift; sourceTree = "<group>"; };
+		5508E093237B6A6B00CE1F35 /* SuggestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionCell.swift; sourceTree = "<group>"; };
 		551EC6371F17337FC4038D83 /* Pods_ios_client_ios_clientUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios_client_ios_clientUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		552595B52356468E006BCD46 /* ViewController.gql */ = {isa = PBXFileReference; lastKnownFileType = text; path = ViewController.gql; sourceTree = "<group>"; };
-		552595B8235648C3006BCD46 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		552595BC23564C6B006BCD46 /* api.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = api.json; sourceTree = "<group>"; };
 		552C350723561A8000EC7EAD /* Bucket List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bucket List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		552C350A23561A8000EC7EAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		552C350C23561A8000EC7EAD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +121,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5508E087237B64F600CE1F35 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				5508E08B237B654B00CE1F35 /* DashboardVC.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		5508E088237B651200CE1F35 /* Lists */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Lists;
+			sourceTree = "<group>";
+		};
+		5508E089237B652000CE1F35 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				5508E08F237B667500CE1F35 /* ProfileVC.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		5508E08A237B652900CE1F35 /* Suggestions */ = {
+			isa = PBXGroup;
+			children = (
+				5508E08D237B65A300CE1F35 /* CreateSuggestionVC.swift */,
+				5508E091237B690E00CE1F35 /* NewSuggestionsPreview.swift */,
+				5508E093237B6A6B00CE1F35 /* SuggestionCell.swift */,
+			);
+			path = Suggestions;
+			sourceTree = "<group>";
+		};
 		552C34FE23561A8000EC7EAD = {
 			isa = PBXGroup;
 			children = (
@@ -136,8 +179,12 @@
 		552C350923561A8000EC7EAD /* ios-client */ = {
 			isa = PBXGroup;
 			children = (
-				552595BC23564C6B006BCD46 /* api.json */,
-				552595B8235648C3006BCD46 /* API.swift */,
+				5508E08A237B652900CE1F35 /* Suggestions */,
+				5508E089237B652000CE1F35 /* Profile */,
+				5508E088237B651200CE1F35 /* Lists */,
+				5508E087237B64F600CE1F35 /* Dashboard */,
+				5508E085237B63C800CE1F35 /* api.json */,
+				5508E083237B63BF00CE1F35 /* API.swift */,
 				552C354C23561F1700EC7EAD /* GoogleService-Info.plist */,
 				552C354723561E6B00EC7EAD /* Extensions */,
 				552C353D23561DEE00EC7EAD /* Auth */,
@@ -221,9 +268,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 552C353123561A8200EC7EAD /* Build configuration list for PBXNativeTarget "ios-client" */;
 			buildPhases = (
-				124F3C8E372A408BE46B38AD /* [CP] Check Pods Manifest.lock */,
 				552595BB235649DB006BCD46 /* Update Server API */,
 				552595BA235648E6006BCD46 /* Generate Swift API */,
+				124F3C8E372A408BE46B38AD /* [CP] Check Pods Manifest.lock */,
 				552C350323561A8000EC7EAD /* Sources */,
 				552C350423561A8000EC7EAD /* Frameworks */,
 				552C350523561A8000EC7EAD /* Resources */,
@@ -328,7 +375,7 @@
 				552C351723561A8200EC7EAD /* LaunchScreen.storyboard in Resources */,
 				552C351423561A8200EC7EAD /* Assets.xcassets in Resources */,
 				552C354D23561F1700EC7EAD /* GoogleService-Info.plist in Resources */,
-				552595BD23564C6C006BCD46 /* api.json in Resources */,
+				5508E086237B63C800CE1F35 /* api.json in Resources */,
 				552595B62356468E006BCD46 /* ViewController.gql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -450,7 +497,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd \"${SRCROOT}/${TARGET_NAME}\"\napollo schema:download --endpoint=http://localhost:9000/graphql api.json\n";
+			shellScript = "cd \"${SRCROOT}/${TARGET_NAME}\"\napollo schema:download --endpoint=http://bucketlist.us-east-2.elasticbeanstalk.com/graphql api.json\n";
 		};
 		7D877E03114A639CC8534262 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -493,14 +540,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				552595B9235648C3006BCD46 /* API.swift in Sources */,
+				5508E084237B63BF00CE1F35 /* API.swift in Sources */,
+				5508E08C237B654B00CE1F35 /* DashboardVC.swift in Sources */,
+				5508E090237B667500CE1F35 /* ProfileVC.swift in Sources */,
 				552C354923561E6B00EC7EAD /* UIView+Anchoring.swift in Sources */,
 				552C354423561DEE00EC7EAD /* Login.swift in Sources */,
 				552C354323561DEE00EC7EAD /* AuthVC.swift in Sources */,
 				552C353B23561B9E00EC7EAD /* Coordinator.swift in Sources */,
+				5508E094237B6A6B00CE1F35 /* SuggestionCell.swift in Sources */,
 				552C354223561DEE00EC7EAD /* RootTabBarController.swift in Sources */,
 				552C350F23561A8000EC7EAD /* ViewController.swift in Sources */,
 				552C350B23561A8000EC7EAD /* AppDelegate.swift in Sources */,
+				5508E092237B690E00CE1F35 /* NewSuggestionsPreview.swift in Sources */,
+				5508E08E237B65A300CE1F35 /* CreateSuggestionVC.swift in Sources */,
 				552C354523561DEE00EC7EAD /* Register.swift in Sources */,
 				552C350D23561A8000EC7EAD /* SceneDelegate.swift in Sources */,
 				552C354623561DEE00EC7EAD /* AuthView.swift in Sources */,
