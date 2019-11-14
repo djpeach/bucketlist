@@ -29,15 +29,21 @@ jobs:
           name: setup firebase config
           command: |
                 cd node-server
-                mkdir config
-                cd config
+                cd conf
                 echo $FIREBASE_CONFIG > bucketlistFirebase.json
+
+      - run:
+          name: setup secret keys
+          command: |
+                cd node-server
+                cd conf
+                echo $SECRET_KEYS > secret-keys.js
 
       - run:
           name: npm start and test
           command: |
                 cd node-server
-                npm run ci
+                npm start
 
 workflows:
   version: 2

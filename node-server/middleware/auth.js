@@ -2,7 +2,7 @@ const {authLog} = require('../conf/loggers')
 
 const admin = require("firebase-admin")
 admin.initializeApp({
-  credential: admin.credential.applicationDefault(),
+  credential: admin.credential.cert('conf/bucketlistFirebase.json'),
   databaseURL: "https://bucketlist-96454.firebaseio.com"
 });
 
