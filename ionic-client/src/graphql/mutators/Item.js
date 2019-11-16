@@ -25,7 +25,7 @@ export default {
   `,
   deleteItem: gql`
     mutation ($id: ID) {
-      deleteItem(id: ID) {
+      deleteItem(id: $id) {
         id
         from
         to
