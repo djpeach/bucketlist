@@ -12,33 +12,43 @@ export default {
   }
 `,
   getUserById: gql`
-  {
-    getUserById(id:ID!) {
+    query ($id: ID!) {
+      getUserById(id: $id) {
+        id
+        firstName
+        lastName
+        email
+      }
+    }
+`,
+  getUsersByQuery: gql`
+    query ($query: String!,$limit: Int = 10) {
+      getUsersByQuery(query: $query,limit: $limit) {
+        id
+        firstName
+        lastName
+        email
+      }
+  }
+`,
+  getAllFriends: gql`
+  query ($userId: ID!) {
+    getAllFriends(userId: $userId) {
       id
       firstName
       lastName
       email
     }
   }
-  `,
-  getUserByQuery: gql`
-  {
-    getUserByQuery(query:String!,limit: Int = 10) {
-      id
-      firstName
-      lastName
-      email
-    }
-  }
-  `,
+`,
   getFriendsByQuery: gql`
-  {
-    getFriendsByQuery(userId: ID!, query: String!, limit: Int = 10) {
+  query ($userId: ID!, $query: String!, $limit: Int = 10) {
+    getFriendsByQuery(userId: $userId, query: $query, limit:$limit) {
       id
       firstName
       lastName
       email
     }
   }
-  `,
+`,
 }
