@@ -2,35 +2,43 @@ import { gql } from 'apollo-boost'
 
 export default {
   createUser: gql`
-    createUser(firstName: String!, lastName: String!, email: String!) {
+  mutation ($firstName: String!, $lastName: String!, $email: String!){
+    createUser(firstName: $firstName, lastName: $lastName, email: $email) {
       id
       firstName
       lastName
       email
     }
-  `,
+  }
+`,
   deleteUser: gql`
-      deleteUser(id:ID!) {
-        id
-        firstName
-        lastName
-        email
-      }
-  `,
+  mutation ($id:ID!) {
+   deleteUser(id:$id) {
+    id
+    firstName
+    lastName
+    email
+    }
+  }
+`,
   addFriend: gql`
-      addFriend(userId: ID!, friendId: ID!) {
-        id
-        firstName
-        lastName
-        email
-      }
-  `,
+  mutation ($userId: ID!, $friendId: ID!) {
+    addFriend(userId: $userId, friendId: $friendId) {
+      id
+      firstName
+      lastName
+      email
+    }
+  }
+`,
   removeFriend: gql`
-      removeFriend(userId: ID!, friendId: ID!) {
-        id
-        firstName
-        lastName
-        email
-      }
-  `,
+  mutation ($userId: ID!, $friendId: ID!) {
+    removeFriend(userId: $userId, friendId: $friendId) {
+      id
+      firstName
+      lastName
+      email
+    }
+  }
+`,
 }
