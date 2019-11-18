@@ -6,7 +6,21 @@ export default {
       getListsByUser(id: $id) {
         id
         title
-        items
+        items {
+          id
+          from {
+            id
+            firstName
+            lastName
+          }
+          to {
+            id
+            firstName
+            lastName
+          }
+          message
+          link
+        }
       }
     }
   `,
@@ -15,7 +29,21 @@ export default {
       getListsByQuery(id:$userId, query: $query, limit: $limit){
         id
         title
-        items
+        items {
+          id
+          from {
+            id
+            firstName
+            lastName
+          }
+          to {
+            id
+            firstName
+            lastName
+          }
+          message
+          link
+        }
       }
     }
   `,
