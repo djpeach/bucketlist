@@ -5,8 +5,16 @@ export default {
     query ($listId: ID!) {
       getItemsByList(listId: $listId) {
         id
-        from
-        to
+        from {
+          id
+          firstName
+          lastName
+        }
+        to {
+          id
+          firstName
+          lastName
+        }
         message
         link
       }
@@ -16,8 +24,16 @@ export default {
     query ($userId: ID!) {
       getNewItemsByUser(userId: $userId) {
         id
-        from
-        to
+        from {
+          id
+          firstName
+          lastName
+        }
+        to {
+          id
+          firstName
+          lastName
+        }
         message
         link
       }
