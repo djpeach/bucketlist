@@ -1,8 +1,8 @@
-import { gql } from 'apollo-boost'
+import { gql } from "apollo-boost";
 
 export default {
   getItemsByList: gql`
-    query ($listId: ID!) {
+    query($listId: ID!) {
       getItemsByList(listId: $listId) {
         id
         from {
@@ -21,7 +21,7 @@ export default {
     }
   `,
   getNewItemsByUser: gql`
-    query ($userId: ID!) {
+    query($userId: ID!) {
       getNewItemsByUser(userId: $userId) {
         id
         from {
@@ -38,5 +38,5 @@ export default {
         link
       }
     }
-  `,
-}
+  `
+};

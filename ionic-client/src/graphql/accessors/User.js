@@ -1,4 +1,4 @@
-import { gql } from 'apollo-boost'
+import { gql } from "apollo-boost";
 
 export default {
   getAllUsers: gql`
@@ -12,7 +12,7 @@ export default {
     }
   `,
   getUserById: gql`
-    query ($id: ID!) {
+    query($id: ID!) {
       getUserById(id: $id) {
         id
         firstName
@@ -22,8 +22,8 @@ export default {
     }
   `,
   getUsersByQuery: gql`
-    query ($query: String!,$limit: Int = 10) {
-      getUsersByQuery(query: $query,limit: $limit) {
+    query($query: String!, $limit: Int = 10) {
+      getUsersByQuery(query: $query, limit: $limit) {
         id
         firstName
         lastName
@@ -32,7 +32,7 @@ export default {
     }
   `,
   getAllFriends: gql`
-    query ($userId: ID!) {
+    query($userId: ID!) {
       getAllFriends(userId: $userId) {
         id
         firstName
@@ -42,13 +42,13 @@ export default {
     }
   `,
   getFriendsByQuery: gql`
-    query ($userId: ID!, $query: String!, $limit: Int = 10) {
-      getFriendsByQuery(userId: $userId, query: $query, limit:$limit) {
+    query($userId: ID!, $query: String!, $limit: Int = 10) {
+      getFriendsByQuery(userId: $userId, query: $query, limit: $limit) {
         id
         firstName
         lastName
         email
       }
     }
-  `,
-}
+  `
+};
