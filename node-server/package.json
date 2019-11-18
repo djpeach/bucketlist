@@ -4,8 +4,8 @@
   "description": "\"A node server for the bucketlist app\"",
   "main": "index.js",
   "scripts": {
-    "start": "DEBUG=app:*,-app:graphql nodemon ./bin/www",
-    "devstart": "ENV=dev DEBUG=app:*,-app:graphql nodemon ./bin/www",
+    "start": "DEBUG=app:* nodemon ./bin/www",
+    "devstart": "ENV=dev DEBUG=app:* nodemon ./bin/www",
     "test": "mocha",
     "ci": "server-test 8081"
   },
