@@ -12,6 +12,8 @@ public final class GetAllUsersQuery: GraphQLQuery {
         __typename
         firstName
         lastName
+        email
+        id
       }
     }
     """
@@ -54,6 +56,8 @@ public final class GetAllUsersQuery: GraphQLQuery {
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("firstName", type: .scalar(String.self)),
         GraphQLField("lastName", type: .scalar(String.self)),
+        GraphQLField("email", type: .scalar(String.self)),
+        GraphQLField("id", type: .scalar(GraphQLID.self)),
       ]
 
       public private(set) var resultMap: ResultMap
@@ -62,8 +66,8 @@ public final class GetAllUsersQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(firstName: String? = nil, lastName: String? = nil) {
-        self.init(unsafeResultMap: ["__typename": "User", "firstName": firstName, "lastName": lastName])
+      public init(firstName: String? = nil, lastName: String? = nil, email: String? = nil, id: GraphQLID? = nil) {
+        self.init(unsafeResultMap: ["__typename": "User", "firstName": firstName, "lastName": lastName, "email": email, "id": id])
       }
 
       public var __typename: String {
@@ -90,6 +94,24 @@ public final class GetAllUsersQuery: GraphQLQuery {
         }
         set {
           resultMap.updateValue(newValue, forKey: "lastName")
+        }
+      }
+
+      public var email: String? {
+        get {
+          return resultMap["email"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "email")
+        }
+      }
+
+      public var id: GraphQLID? {
+        get {
+          return resultMap["id"] as? GraphQLID
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
         }
       }
     }

@@ -1,11 +1,11 @@
 **/node_modules
 **/package-lock.json
 **/secret-keys.js
+**/bucketlistFirebase.json
 .idea/**
 .DS_Store
 **/.DS_Store
 **/.idea/**
-node-server/config/bucketlistFirebase.json
 
 # Xcode
 #

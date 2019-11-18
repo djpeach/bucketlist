@@ -2,15 +2,17 @@ const {authLog} = require('../conf/loggers')
 
 const admin = require("firebase-admin")
 admin.initializeApp({
-  credential: admin.credential.applicationDefault(),
+  credential: admin.credential.cert('conf/bucketlistFirebase.json'),
   databaseURL: "https://bucketlist-96454.firebaseio.com"
 });
 
 module.exports.checkAuth = async (req, res, next) => {
   if (process.env.ENV === "dev") {
-    next()
-    return
+    return next()
   }
+
+  // bc dev
+  return next()
 
   if (!req.headers.authtoken) {
     res.status(403).send('Unauthorized')

@@ -1,11 +1,11 @@
 import React from 'react';
-import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
-import { list, addCircleOutline, person } from 'ionicons/icons';
+import {Redirect, Route} from 'react-router-dom';
+import {IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs} from '@ionic/react';
+import {IonReactRouter} from '@ionic/react-router';
+import {list, addCircleOutline, person} from 'ionicons/icons';
 import firebase from "firebase";
 
-import { Dashboard, List, NewSuggestion, More, Login, Register } from './components';
+import {Dashboard, List, NewSuggestion, More, Login, Register} from './components';
 import routes from './conf/routes'
 import {state} from './state'
 
@@ -33,36 +33,36 @@ const App = () => (
       <IonTabs>
         <IonRouterOutlet>
           <Route exact path={routes.auth.login} render={props => {
-            return !!firebase.auth().currentUser ? <Dashboard {...props} /> : <Login />;
-          }} />
+            return !!firebase.auth().currentUser ? <Dashboard {...props} /> : <Login/>;
+          }}/>
           <Route exact path={routes.auth.register} render={props => {
-            return !!firebase.auth().currentUser ? <Dashboard {...props} /> : <Register />;
-          }} />
+            return !!firebase.auth().currentUser ? <Dashboard {...props} /> : <Register/>;
+          }}/>
           <Route exact path={routes.home} render={props => {
-              return !!firebase.auth().currentUser ? <Dashboard {...props} /> : <Login />;
-          }} />
+            return !!firebase.auth().currentUser ? <Dashboard {...props} /> : <Login/>;
+          }}/>
           <Route exact path={routes.lists.detail} render={props => {
-            return !!firebase.auth().currentUser ? <List {...props} /> : <Login />;
-          }} />
+            return !!firebase.auth().currentUser ? <List {...props} /> : <Login/>;
+          }}/>
           <Route exact path={routes.suggestions.create} render={props => {
-            return !!firebase.auth().currentUser ? <NewSuggestion {...props} /> : <Login />;
-          }} />
+            return !!firebase.auth().currentUser ? <NewSuggestion {...props} /> : <Login/>;
+          }}/>
           <Route exact path={routes.more} render={props => {
-            return !!firebase.auth().currentUser ? <More {...props} /> : <Login />;
-          }} />
-          <Redirect exact from={routes.index} to={routes.suggestions.create} />
+            return !!firebase.auth().currentUser ? <More {...props} /> : <Login/>;
+          }}/>
+          <Redirect exact from={routes.index} to={routes.suggestions.create}/>
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="lists" href={routes.home}>
-            <IonIcon icon={list} />
+            <IonIcon icon={list}/>
             <IonLabel>Your Lists</IonLabel>
           </IonTabButton>
           <IonTabButton tab="newSuggestion" href={routes.suggestions.create}>
-            <IonIcon icon={addCircleOutline} />
+            <IonIcon icon={addCircleOutline}/>
             <IonLabel>New Suggestion</IonLabel>
           </IonTabButton>
           <IonTabButton tab="more" href={routes.more}>
-            <IonIcon icon={person} />
+            <IonIcon icon={person}/>
             <IonLabel>Profile &amp; Settings</IonLabel>
           </IonTabButton>
         </IonTabBar>

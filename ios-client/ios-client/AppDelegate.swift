@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import Apollo
 
-let apollo = ApolloClient(url: URL(string: "http://localhost:9000/graphql")!)
+let apollo = ApolloClient(url: URL(string: "http://bucketlist.us-east-2.elasticbeanstalk.com/graphql")!)
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

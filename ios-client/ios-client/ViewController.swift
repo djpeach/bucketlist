@@ -17,7 +17,15 @@ class ViewController: UIViewController {
         
         let getAllUsers = GetAllUsersQuery()
         apollo.fetch(query: getAllUsers) { result in
-            print(result)
+            do {
+                try result.get().data?.getAllUsers?.forEach({ (res) in
+                    if let email = res?.email {
+                        print(email)
+                    }
+                })
+            } catch let apolloError {
+                print(apolloError.localizedDescription)
+            }
         }
         
     }

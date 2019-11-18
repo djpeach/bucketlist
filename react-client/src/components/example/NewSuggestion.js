@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { createSuggestion, getAllSuggestions } from '../../graphql'
+import {createSuggestion, getAllSuggestions} from '../../graphql'
 import {flowRight as compose} from 'lodash'
 import {graphql} from 'react-apollo'
 
@@ -25,7 +25,7 @@ class NewSuggestion extends Component {
     const {message} = this.state
 
     this.props.createSuggestion({
-      variables: { message },
+      variables: {message},
       refetchQueries: [{query: getAllSuggestions}]
     }).then(() => {
       this.setState({
@@ -34,7 +34,7 @@ class NewSuggestion extends Component {
       })
     }).catch(({message}) => {
       this.setState({
-        createSuggestionError: { message }
+        createSuggestionError: {message}
       })
     })
   }
@@ -46,7 +46,7 @@ class NewSuggestion extends Component {
         {
           createSuggestionError ? (
             <p>{createSuggestionError.message}</p>
-          ) : ( null )
+          ) : (null)
         }
         <form onSubmit={this.onSubmit}>
           <input type='text' id='message' onChange={this.onChange} value={this.state.message}/>

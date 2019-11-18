@@ -14,14 +14,22 @@ class RootTabBarController: UITabBarController, UITabBarControllerDelegate {
         
         delegate = self
         
-        let dummy = ViewController()
+        let boldIcons = UIImage.SymbolConfiguration(weight: .bold)
         
-        viewControllers = [dummy]
+        let dashboard = DashboardVC()
+        dashboard.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "list.bullet.below.rectangle", withConfiguration: boldIcons), selectedImage: nil)
+        let newSuggestion = CreateSuggestionVC()
+        newSuggestion.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "plus.square", withConfiguration: boldIcons), selectedImage: nil)
+        let profile = ProfileVC()
+        profile.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "person", withConfiguration: boldIcons), selectedImage: nil)
         
-        guard let items = tabBar.items else { return }
+        viewControllers = [dashboard, newSuggestion, profile]
+        selectedIndex = 1
         
-        for item in items {
-            item.imageInsets = UIEdgeInsets(top: 8, left: 0, bottom: -8, right: 0)
-        }
+//        guard let items = tabBar.items else { return }
+//
+//        for item in items {
+//            item.imageInsets = UIEdgeInsets(top: 8, left: 0, bottom: -8, right: 0)
+//        }
     }
 }
