@@ -13,11 +13,11 @@ import {
   IonLabel,
   IonItem
 } from "@ionic/react";
-import firebase from 'firebase'
-import { state } from '../../state'
+import firebase from 'firebase';
+import { state } from '../../state';
 import routes from "../../conf/routes";
 import { useFormik } from 'formik';
-import { useMutation } from 
+import { useMutation } from '@apollo/react-hooks';
 
 const Register = () => {
 
@@ -37,13 +37,13 @@ const Register = () => {
     }
   });
 
-  state = {
+  const state = {
     email: '',
     password: '',
     passwordConfirmation: ''
   }
 
-  onSubmit = (event) => {
+  const onSubmit = (event) => {
     event.preventDefault()
     // TODO: Form validation, check passwords match
     firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((res) => {
@@ -57,7 +57,7 @@ const Register = () => {
     })
   }
 
-  onChange = (id, event) => {
+  const onChange = (id, event) => {
     this.setState({
       [id]: event.target.value
     })
