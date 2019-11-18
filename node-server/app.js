@@ -33,7 +33,7 @@ app.use('/graphql', (req, res, next) => {
   next()
 }, graphqlHTTP({
   schema,
-  graphiql: true,
+  graphiql: true
 }))
 
 module.exports = app
