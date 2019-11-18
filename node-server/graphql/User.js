@@ -13,9 +13,15 @@ module.exports.typeDefs = `
 `
 
 module.exports.resolvers = {
-  lists: (user) => { return ListModel.find({userId: user.id}) },
-  newItems: (user) => { return ItemModel.find({recipientId: user.id, listId: null}) },
-  friends: (user) => { return UserModel.find({id: {$in: user.friends}}) },
+  lists: (user) => {
+    return ListModel.find({userId: user.id})
+  },
+  newItems: (user) => {
+    return ItemModel.find({recipientId: user.id, listId: null})
+  },
+  friends: (user) => {
+    return UserModel.find({id: {$in: user.friends}})
+  },
 }
 
 module.exports.queryDefs = `
@@ -36,24 +42,36 @@ module.exports.queryDefs = `
 `
 
 module.exports.queries = {
-  getUserById: (_, {id}) => { return UserModel.findById(id) },
-  getAllUsers: () => { return UserModel.find() },
+  getUserById: (_, {id}) => {
+    return UserModel.findById(id)
+  },
+  getAllUsers: () => {
+    return UserModel.find()
+  },
   getUsersByQuery: (_, {query, limit}) => {
-    return UserModel.find({ $or: [
-        { firstName: { $regex: query, $options: 'i' }},
-        { lastName: { $regex: query, $options: 'i' }},
-      ]}).limit(limit)
+    return UserModel.find({
+      $or: [
+        {firstName: {$regex: query, $options: 'i'}},
+        {lastName: {$regex: query, $options: 'i'}},
+      ]
+    }).limit(limit)
   },
   getFriendsByQuery: (_, {userId, query, limit}) => {
-    return UserModel.find({ $and: [
-        {$or: [
-            { firstName: { $regex: query, $options: 'i' }},
-            { lastName: { $regex: query, $options: 'i' }},
-          ]},
-        { friends: userId }
-      ]}).limit(limit)
+    return UserModel.find({
+      $and: [
+        {
+          $or: [
+            {firstName: {$regex: query, $options: 'i'}},
+            {lastName: {$regex: query, $options: 'i'}},
+          ]
+        },
+        {friends: userId}
+      ]
+    }).limit(limit)
   },
-  getAllFriends: (_, {userId}) => { return UserModel.find({friends: userId}) }
+  getAllFriends: (_, {userId}) => {
+    return UserModel.find({friends: userId})
+  }
 }
 
 module.exports.mutationDefs = `
@@ -76,24 +94,36 @@ module.exports.mutationDefs = `
 `
 
 module.exports.mutations = {
-  createUser: (_, {firstName, lastName, email}) => { return new UserModel({ firstName, lastName, email }).save() },
-  deleteUser: (_, {id}) => { return UserModel.findByIdAndDelete(id) },
+  createUser: (_, {firstName, lastName, email}) => {
+    return new UserModel({firstName, lastName, email}).save()
+  },
+  deleteUser: (_, {id}) => {
+    return UserModel.findByIdAndDelete(id)
+  },
   addFriend: async (_, {userId, friendId}) => {
-    await UserModel.findByIdAndUpdate(friendId, { $push: {
+    await UserModel.findByIdAndUpdate(friendId, {
+      $push: {
         friends: userId
-      }})
-    await UserModel.findByIdAndUpdate(userId, { $push: {
+      }
+    })
+    await UserModel.findByIdAndUpdate(userId, {
+      $push: {
         friends: friendId
-      }})
+      }
+    })
     return UserModel.findById(userId)
   },
   removeFriend: async (_, {userId, friendId}) => {
-    await UserModel.findByIdAndUpdate(friendId, { $pull: {
+    await UserModel.findByIdAndUpdate(friendId, {
+      $pull: {
         friends: userId
-      }})
-    await UserModel.findByIdAndUpdate(userId, { $pull: {
+      }
+    })
+    await UserModel.findByIdAndUpdate(userId, {
+      $pull: {
         friends: friendId
-      }})
+      }
+    })
     return UserModel.findById(userId)
   },
 }

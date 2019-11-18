@@ -7,9 +7,9 @@ const testCaseA = {
       }
     }
   `,
-  variables: { },
-  context: { },
-  expected: { data: { animals: [{ kind: 'Dog' }] } }
+  variables: {},
+  context: {},
+  expected: {data: {animals: [{kind: 'Dog'}]}}
 };
 
 const getAllUsers = {
@@ -58,9 +58,7 @@ const getAllUsers = {
   }
 }
 
-const typeDef = {
-
-}
+const typeDef = {}
 
 describe('Schema Test', () => {
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { IonPage } from "@ionic/react";
+import {IonPage} from "@ionic/react";
 
 import {lists} from '../../state';
 

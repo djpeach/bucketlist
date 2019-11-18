@@ -1,5 +1,5 @@
 import React from 'react';
-import { IonPage, IonButton, IonTitle, IonItem, IonList, IonLabel } from "@ionic/react";
+import {IonPage, IonButton, IonTitle, IonItem, IonList, IonLabel} from "@ionic/react";
 import firebase from 'firebase'
 import {state} from '../../state'
 import {flowRight as compose} from 'lodash'
@@ -50,7 +50,7 @@ class More extends React.Component {
     return (
       <IonPage>
         <IonButton onClick={this.logout}>Logout</IonButton>
-        <ListUsers getAllusers={getAllUsers} />
+        <ListUsers getAllusers={getAllUsers}/>
       </IonPage>
     )
   }

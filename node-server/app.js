@@ -13,13 +13,17 @@ const requestLogger = require('./middleware/requestLogger')
 
 const app = express()
 
-mongoose.connect(keys.mlab.uri, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => { dbLog(`Connected to mongodb`) })
-  .catch((error) => { dbLog(`Could not connect to mongodb: ${error}`) })
+mongoose.connect(keys.mlab.uri, {useNewUrlParser: true, useUnifiedTopology: true})
+  .then(() => {
+    dbLog(`Connected to mongodb`)
+  })
+  .catch((error) => {
+    dbLog(`Could not connect to mongodb: ${error}`)
+  })
 
 app.use(express.json())
 app.use(cors())
-app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({extended: false}))
 app.use(cookieParser())
 
 app.use(requestLogger)

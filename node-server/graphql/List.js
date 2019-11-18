@@ -9,7 +9,9 @@ module.exports.typeDefs = `
 `
 
 module.exports.resolvers = {
-  items: (list) => { return ItemModel.find({listId: list.id}) },
+  items: (list) => {
+    return ItemModel.find({listId: list.id})
+  },
 }
 
 module.exports.queryDefs = `
@@ -24,8 +26,12 @@ module.exports.queryDefs = `
 `
 
 module.exports.queries = {
-  getListsByUser: (_, {userId}) => { return ListModel.find({userId: userId}) },
-  getListsByQuery: (_, {userId, query, limit}) => { return ListModel.find({userId: userId, title: { $regex: query, $options: 'i' }}).limit(limit) },
+  getListsByUser: (_, {userId}) => {
+    return ListModel.find({userId: userId})
+  },
+  getListsByQuery: (_, {userId, query, limit}) => {
+    return ListModel.find({userId: userId, title: {$regex: query, $options: 'i'}}).limit(limit)
+  },
 }
 
 module.exports.mutationDefs = `
@@ -39,6 +45,10 @@ module.exports.mutationDefs = `
 `
 
 module.exports.mutations = {
-  createList: (_, {title, userId}) => { return new ListModel({ title, userId }).save() },
-  deleteList: (_, {id}) => { return ListModel.findByIdAndDelete(id) },
+  createList: (_, {title, userId}) => {
+    return new ListModel({title, userId}).save()
+  },
+  deleteList: (_, {id}) => {
+    return ListModel.findByIdAndDelete(id)
+  },
 }
