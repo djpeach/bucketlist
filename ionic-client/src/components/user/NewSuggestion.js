@@ -1,6 +1,6 @@
 import React from 'react';
-import { IonPage } from "@ionic/react";
-import { Redirect } from 'react-router-dom';
+import {IonPage} from "@ionic/react";
+import {Redirect} from 'react-router-dom';
 
 import routes from "../../conf/routes";
 import {state} from '../../state'
@@ -12,7 +12,7 @@ class NewSuggestion extends React.Component {
       <IonPage>
         <h1>New Suggestion Page</h1>
       </IonPage>
-      )
+    )
   }
 }
 

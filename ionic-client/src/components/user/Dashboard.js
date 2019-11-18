@@ -18,7 +18,7 @@ import {
 } from "@ionic/react";
 import firebase from "firebase";
 
-import { lists, newItems } from "../../state";
+import {lists, newItems} from "../../state";
 
 import routes, {routeWithParams} from "../../conf/routes"
 import {Redirect, Route} from "react-router";
@@ -27,7 +27,7 @@ class Dashboard extends React.Component {
   render() {
     if (!firebase.auth().currentUser) {
       return (
-        <Redirect exact from={routes.index} to={routes.suggestions.create} />
+        <Redirect exact from={routes.index} to={routes.suggestions.create}/>
       )
     } else {
       return (
@@ -40,7 +40,7 @@ class Dashboard extends React.Component {
           <IonContent>
             <IonGrid>
               <IonRow>
-                <IonCol  size="12" size-sm="6">
+                <IonCol size="12" size-sm="6">
                   <IonCard>
                     <IonTitle>New Suggestions</IonTitle>
                     <IonList>
@@ -66,7 +66,7 @@ class Dashboard extends React.Component {
                       {
                         lists.map((list, index) => {
                           return (
-                            <IonItem routerLink={routeWithParams(routes.lists.detail, index)} detail key={index} >
+                            <IonItem routerLink={routeWithParams(routes.lists.detail, index)} detail key={index}>
                               <IonLabel>
                                 <p>{list.name}</p>
                               </IonLabel>
@@ -82,11 +82,12 @@ class Dashboard extends React.Component {
                 </IonCol>
                 <IonCol size="12" size-sm="6" offset-sm="6">
                   <IonCard>
-                    <IonItem className="ion-margin-bottom" >
+                    <IonItem className="ion-margin-bottom">
                       <IonLabel>List name: </IonLabel>
-                      <IonInput placeholder="A new list" />
+                      <IonInput placeholder="A new list"/>
                     </IonItem>
-                    <IonButton color="success" strong type="button" className="ion-float-right ion-margin-end ion-margin-bottom">
+                    <IonButton color="success" strong type="button"
+                               className="ion-float-right ion-margin-end ion-margin-bottom">
                       + New List
                     </IonButton>
                   </IonCard>

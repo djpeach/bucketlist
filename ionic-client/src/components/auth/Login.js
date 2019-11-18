@@ -1,5 +1,18 @@
 import React from 'react';
-import {IonHeader, IonPage, IonTitle, IonToolbar, IonFooter, IonRouterLink, IonButton, IonButtons, IonContent, IonInput, IonLabel, IonItem} from "@ionic/react";
+import {
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonFooter,
+  IonRouterLink,
+  IonButton,
+  IonButtons,
+  IonContent,
+  IonInput,
+  IonLabel,
+  IonItem
+} from "@ionic/react";
 import firebase from 'firebase'
 import {state} from '../../state'
 import routes from '../../conf/routes'
@@ -47,7 +60,8 @@ class Login extends React.Component {
             </IonItem>
             <IonItem>
               <IonLabel position="stacked">Password</IonLabel>
-              <IonInput type="password" value={this.state.password} oninput={(e) => this.onChange('password', e)}></IonInput>
+              <IonInput type="password" value={this.state.password}
+                        oninput={(e) => this.onChange('password', e)}></IonInput>
             </IonItem>
           </form>
           <IonRouterLink href={routes.auth.register}>Need an account? Register instead.</IonRouterLink>

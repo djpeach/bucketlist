@@ -11,8 +11,12 @@ module.exports.typeDefs = `
 `
 
 module.exports.resolvers = {
-  from: (item) => { return UserModel.findById(item.senderId) },
-  to: (item) => { return UserModel.findById(item.recipientId) },
+  from: (item) => {
+    return UserModel.findById(item.senderId)
+  },
+  to: (item) => {
+    return UserModel.findById(item.recipientId)
+  },
 }
 
 module.exports.queryDefs = `
@@ -23,8 +27,12 @@ module.exports.queryDefs = `
 `
 
 module.exports.queries = {
-  getItemsByList: (_, {listId}) => { return ItemModel.find({ listId: listId }) },
-  getNewItemsByUser: (_, {userId}) => { return ItemModel.find({ recipientId: userId, listId: null }) },
+  getItemsByList: (_, {listId}) => {
+    return ItemModel.find({listId: listId})
+  },
+  getNewItemsByUser: (_, {userId}) => {
+    return ItemModel.find({recipientId: userId, listId: null})
+  },
 }
 
 module.exports.mutationDefs = `
@@ -45,7 +53,13 @@ module.exports.mutationDefs = `
 `
 
 module.exports.mutations = {
-  createItem: (_, {...args}) => { return new ItemModel({ ...args }).save() },
-  assignItemToList: (_, {id, listId}) => { return ItemModel.findByIdAndUpdate(id, { listId: listId }) },
-  deleteItem: (_, {id}) => { return ItemModel.findByIdAndDelete(id) },
+  createItem: (_, {...args}) => {
+    return new ItemModel({...args}).save()
+  },
+  assignItemToList: (_, {id, listId}) => {
+    return ItemModel.findByIdAndUpdate(id, {listId: listId})
+  },
+  deleteItem: (_, {id}) => {
+    return ItemModel.findByIdAndDelete(id)
+  },
 }

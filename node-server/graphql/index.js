@@ -4,8 +4,8 @@ const list = require('./List')
 const item = require('./Item')
 
 const typeDefs = [`type Query type Mutation`,
-  user.typeDefs,     list.typeDefs,     item.typeDefs,
-  user.queryDefs,    list.queryDefs,    item.queryDefs,
+  user.typeDefs, list.typeDefs, item.typeDefs,
+  user.queryDefs, list.queryDefs, item.queryDefs,
   user.mutationDefs, list.mutationDefs, item.mutationDefs
 ]
 
@@ -20,9 +20,9 @@ const resolvers = {
     ...list.mutations,
     ...item.mutations
   },
-  User: { ...user.resolvers },
-  List: { ...list.resolvers },
-  Item: { ...item.resolvers }
+  User: {...user.resolvers},
+  List: {...list.resolvers},
+  Item: {...item.resolvers}
 }
 
-module.exports = makeExecutableSchema({ typeDefs, resolvers })
+module.exports = makeExecutableSchema({typeDefs, resolvers})

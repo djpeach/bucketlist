@@ -1,5 +1,18 @@
 import React from 'react';
-import { IonHeader, IonPage, IonTitle, IonToolbar, IonFooter, IonRouterLink, IonButton, IonButtons, IonContent, IonInput, IonLabel, IonItem } from "@ionic/react";
+import {
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonFooter,
+  IonRouterLink,
+  IonButton,
+  IonButtons,
+  IonContent,
+  IonInput,
+  IonLabel,
+  IonItem
+} from "@ionic/react";
 import firebase from 'firebase'
 import { state } from '../../state'
 import routes from "../../conf/routes";

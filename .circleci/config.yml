@@ -22,28 +22,28 @@ jobs:
       - run:
           name: npm install
           command: |
-                cd node-server
-                npm install
+            cd node-server
+            npm install
 
       - run:
           name: setup firebase config
           command: |
-                cd node-server
-                cd conf
-                echo $FIREBASE_CONFIG > bucketlistFirebase.json
+            cd node-server
+            cd conf
+            echo $FIREBASE_CONFIG > bucketlistFirebase.json
 
       - run:
           name: setup secret keys
           command: |
-                cd node-server
-                cd conf
-                echo $SECRET_KEYS > secret-keys.js
+            cd node-server
+            cd conf
+            echo $SECRET_KEYS > secret-keys.js
 
       - run:
           name: npm start and test
           command: |
-                cd node-server
-                npm start
+            cd node-server
+            npm start
 
 workflows:
   version: 2
