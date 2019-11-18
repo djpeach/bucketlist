@@ -4,8 +4,8 @@
   "description": "\"A node server for the bucketlist app\"",
   "main": "index.js",
   "scripts": {
-    "start": "DEBUG=app:*,-app:graphql nodemon ./bin/www",
-    "devstart": "ENV=dev DEBUG=app:*,-app:graphql nodemon ./bin/www",
+    "start": "cross-env DEBUG=app:*,-app:graphql nodemon ./bin/www",
+    "devstart": "cross-env ENV=dev DEBUG=app:*,-app:graphql nodemon ./bin/www",
     "test": "mocha",
     "ci": "server-test 8081"
   },
@@ -27,6 +27,7 @@
   "dependencies": {
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
+    "cross-env": "^6.0.3",
     "easy-log": "0.1.1",
     "express": "^4.17.1",
     "express-graphql": "^0.9.0",
