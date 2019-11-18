@@ -31,6 +31,7 @@ module.exports.queryDefs = `
       query: String!
       limit: Int = 10
     ): [User]
+    getAllFriends(userId: ID!): [User]
   }
 `
 
@@ -52,6 +53,7 @@ module.exports.queries = {
         { friends: userId }
       ]}).limit(limit)
   },
+  getAllFriends: (_, {userId}) => { return UserModel.find({friends: userId}) }
 }
 
 module.exports.mutationDefs = `
