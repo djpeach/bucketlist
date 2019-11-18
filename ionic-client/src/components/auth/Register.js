@@ -1,10 +1,28 @@
 import React from 'react';
-import {IonHeader, IonPage, IonTitle, IonToolbar, IonFooter, IonRouterLink, IonButton, IonButtons, IonContent, IonInput, IonLabel, IonItem} from "@ionic/react";
+import { IonHeader, IonPage, IonTitle, IonToolbar, IonFooter, IonRouterLink, IonButton, IonButtons, IonContent, IonInput, IonLabel, IonItem } from "@ionic/react";
 import firebase from 'firebase'
-import {state} from '../../state'
+import { state } from '../../state'
 import routes from "../../conf/routes";
+import { useFormik } from 'formik';
+import { useMutation } from 
 
-class Register extends React.Component {
+const Register = () => {
+
+  const formik = useFormik({
+    initialValues: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      confirmPassword: ''
+    },
+    onSubmit: async values => {
+      const { user } = await firebase.auth().createUserWithEmailAndPassword(values.email, values.password);
+      // TODO: create user in mongodb (issue created)
+      // TODO: redirect to dashboard
+
+    }
+  });
 
   state = {
     email: '',
@@ -32,43 +50,41 @@ class Register extends React.Component {
     })
   }
 
-  render() {
-    return (
-      <IonPage>
-        <IonHeader>
-          <IonToolbar>
-            <IonTitle>Register</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <IonContent>
-          <form>
-            <IonItem>
-              <IonLabel position="stacked">Email</IonLabel>
-              <IonInput type="email" value={this.state.email} oninput={(e) => this.onChange('email', e)}></IonInput>
-            </IonItem>
-            <IonItem>
-              <IonLabel position="stacked">Password</IonLabel>
-              <IonInput type="password" value={this.state.password} oninput={(e) => this.onChange('password', e)}></IonInput>
-            </IonItem>
-            <IonItem>
-              <IonLabel position="stacked">Password Confirmation</IonLabel>
-              <IonInput type="password" value={this.state.passwordConfirmation} oninput={(e) => this.onChange('passwordConfirmation', e)}></IonInput>
-            </IonItem>
-          </form>
-          <IonRouterLink href={routes.auth.login}>Have an account? Login instead.</IonRouterLink>
-        </IonContent>
-        <IonFooter>
-          <IonToolbar>
-            <IonButtons slot="primary">
-              <IonButton onClick={this.onSubmit}>
-                Register
-              </IonButton>
-            </IonButtons>
-          </IonToolbar>
-        </IonFooter>
-      </IonPage>
-    )
-  }
+  return (
+    <IonPage>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Register</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent>
+        <form>
+          <IonItem>
+            <IonLabel position="stacked">Email</IonLabel>
+            <IonInput type="email" value={this.state.email} oninput={(e) => this.onChange('email', e)}></IonInput>
+          </IonItem>
+          <IonItem>
+            <IonLabel position="stacked">Password</IonLabel>
+            <IonInput type="password" value={this.state.password} oninput={(e) => this.onChange('password', e)}></IonInput>
+          </IonItem>
+          <IonItem>
+            <IonLabel position="stacked">Password Confirmation</IonLabel>
+            <IonInput type="password" value={this.state.passwordConfirmation} oninput={(e) => this.onChange('passwordConfirmation', e)}></IonInput>
+          </IonItem>
+        </form>
+        <IonRouterLink href={routes.auth.login}>Back to login</IonRouterLink>
+      </IonContent>
+      <IonFooter>
+        <IonToolbar>
+          <IonButtons slot="primary">
+            <IonButton onClick={this.onSubmit}>
+              Register
+            </IonButton>
+          </IonButtons>
+        </IonToolbar>
+      </IonFooter>
+    </IonPage>
+  );
 }
 
 export default Register
