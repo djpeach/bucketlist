@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
   IonPage,
   IonHeader,
@@ -12,93 +12,103 @@ import {
   IonGrid,
   IonRow,
   IonCol,
-  IonInput,
   IonButton,
-  IonRouterOutlet
 } from "@ionic/react";
 import firebase from "firebase";
 
 import {lists, newItems} from "../../state";
 
-import routes, {routeWithParams} from "../../conf/routes"
-import {Redirect, Route} from "react-router";
+import routes, {routeWithParams} from "../../conf/routes";
+import {Redirect} from "react-router";
+
+const cardTitleStyle = {
+  padding: '10px',
+};
+
+const newListButtonStyle = {
+  marginTop: '10px',
+};
 
 class Dashboard extends React.Component {
   render() {
     if (!firebase.auth().currentUser) {
       return (
         <Redirect exact from={routes.index} to={routes.suggestions.create}/>
-      )
+      );
     } else {
       return (
         <IonPage>
           <IonHeader>
-            <IonToolbar>
-              <IonTitle>Welcome Back</IonTitle>
+            <IonToolbar color="primary">
+              <IonTitle>BucketList</IonTitle>
             </IonToolbar>
           </IonHeader>
           <IonContent>
             <IonGrid>
               <IonRow>
                 <IonCol size="12" size-sm="6">
+                {(newItems.length > 0) ? (
                   <IonCard>
-                    <IonTitle>New Suggestions</IonTitle>
-                    <IonList>
-                      {
-                        newItems.map((item) => {
-                          return (
-                            <IonItem key={item.message}>
-                              <IonLabel>
-                                <p>From: {item.from}</p>
-                                <h3>{item.message}</h3>
-                              </IonLabel>
-                            </IonItem>
-                          )
-                        })
-                      }
-                    </IonList>
+                  <IonTitle style={cardTitleStyle}>New Suggestions</IonTitle>
+                  <IonList>
+                    {
+                      newItems.map((item) => {
+                        return (
+                          <IonItem key={item.message}>
+                            <IonLabel>
+                              <p>From: {item.from}</p>
+                              <h3>{item.message}</h3>
+                            </IonLabel>
+                          </IonItem>
+                        );
+                      })
+                    }
+                  </IonList>
                   </IonCard>
+                ) : null }
                 </IonCol>
+
                 <IonCol size="12" size-sm="6">
                   <IonCard>
-                    <IonTitle>Your Lists</IonTitle>
-                    <IonList>
-                      {
-                        lists.map((list, index) => {
-                          return (
-                            <IonItem routerLink={routeWithParams(routes.lists.detail, index)} detail key={index}>
-                              <IonLabel>
-                                <p>{list.name}</p>
-                              </IonLabel>
-                              <IonLabel slot="end">
-                                <p>{list.items.length} items</p>
-                              </IonLabel>
-                            </IonItem>
-                          )
-                        })
-                      }
-                    </IonList>
+                    <IonGrid>
+                      <IonRow>
+                        <IonTitle style={cardTitleStyle}>Your Lists</IonTitle>
+                        <IonButton color="success" strong type="button"
+                                  className="ion-float-right ion-margin-end ion-margin-bottom"
+                                  style={newListButtonStyle}>
+                          + New List
+                        </IonButton>
+                      </IonRow>
+                      <IonList>
+                        {
+                          lists.map((list, index) => {
+                            return (
+                              <IonItem routerLink={routeWithParams(routes.lists.detail, index)} detail key={index}>
+                                <IonLabel>
+                                  <p>{list.name}</p>
+                                </IonLabel>
+                                <IonLabel slot="end">
+                                  <p>{(list.items.length > 0) ? list.items.length + ' items' : 'No items'}</p>
+                                </IonLabel>
+                              </IonItem>
+                            );
+                          })
+                        }
+                      </IonList>
+                    </IonGrid>
                   </IonCard>
                 </IonCol>
+
                 <IonCol size="12" size-sm="6" offset-sm="6">
-                  <IonCard>
-                    <IonItem className="ion-margin-bottom">
-                      <IonLabel>List name: </IonLabel>
-                      <IonInput placeholder="A new list"/>
-                    </IonItem>
-                    <IonButton color="success" strong type="button"
-                               className="ion-float-right ion-margin-end ion-margin-bottom">
-                      + New List
-                    </IonButton>
-                  </IonCard>
+                  
                 </IonCol>
               </IonRow>
             </IonGrid>
           </IonContent>
         </IonPage>
-      )
-    }
-  }
-}
+      );
+    };
+  };
+};
 
 export default Dashboard;
