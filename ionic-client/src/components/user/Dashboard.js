@@ -42,8 +42,8 @@ class Dashboard extends React.Component {
           <IonHeader>
             <IonToolbar color="primary">
             <div style={{height:'100px',
-            width: '100px', float: 'left'}}>
-              <BucketListIcon />
+            width: '100px', float: 'left', paddingTop: '12px'}}>
+              <BucketListIcon style={{ height: '80%', width: '80%' }}/>
             </div>
             <IonTitle style={{marginTop: '40px', fontSize: '40px'}}>BucketList</IonTitle>
             </IonToolbar>
