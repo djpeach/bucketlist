@@ -14,6 +14,7 @@ import {
   IonCol,
   IonButton,
 } from "@ionic/react";
+import { ReactComponent as BucketListIcon} from '../../bucketlist.svg';
 import firebase from "firebase";
 
 import {lists, newItems} from "../../state";
@@ -40,7 +41,11 @@ class Dashboard extends React.Component {
         <IonPage>
           <IonHeader>
             <IonToolbar color="primary">
-              <IonTitle>BucketList</IonTitle>
+            <div style={{height:'100px',
+            width: '100px', float: 'left'}}>
+              <BucketListIcon />
+            </div>
+            <IonTitle style={{marginTop: '40px', fontSize: '40px'}}>BucketList</IonTitle>
             </IonToolbar>
           </IonHeader>
           <IonContent>
