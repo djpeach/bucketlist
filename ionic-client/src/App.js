@@ -25,6 +25,9 @@ import '@ionic/react/css/text-transformation.css';
 import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
 
+/* Custom success theme to work with BucketList logo / colors */
+import './css/index.css';
+
 // TODO: Write wrapper component for auth guards
 
 const App = () => (
