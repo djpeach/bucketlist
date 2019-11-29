@@ -1,13 +1,13 @@
-const {authLog} = require('../conf/loggers')
+const { authLog } = require('../conf/loggers')
 
-const admin = require("firebase-admin")
+const admin = require('firebase-admin')
 admin.initializeApp({
   credential: admin.credential.cert('conf/bucketlistFirebase.json'),
-  databaseURL: "https://bucketlist-96454.firebaseio.com"
-});
+  databaseURL: 'https://bucketlist-96454.firebaseio.com',
+})
 
 module.exports.checkAuth = async (req, res, next) => {
-  if (process.env.ENV === "dev") {
+  if (process.env.ENV === 'dev') {
     return next()
   }
 
@@ -19,11 +19,15 @@ module.exports.checkAuth = async (req, res, next) => {
     return
   }
 
-  admin.auth().verifyIdToken(req.headers.authtoken).then((decodedToken) => {
-    authLog(`User: ${decodedToken.uid} is authorized`)
-    next()
-  }).catch((error) => {
-    authLog(`Error validating token: ${error}`)
-    res.status(403).send('Unauthorized')
-  })
+  admin
+    .auth()
+    .verifyIdToken(req.headers.authtoken)
+    .then((decodedToken) => {
+      authLog(`User: ${decodedToken.uid} is authorized`)
+      next()
+    })
+    .catch((error) => {
+      authLog(`Error validating token: ${error}`)
+      res.status(403).send('Unauthorized')
+    })
 }

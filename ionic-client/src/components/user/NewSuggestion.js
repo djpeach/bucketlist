@@ -1,10 +1,10 @@
-import React from 'react';
-import {IonPage} from "@ionic/react";
-import {Redirect} from 'react-router-dom';
+import React from 'react'
+import { IonPage } from '@ionic/react'
+import { Redirect } from 'react-router-dom'
 
-import routes from "../../conf/routes";
-import {state} from '../../state'
-import authedComponent from '../common/AuthedComponent';
+import routes from '../../conf/routes'
+import { state } from '../../state'
+import authedComponent from '../common/AuthedComponent'
 
 class NewSuggestion extends React.Component {
   render() {

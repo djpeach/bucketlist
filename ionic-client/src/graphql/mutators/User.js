@@ -1,4 +1,4 @@
-import { gql } from "apollo-boost";
+import { gql } from 'apollo-boost'
 
 export default {
   createUser: gql`
@@ -40,5 +40,5 @@ export default {
         email
       }
     }
-  `
-};
+  `,
+}

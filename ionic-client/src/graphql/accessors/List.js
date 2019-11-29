@@ -1,4 +1,4 @@
-import { gql } from "apollo-boost";
+import { gql } from 'apollo-boost'
 
 export default {
   getListsByUser: gql`
@@ -46,5 +46,5 @@ export default {
         }
       }
     }
-  `
-};
+  `,
+}

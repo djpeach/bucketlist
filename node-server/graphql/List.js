@@ -1,4 +1,4 @@
-const {UserModel, ListModel, ItemModel} = require('../models')
+const { UserModel, ListModel, ItemModel } = require('../models')
 
 module.exports.typeDefs = `
   type List {
@@ -10,7 +10,7 @@ module.exports.typeDefs = `
 
 module.exports.resolvers = {
   items: (list) => {
-    return ItemModel.find({listId: list.id})
+    return ItemModel.find({ listId: list.id })
   },
 }
 
@@ -26,11 +26,14 @@ module.exports.queryDefs = `
 `
 
 module.exports.queries = {
-  getListsByUser: (_, {userId}) => {
-    return ListModel.find({userId: userId})
+  getListsByUser: (_, { userId }) => {
+    return ListModel.find({ userId: userId })
   },
-  getListsByQuery: (_, {userId, query, limit}) => {
-    return ListModel.find({userId: userId, title: {$regex: query, $options: 'i'}}).limit(limit)
+  getListsByQuery: (_, { userId, query, limit }) => {
+    return ListModel.find({
+      userId: userId,
+      title: { $regex: query, $options: 'i' },
+    }).limit(limit)
   },
 }
 
@@ -45,10 +48,10 @@ module.exports.mutationDefs = `
 `
 
 module.exports.mutations = {
-  createList: (_, {title, userId}) => {
-    return new ListModel({title, userId}).save()
+  createList: (_, { title, userId }) => {
+    return new ListModel({ title, userId }).save()
   },
-  deleteList: (_, {id}) => {
+  deleteList: (_, { id }) => {
     return ListModel.findByIdAndDelete(id)
   },
 }
