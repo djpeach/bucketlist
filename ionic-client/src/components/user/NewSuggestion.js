@@ -10,7 +10,7 @@ class NewSuggestion extends React.Component {
   render() {
     // console.log(!!state.user)
     return (
-      <IonPage>
+      <IonPage className="bl-page">
         <h1>New Suggestion Page</h1>
       </IonPage>
     )

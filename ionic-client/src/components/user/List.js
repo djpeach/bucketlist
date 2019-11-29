@@ -14,7 +14,6 @@ import {
   IonCol,
   IonButton,
 } from '@ionic/react'
-import { ReactComponent as BucketListIcon } from '../../bucketlist.svg'
 import { lists } from '../../state'
 import MdArrowDropleft from 'react-ionicons/lib/MdArrowDropleft'
 import routes from '../../conf/routes'
@@ -23,15 +22,7 @@ class List extends React.Component {
   render() {
     let list = lists[this.props.match.params.id]
     return (
-      <IonPage>
-        <IonHeader>
-          <IonToolbar color="primary">
-            <div className="bl-icon-div">
-              <BucketListIcon className="bl-svg-icon" />
-            </div>
-            <IonTitle className="bl-nav-title">BucketList</IonTitle>
-          </IonToolbar>
-        </IonHeader>
+      <IonPage className="bl-page">
         <IonContent>
           <IonGrid>
             <IonCol size="12" size-sm="6">

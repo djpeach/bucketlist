@@ -53,13 +53,9 @@ class Login extends React.Component {
 
   render() {
     return (
-      <IonPage>
-        <IonHeader>
-          <IonToolbar>
-            <IonTitle>Login</IonTitle>
-          </IonToolbar>
-        </IonHeader>
+      <IonPage className="bl-page">
         <IonContent>
+          <p> Login to BucketList</p>
           <form>
             <IonItem>
               <IonLabel position="stacked">Email</IonLabel>

@@ -48,13 +48,9 @@ class Register extends React.Component {
 
   render() {
     return (
-      <IonPage>
-        <IonHeader>
-          <IonToolbar>
-            <IonTitle>Register</IonTitle>
-          </IonToolbar>
-        </IonHeader>
+      <IonPage className="bl-page">
         <IonContent>
+          <p> Register an account for BucketList</p>
           <form>
             <IonItem>
               <IonLabel position="stacked">Email</IonLabel>

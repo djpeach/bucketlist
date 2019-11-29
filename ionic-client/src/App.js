@@ -8,8 +8,12 @@ import {
   IonTabBar,
   IonTabButton,
   IonTabs,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
 } from '@ionic/react'
 import { IonReactRouter } from '@ionic/react-router'
+import { ReactComponent as BucketListIcon} from './bucketlist.svg'
 import { list, addCircleOutline, person } from 'ionicons/icons'
 import firebase from 'firebase'
 
@@ -47,6 +51,14 @@ import './css/index.css'
 
 const App = () => (
   <IonApp>
+    <IonHeader>
+      <IonToolbar color="primary">
+      <div className="bl-icon-div">
+        <BucketListIcon className="bl-svg-icon"/>
+      </div>
+      <IonTitle className="bl-nav-title">BucketList</IonTitle>
+      </IonToolbar>
+    </IonHeader>
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>

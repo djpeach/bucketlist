@@ -76,6 +76,7 @@
 }
 
 .bl-nav-title {
+  margin-top: 30px;
   font-size: 40px;
 }
 
@@ -86,4 +87,8 @@
 .bl-list-back-btn {
   margin-top: 10px;
   padding-left: 10px;
+}
+
+.bl-page {
+  padding-top: 100px;
 }
