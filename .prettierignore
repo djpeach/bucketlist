@@ -1,2 +1,5 @@
-ios-client/**
 **/*.zip
+**/*.png
+**/*.jpg
+**/*.svg
+**/*.ico

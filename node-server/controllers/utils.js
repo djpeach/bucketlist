@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const {serverLog} = require('../conf/loggers')
+const { serverLog } = require('../conf/loggers')
 
 module.exports.reset = (req, res, next) => {
   serverLog(`Resetting database ...`)

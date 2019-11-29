@@ -1,4 +1,4 @@
-const {UserModel, ListModel, ItemModel} = require('../models')
+const { UserModel, ListModel, ItemModel } = require('../models')
 
 module.exports.typeDefs = `
   type Item {
@@ -27,11 +27,11 @@ module.exports.queryDefs = `
 `
 
 module.exports.queries = {
-  getItemsByList: (_, {listId}) => {
-    return ItemModel.find({listId: listId})
+  getItemsByList: (_, { listId }) => {
+    return ItemModel.find({ listId: listId })
   },
-  getNewItemsByUser: (_, {userId}) => {
-    return ItemModel.find({recipientId: userId, listId: null})
+  getNewItemsByUser: (_, { userId }) => {
+    return ItemModel.find({ recipientId: userId, listId: null })
   },
 }
 
@@ -53,13 +53,13 @@ module.exports.mutationDefs = `
 `
 
 module.exports.mutations = {
-  createItem: (_, {...args}) => {
-    return new ItemModel({...args}).save()
+  createItem: (_, { ...args }) => {
+    return new ItemModel({ ...args }).save()
   },
-  assignItemToList: (_, {id, listId}) => {
-    return ItemModel.findByIdAndUpdate(id, {listId: listId})
+  assignItemToList: (_, { id, listId }) => {
+    return ItemModel.findByIdAndUpdate(id, { listId: listId })
   },
-  deleteItem: (_, {id}) => {
+  deleteItem: (_, { id }) => {
     return ItemModel.findByIdAndDelete(id)
   },
 }

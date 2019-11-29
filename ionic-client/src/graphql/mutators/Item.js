@@ -1,4 +1,4 @@
-import { gql } from "apollo-boost";
+import { gql } from 'apollo-boost'
 
 export default {
   createItem: gql`
@@ -69,5 +69,5 @@ export default {
         link
       }
     }
-  `
-};
+  `,
+}
