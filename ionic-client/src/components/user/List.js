@@ -13,6 +13,7 @@ import {
   IonCol,
   IonButton,
 } from "@ionic/react";
+import { ReactComponent as BucketListIcon} from '../../bucketlist.svg';
 import {lists} from "../../state";
 import MdArrowDropleft from 'react-ionicons/lib/MdArrowDropleft'
 import routes from "../../conf/routes";

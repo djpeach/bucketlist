@@ -15,6 +15,7 @@ import {
   IonButton,
 } from "@ionic/react";
 import {lists, newItems} from "../../state";
+import { ReactComponent as BucketListIcon} from '../../bucketlist.svg';
 import routes, {routeWithParams} from "../../conf/routes";
 
 class Dashboard extends React.Component {
