@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
   IonPage,
   IonHeader,
@@ -12,56 +12,60 @@ import {
   IonGrid,
   IonRow,
   IonCol,
-  IonInput,
   IonButton,
-  IonRouterOutlet
 } from "@ionic/react";
-import firebase from "firebase";
+import { ReactComponent as BucketListIcon} from '../../bucketlist.svg';
 
 import {lists, newItems} from "../../state";
-
-import routes, {routeWithParams} from "../../conf/routes"
-import {Redirect, Route} from "react-router";
+import routes, {routeWithParams} from "../../conf/routes";
 
 class Dashboard extends React.Component {
   render() {
-    if (!firebase.auth().currentUser) {
-      return (
-        <Redirect exact from={routes.index} to={routes.suggestions.create}/>
-      )
-    } else {
-      return (
-        <IonPage>
-          <IonHeader>
-            <IonToolbar>
-              <IonTitle>Welcome Back</IonTitle>
-            </IonToolbar>
-          </IonHeader>
-          <IonContent>
-            <IonGrid>
-              <IonRow>
-                <IonCol size="12" size-sm="6">
-                  <IonCard>
-                    <IonTitle>New Suggestions</IonTitle>
-                    <IonList>
-                      {
-                        newItems.map((item) => {
-                          return (
-                            <IonItem key={item.message}>
-                              <IonLabel>
-                                <p>From: {item.from}</p>
-                                <h3>{item.message}</h3>
-                              </IonLabel>
-                            </IonItem>
-                          )
-                        })
-                      }
-                    </IonList>
-                  </IonCard>
-                </IonCol>
-                <IonCol size="12" size-sm="6">
-                  <IonCard>
-                    <IonTitle>Your Lists</IonTitle>
+    return(
+      <IonPage>
+        <IonHeader>
+          <IonToolbar color="primary">
+          <div className="bl-icon-div">
+            <BucketListIcon className="bl-svg-icon"/>
+          </div>
+          <IonTitle className="bl-nav-title">BucketList</IonTitle>
+          </IonToolbar>
+        </IonHeader>
+        <IonContent>
+          <IonGrid>
+            <IonRow>
+              <IonCol size="12" size-sm="6">
+              {(newItems.length > 0) ? (
+                <IonCard>
+                <IonTitle className="bl-card-title">New Suggestions</IonTitle>
+                <IonList>
+                  {
+                    newItems.map((item) => {
+                      return (
+                        <IonItem key={item.message}>
+                          <IonLabel>
+                            <p>From: {item.from}</p>
+                            <h3>{item.message}</h3>
+                          </IonLabel>
+                        </IonItem>
+                      );
+                    })
+                  }
+                </IonList>
+                </IonCard>
+              ) : null }
+              </IonCol>
+
+              <IonCol size="12" size-sm="6">
+                <IonCard>
+                  <IonGrid>
+                    <IonRow>
+                      <IonTitle className="bl-card-title">Your Lists</IonTitle>
+                      <IonButton color="success" strong type="button"
+                                className="ion-float-right ion-margin-end ion-margin-bottom bl-new-list-btn">
+                        + New List
+                      </IonButton>
+                    </IonRow>
                     <IonList>
                       {
                         lists.map((list, index) => {
@@ -71,34 +75,28 @@ class Dashboard extends React.Component {
                                 <p>{list.name}</p>
                               </IonLabel>
                               <IonLabel slot="end">
-                                <p>{list.items.length} items</p>
+                                <p>
+                                  {
+                                    (list.items.length > 0) ? 
+                                    (list.items.length == 1 ? list.items.length + ' item' : list.items.length + ' items') : 
+                                    'No items'
+                                  }
+                                </p>
                               </IonLabel>
                             </IonItem>
-                          )
+                          );
                         })
                       }
                     </IonList>
-                  </IonCard>
-                </IonCol>
-                <IonCol size="12" size-sm="6" offset-sm="6">
-                  <IonCard>
-                    <IonItem className="ion-margin-bottom">
-                      <IonLabel>List name: </IonLabel>
-                      <IonInput placeholder="A new list"/>
-                    </IonItem>
-                    <IonButton color="success" strong type="button"
-                               className="ion-float-right ion-margin-end ion-margin-bottom">
-                      + New List
-                    </IonButton>
-                  </IonCard>
-                </IonCol>
-              </IonRow>
-            </IonGrid>
-          </IonContent>
-        </IonPage>
-      )
-    }
-  }
-}
+                  </IonGrid>
+                </IonCard>
+              </IonCol>
+            </IonRow>
+          </IonGrid>
+        </IonContent>
+      </IonPage>
+    );
+  };
+};
 
 export default Dashboard;
