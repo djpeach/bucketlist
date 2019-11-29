@@ -6,14 +6,15 @@ const mongoose = require('mongoose')
 
 const schema = require('./graphql')
 const keys = require('./conf/secret-keys')
-const {dbLog, gqlLog} = require('./conf/loggers')
+const { dbLog, gqlLog } = require('./conf/loggers')
 const routes = require('./conf/routes')
 const authMiddleware = require('./middleware/auth')
 const requestLogger = require('./middleware/requestLogger')
 
 const app = express()
 
-mongoose.connect(keys.mlab.uri, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose
+  .connect(keys.mlab.uri, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     dbLog(`Connected to mongodb`)
   })
@@ -23,16 +24,19 @@ mongoose.connect(keys.mlab.uri, {useNewUrlParser: true, useUnifiedTopology: true
 
 app.use(express.json())
 app.use(cors())
-app.use(express.urlencoded({extended: false}))
+app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 
 app.use(requestLogger)
 
 app.use('/', routes)
 app.use('/graphql', authMiddleware.checkAuth)
-app.use('/graphql', graphqlHTTP({
-  schema,
-  graphiql: true
-}))
+app.use(
+  '/graphql',
+  graphqlHTTP({
+    schema,
+    graphiql: true,
+  })
+)
 
 module.exports = app
