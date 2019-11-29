@@ -16,6 +16,7 @@ import {
 import firebase from 'firebase'
 import {state} from '../../state'
 import routes from '../../conf/routes'
+import unAuthedComponent from '../common/UnAuthedComponent';
 
 class Login extends React.Component {
 
@@ -23,16 +24,22 @@ class Login extends React.Component {
     email: '',
     password: ''
   }
+  
+  constructor(props) {
+    super(props);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
 
   onSubmit = (event) => {
+    console.log("logging in")
     event.preventDefault()
     // TODO: Form validation, check passwords match
     firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((res) => {
       // TODO: Fetch user from server
-      firebase.auth().currentUser.getIdToken(true).then((token) => {
-        localStorage.setItem('authtoken', token)
-      })
-      // TODO: Push to dashboard route
+      // firebase.auth().currentUser.getIdToken(true).then((token) => {
+      //   localStorage.setItem('authtoken', token)
+      // })
+      this.props.history.push(routes.home)
     }).catch((error) => {
       // TODO: User error and IonAlertControl to show alert
     })
@@ -80,4 +87,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login
+export default unAuthedComponent(Login)

@@ -16,6 +16,7 @@ import {
 import firebase from 'firebase'
 import {state} from '../../state'
 import routes from "../../conf/routes";
+import unAuthedComponent from '../common/UnAuthedComponent';
 
 class Register extends React.Component {
 
@@ -28,12 +29,10 @@ class Register extends React.Component {
   onSubmit = (event) => {
     event.preventDefault()
     // TODO: Form validation, check passwords match
+    console.log(this.state)
     firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((res) => {
       // TODO: Create user in mongodb
-      state.user = {
-        uid: res.user.uid
-      }
-      // TODO: Push to dashboard route
+      this.history.push(routes.home)
     }).catch((error) => {
       // TODO: User error and IonAlertControl to show alert
     })
@@ -86,4 +85,4 @@ class Register extends React.Component {
   }
 }
 
-export default Register
+export default unAuthedComponent(Register)

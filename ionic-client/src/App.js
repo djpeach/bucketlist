@@ -35,24 +35,12 @@ const App = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route exact path={routes.auth.login} render={props => {
-            return !!firebase.auth().currentUser ? <Dashboard {...props} /> : <Login/>;
-          }}/>
-          <Route exact path={routes.auth.register} render={props => {
-            return !!firebase.auth().currentUser ? <Dashboard {...props} /> : <Register/>;
-          }}/>
-          <Route exact path={routes.home} render={props => {
-            return !!firebase.auth().currentUser ? <Dashboard {...props} /> : <Login/>;
-          }}/>
-          <Route exact path={routes.lists.detail} render={props => {
-            return !!firebase.auth().currentUser ? <List {...props} /> : <Login/>;
-          }}/>
-          <Route exact path={routes.suggestions.create} render={props => {
-            return !!firebase.auth().currentUser ? <NewSuggestion {...props} /> : <Login/>;
-          }}/>
-          <Route exact path={routes.more} render={props => {
-            return !!firebase.auth().currentUser ? <More {...props} /> : <Login/>;
-          }}/>
+        <Route exact path={routes.auth.login} component={Login}/>
+          <Route exact path={routes.auth.register} component={Register}/>
+          <Route exact path={routes.home} component={Dashboard}/>
+          <Route exact path={routes.lists.detail} component={List}/>
+          <Route exact path={routes.suggestions.create} component={NewSuggestion}/>
+          <Route exact path={routes.more} component={More}/>
           <Redirect exact from={routes.index} to={routes.suggestions.create}/>
         </IonRouterOutlet>
         <IonTabBar slot="bottom">

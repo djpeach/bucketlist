@@ -2,6 +2,7 @@ import React from 'react';
 import {IonPage} from "@ionic/react";
 
 import {lists} from '../../state';
+import authedComponent from '../common/AuthedComponent';
 
 class List extends React.Component {
   render() {
@@ -16,4 +17,4 @@ class List extends React.Component {
   }
 }
 
-export default List
+export default authedComponent(List);

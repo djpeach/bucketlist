@@ -5,6 +5,7 @@ import {state} from '../../state'
 import {flowRight as compose} from 'lodash'
 import {graphql} from 'react-apollo'
 import graphqlQueries from "../../graphql";
+import authedComponent from '../common/AuthedComponent';
 
 const ListUsers = ({getAllusers}) => {
   if (getAllusers.loading) {
@@ -58,4 +59,5 @@ class More extends React.Component {
 
 export default compose(
   graphql(graphqlQueries.getAllUsers, {name: 'getAllUsers'}),
+  authedComponent
 )(More)

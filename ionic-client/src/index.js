@@ -10,7 +10,7 @@ import {InMemoryCache} from 'apollo-cache-inmemory';
 import keys from './conf/secret-keys'
 import App from './App';
 
-const httpLink = new HttpLink({uri: 'http://localhost:9000/graphql'});
+const httpLink = new HttpLink({uri: 'http://bucketlist.us-east-2.elasticbeanstalk.com/graphql'});
 
 const authMiddleware = new ApolloLink((operation, forward) => {
   operation.setContext({
@@ -27,4 +27,6 @@ const client = new ApolloClient({
 
 firebase.initializeApp(keys.firebaseConfig)
 
-ReactDOM.render(<ApolloProvider client={client}><App/></ApolloProvider>, document.getElementById('root'));
+firebase.auth().onAuthStateChanged(() => {
+  ReactDOM.render(<ApolloProvider client={client}><App/></ApolloProvider>, document.getElementById('root'));
+})

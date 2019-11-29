@@ -15,13 +15,14 @@ import {
   IonButton,
 } from "@ionic/react";
 import { ReactComponent as BucketListIcon} from '../../bucketlist.svg';
+import authedComponent from '../common/AuthedComponent';
 
 import {lists, newItems} from "../../state";
 import routes, {routeWithParams} from "../../conf/routes";
 
 class Dashboard extends React.Component {
   render() {
-    return(
+    return (
       <IonPage>
         <IonHeader>
           <IonToolbar color="primary">
@@ -99,4 +100,4 @@ class Dashboard extends React.Component {
   };
 };
 
-export default Dashboard;
+export default authedComponent(Dashboard);

@@ -4,6 +4,7 @@ import {Redirect} from 'react-router-dom';
 
 import routes from "../../conf/routes";
 import {state} from '../../state'
+import authedComponent from '../common/AuthedComponent';
 
 class NewSuggestion extends React.Component {
   render() {
@@ -16,4 +17,4 @@ class NewSuggestion extends React.Component {
   }
 }
 
-export default NewSuggestion
+export default authedComponent(NewSuggestion)
