@@ -54,3 +54,29 @@
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
 }
+
+.bl-card-title {
+  padding: 10px;
+}
+  
+.bl-new-list-btn {
+ margin-top: 10px;
+}
+
+.bl-icon-div {
+  height: 100px;
+  width: 100px;
+  float: left;
+  padding-top: 12px;
+}
+
+.bl-svg-icon {
+  height: 80%;
+  width: 80%;
+}
+
+.bl-nav-title {
+  margin-top: 40px; 
+  font-size: 40px;
+}
+
