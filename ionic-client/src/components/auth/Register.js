@@ -29,7 +29,6 @@ class Register extends React.Component {
   onSubmit = (event) => {
     event.preventDefault()
     // TODO: Form validation, check passwords match
-    console.log(this.state)
     firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((res) => {
       // TODO: Create user in mongodb
       this.history.push(routes.home)

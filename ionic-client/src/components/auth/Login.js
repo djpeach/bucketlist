@@ -36,12 +36,9 @@ class Login extends React.Component {
     // TODO: Form validation, check passwords match
     firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((res) => {
       // TODO: Fetch user from server
-      // firebase.auth().currentUser.getIdToken(true).then((token) => {
-      //   localStorage.setItem('authtoken', token)
-      // })
       this.props.history.push(routes.home)
     }).catch((error) => {
-      // TODO: User error and IonAlertControl to show alert
+      // TODO: User error and IonAlertControl or IonToast to show alert
     })
   }
 
