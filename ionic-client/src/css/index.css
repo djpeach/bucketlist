@@ -55,7 +55,7 @@
   --ion-color-light-tint: #f5f6f9;
 }
 
-.bl-card-title {
+.bl-card-padding {
   padding: 10px;
 }
   
@@ -77,5 +77,14 @@
 
 .bl-nav-title {
   font-size: 40px;
+}
+
+.bl-list-title {
+  padding: 10px;
+}
+
+.bl-list-back-btn {
+  margin-top: 10px;
+  padding-left: 10px;
 }
 

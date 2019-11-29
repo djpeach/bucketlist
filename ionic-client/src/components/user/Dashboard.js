@@ -13,11 +13,10 @@ import {
   IonRow,
   IonCol,
   IonButton,
-} from "@ionic/react";
-import { ReactComponent as BucketListIcon} from '../../bucketlist.svg';
+} from "@ionic/react"; 
 import authedComponent from '../common/AuthedComponent';
-
 import {lists, newItems} from "../../state";
+import { ReactComponent as BucketListIcon} from '../../bucketlist.svg';
 import routes, {routeWithParams} from "../../conf/routes";
 
 class Dashboard extends React.Component {
@@ -38,7 +37,7 @@ class Dashboard extends React.Component {
               <IonCol size="12" size-sm="6">
               {(newItems.length > 0) ? (
                 <IonCard>
-                <IonTitle className="bl-card-title">New Suggestions</IonTitle>
+                <IonTitle className="bl-card-padding">New Suggestions</IonTitle>
                 <IonList>
                   {
                     newItems.map((item) => {
@@ -61,7 +60,7 @@ class Dashboard extends React.Component {
                 <IonCard>
                   <IonGrid>
                     <IonRow>
-                      <IonTitle className="bl-card-title">Your Lists</IonTitle>
+                      <IonTitle className="bl-card-padding">Your Lists</IonTitle>
                       <IonButton color="success" strong type="button"
                                 className="ion-float-right ion-margin-end ion-margin-bottom bl-new-list-btn">
                         + New List
@@ -79,7 +78,7 @@ class Dashboard extends React.Component {
                                 <p>
                                   {
                                     (list.items.length > 0) ? 
-                                    (list.items.length == 1 ? list.items.length + ' item' : list.items.length + ' items') : 
+                                    (list.items.length === 1 ? list.items.length + ' item' : list.items.length + ' items') : 
                                     'No items'
                                   }
                                 </p>
