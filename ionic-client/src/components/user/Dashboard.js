@@ -91,10 +91,6 @@ class Dashboard extends React.Component {
                   </IonGrid>
                 </IonCard>
               </IonCol>
-
-              <IonCol size="12" size-sm="6" offset-sm="6">
-                
-              </IonCol>
             </IonRow>
           </IonGrid>
         </IonContent>
