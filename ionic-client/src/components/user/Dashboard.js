@@ -26,7 +26,7 @@ class Dashboard extends React.Component {
               <IonCol size="12" size-sm="6">
               {(newItems.length > 0) ? (
                 <IonCard>
-                <IonTitle className="bl-card-padding">New Suggestions</IonTitle>
+                <IonTitle className="bl-card-padding">New Drops</IonTitle>
                 <IonList>
                   {
                     newItems.map((item) => {
@@ -49,10 +49,10 @@ class Dashboard extends React.Component {
                 <IonCard>
                   <IonGrid>
                     <IonRow>
-                      <IonTitle className="bl-card-padding">Your Lists</IonTitle>
+                      <IonTitle className="bl-card-padding">Your Buckets</IonTitle>
                       <IonButton color="success" strong type="button"
                                 className="ion-float-right ion-margin-end ion-margin-bottom bl-new-list-btn">
-                        + New List
+                        + New
                       </IonButton>
                     </IonRow>
                     <IonList>
@@ -67,8 +67,8 @@ class Dashboard extends React.Component {
                                 <p>
                                   {
                                     (list.items.length > 0) ? 
-                                    (list.items.length === 1 ? list.items.length + ' item' : list.items.length + ' items') : 
-                                    'No items'
+                                    (list.items.length === 1 ? list.items.length + ' drop' : list.items.length + ' drops') : 
+                                    'No drops'
                                   }
                                 </p>
                               </IonLabel>

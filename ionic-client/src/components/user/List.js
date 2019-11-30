@@ -52,7 +52,7 @@ class List extends React.Component {
                       )
                     })
                   ) : (
-                    <p className="bl-card-padding"> No items </p>
+                    <p className="bl-card-padding"> No drops </p>
                   )}
                 </IonList>
               </IonCard>
