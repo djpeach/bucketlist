@@ -1,10 +1,10 @@
 export const newItems = [
   {
-    from: 'Cory Schafer',
-    message: 'Learn python',
+    from: 'Trenton Spice',
+    message: 'Develop BucketList',
   },
   {
-    from: 'Net Ninja',
+    from: 'Daniel Peach',
     message: 'Learn GraphQL',
   },
 ]
@@ -17,14 +17,17 @@ export const lists = [
         from: 'Matt Thomas',
         message: 'Free movie on campus',
       },
+    ],
+  },
+  {
+    name: 'Personal List',
+    items: [
       {
-        from: 'John Doe',
-        message: 'Try out CS Club',
-        link: 'https://theden.iupui.edu/organization/csclub',
+        message: 'Work on BucketList project',
       },
       {
-        from: 'John Hancock',
-        message: 'Lets study on Friday',
+        message: 'Adult Swim',
+        link: 'https://adultswim.com/',
       },
     ],
   },
@@ -45,6 +48,10 @@ export const lists = [
         link: 'https://shootpointblank.com/shoot-point-blank-greenwood-in/',
       },
     ],
+  },
+  {
+    name: 'Test list',
+    items: [],
   },
 ]
 
