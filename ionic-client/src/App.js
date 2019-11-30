@@ -19,13 +19,12 @@ import { list, addCircleOutline, person } from 'ionicons/icons'
 import {
   Dashboard,
   List,
-  NewSuggestion,
+  NewDrop,
   More,
   Login,
   Register,
 } from './components'
 import routes from './conf/routes'
-import { state } from './state'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css'
@@ -68,7 +67,7 @@ const App = () => (
           <Route
             exact
             path={routes.suggestions.create}
-            component={NewSuggestion}
+            component={NewDrop}
           />
           <Route exact path={routes.more} component={More} />
           <Redirect exact from={routes.index} to={routes.suggestions.create} />
@@ -76,11 +75,11 @@ const App = () => (
         <IonTabBar slot="bottom">
           <IonTabButton tab="lists" href={routes.home}>
             <IonIcon icon={list} />
-            <IonLabel>Your Lists</IonLabel>
+            <IonLabel>Your Buckets</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="newSuggestion" href={routes.suggestions.create}>
+          <IonTabButton tab="newDrop" href={routes.suggestions.create}>
             <IonIcon icon={addCircleOutline} />
-            <IonLabel>New Suggestion</IonLabel>
+            <IonLabel>New Drop</IonLabel>
           </IonTabButton>
           <IonTabButton tab="more" href={routes.more}>
             <IonIcon icon={person} />
