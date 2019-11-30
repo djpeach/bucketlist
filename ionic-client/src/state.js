@@ -59,5 +59,40 @@ export const state = {
   // TODO: use a real flux pattern
   user: {
     uid: 'Y090y3m61IeJtLFgZ5qwOam0Xlb2',
+    firstName: 'First',
+    lastName: 'Last',
+    email: 'firstlast@test.com',
+    friends: [
+      {
+        uid: 'Y090y3m61IeJtLFgZ5qwOam0Xlc3',
+        firstName: 'Trenton',
+        lastName: 'Spice',
+        email: 'yyy@yyy.com',
+      },
+      {
+        uid: 'Y090y3m61IeJtLFgZ5qwOam0Xld4',
+        firstName: 'Daniel',
+        lastName: 'Peach',
+        email: 'djpeach@test.com',
+      },
+      {
+        uid: 'Y090y3m61IeJtLFgZ5qwOam0Xle5',
+        firstName: 'Jayden',
+        lastName: 'Thrasher',
+        email: 'jaydent@test.com',
+      },
+      {
+        uid: 'Y090y3m61IeJtLFgZ5qwOam0Xlf6',
+        firstName: 'Steven',
+        lastName: 'Camp',
+        email: 'stacamp@test.com',
+      },
+      {
+        uid: 'Y090y3m61IeJtLFgZ5qwOam0Xlg7',
+        firstName: 'Nathalie',
+        lastName: 'Kroeker',
+        email: 'nathaliek@test.com',
+      },
+    ]
   },
 }
