@@ -1,8 +1,6 @@
 import React from 'react'
 import {
-  IonHeader,
   IonPage,
-  IonTitle,
   IonToolbar,
   IonFooter,
   IonRouterLink,
@@ -14,7 +12,6 @@ import {
   IonItem,
 } from '@ionic/react'
 import firebase from 'firebase'
-import { state } from '../../state'
 import routes from '../../conf/routes'
 import unAuthedComponent from '../common/UnAuthedComponent'
 
@@ -48,13 +45,9 @@ class Register extends React.Component {
 
   render() {
     return (
-      <IonPage>
-        <IonHeader>
-          <IonToolbar>
-            <IonTitle>Register</IonTitle>
-          </IonToolbar>
-        </IonHeader>
+      <IonPage className="bl-page">
         <IonContent>
+          <p> Register an account for BucketList</p>
           <form>
             <IonItem>
               <IonLabel position="stacked">Email</IonLabel>

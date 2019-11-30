@@ -9,6 +9,7 @@ import {
 } from '@ionic/react'
 import firebase from 'firebase'
 import { state } from '../../state'
+import routes from '../../conf/routes'
 import { flowRight as compose } from 'lodash'
 import { graphql } from 'react-apollo'
 import graphqlQueries from '../../graphql'
@@ -45,13 +46,13 @@ class More extends React.Component {
   logout = () => {
     firebase.auth().signOut()
     state.user = null
-    // TODO: Push to login route
+    return this.props.history.push(routes.auth.login)
   }
 
   render() {
     const { getAllUsers } = this.props
     return (
-      <IonPage>
+      <IonPage className="bl-page">
         <IonButton onClick={this.logout}>Logout</IonButton>
         <ListUsers getAllusers={getAllUsers} />
       </IonPage>
