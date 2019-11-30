@@ -2,8 +2,6 @@ import React from 'react'
 import authedComponent from '../common/AuthedComponent'
 import {
   IonPage,
-  IonHeader,
-  IonToolbar,
   IonTitle,
   IonContent,
   IonCard,

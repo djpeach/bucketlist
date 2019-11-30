@@ -1,8 +1,6 @@
 import React from 'react'
 import {
-  IonHeader,
   IonPage,
-  IonTitle,
   IonToolbar,
   IonFooter,
   IonRouterLink,
@@ -14,7 +12,6 @@ import {
   IonItem,
 } from '@ionic/react'
 import firebase from 'firebase'
-import { state } from '../../state'
 import routes from '../../conf/routes'
 import unAuthedComponent from '../common/UnAuthedComponent'
 

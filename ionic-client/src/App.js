@@ -15,7 +15,6 @@ import {
 import { IonReactRouter } from '@ionic/react-router'
 import { ReactComponent as BucketListIcon } from './bucketlist.svg'
 import { list, addCircleOutline, person } from 'ionicons/icons'
-import firebase from 'firebase'
 
 import {
   Dashboard,

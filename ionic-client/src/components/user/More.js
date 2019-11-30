@@ -6,15 +6,12 @@ import {
   IonItem,
   IonList,
   IonLabel,
-  IonHeader,
-  IonToolbar,
 } from '@ionic/react'
 import firebase from 'firebase'
 import { state } from '../../state'
-import { Redirect } from 'react-router-dom'
+import routes from '../../conf/routes'
 import { flowRight as compose } from 'lodash'
 import { graphql } from 'react-apollo'
-import { ReactComponent as BucketListIcon } from '../../bucketlist.svg'
 import graphqlQueries from '../../graphql'
 import authedComponent from '../common/AuthedComponent'
 
@@ -46,35 +43,18 @@ const ListUsers = ({ getAllusers }) => {
 }
 
 class More extends React.Component {
-  state = {
-    redirect: false
-  }
-
-  setRedirect = () => {
-    this.setState({
-      redirect: true
-    })
-  }
-
-  renderRedirect = () => {
-    if (this.state.redirect) {
-      this.logout()
-    }
-  }
-
   logout = () => {
     firebase.auth().signOut()
     state.user = null
-    return <Redirect to='/register' />
+    return this.props.history.push(routes.auth.login)
   }
 
   render() {
     const { getAllUsers } = this.props
     return (
       <IonPage className="bl-page">
-        <IonButton onClick={this.setRedirect}>Logout</IonButton>
+        <IonButton onClick={this.logout}>Logout</IonButton>
         <ListUsers getAllusers={getAllUsers} />
-        <div>{this.renderRedirect()}</div>
       </IonPage>
     )
   }
