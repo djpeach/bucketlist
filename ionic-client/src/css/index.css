@@ -76,6 +76,7 @@
 }
 
 .bl-nav-title {
+  margin-top: 25px;
   font-size: 40px;
 }
 
@@ -90,4 +91,27 @@
 
 .bl-page {
   padding-top: 100px;
+}
+
+.mt-1 {
+  margin-top: 10px;
+}
+.mt-2 {
+  margin-top: 20px;
+}
+.mt-3 {
+  margin-top: 30px;
+}
+.mt-4 {
+  margin-top: 40px;
+}
+.mt-5 {
+  margin-top: 50px;
+}
+
+.fix-to-bottom {
+  position: fixed;
+  left: 0;
+  bottom: 10px;
+  right: 0;
 }

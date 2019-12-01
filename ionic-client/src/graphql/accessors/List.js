@@ -3,7 +3,7 @@ import { gql } from 'apollo-boost'
 export default {
   getListsByUser: gql`
     query($id: ID!) {
-      getListsByUser(id: $id) {
+      getListsByUser(userId: $id) {
         id
         title
         items {
