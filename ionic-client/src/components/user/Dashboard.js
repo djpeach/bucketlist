@@ -31,10 +31,10 @@ class Dashboard extends React.Component {
                   {
                     newItems.map((item) => {
                       return (
-                        <IonItem key={item.message}>
+                        <IonItem key={item.id}>
                           <IonLabel>
                             <p>From: {item.from}</p>
-                            <h3>{item.message}</h3>
+                            <h4>{item.message}</h4>
                           </IonLabel>
                         </IonItem>
                       );
