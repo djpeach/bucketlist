@@ -1,33 +1,28 @@
 import React from 'react';
 import {
   IonPage,
-  IonTitle,
+  IonListHeader,
   IonContent,
-  IonCard,
   IonList,
   IonItem,
   IonLabel,
-  IonGrid,
-  IonRow,
-  IonCol,
-  IonButton,
 } from "@ionic/react";
-import {lists, newItems} from "../../state";
 import routes, {routeWithParams} from "../../conf/routes";
+import authedComponent from "../common/AuthedComponent";
 import {useQuery} from "@apollo/react-hooks";
 import graphqlQueries from '../../graphql';
 import firebase from "firebase";
 
 function NewDropsPreview() {
   const { loading, error, data } = useQuery(graphqlQueries.getNewItemsByUser, {
-    // variables: {userId: firebase.auth().currentUser.uid }
-    variables: {userId: "5de364477b415da2c14e0d9f" }
+    variables: {userId: firebase.auth().currentUser.uid }
   });
 
   if (loading) return "Loading..."
   if (error) return `Error! ${error.message}`
   return (
     <IonList>
+      <IonListHeader>New Drops</IonListHeader>
       {data.getNewItemsByUser.length > 0 ? data.getNewItemsByUser.map((item) => {
         return (
           <IonItem key={item.id}>
@@ -52,19 +47,12 @@ class Dashboard extends React.Component {
   render() {
     return (
       <IonPage className="bl-page">
-        <IonGrid>
-          <IonRow>
-            <IonCol size="12">
-              <IonCard>
-                <IonTitle className="bl-card-padding">New Drops</IonTitle>
-                <NewDropsPreview/>
-              </IonCard>
-            </IonCol>
-          </IonRow>
-        </IonGrid>
+        <IonContent fullscreen>
+          <NewDropsPreview/>
+        </IonContent>
       </IonPage>
     )
   }
 };
 
-export default Dashboard;
+export default authedComponent(Dashboard);

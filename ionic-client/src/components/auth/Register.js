@@ -19,7 +19,7 @@ import gql from "../../graphql"
 
 function Register(props) {
   const [inputs, setInputs] = useState({});
-  const [createUser, {data}] = useMutation(gql.createUser)
+  const [createUser] = useMutation(gql.createUser)
 
   const onSubmit = (event) => {
     event.preventDefault()

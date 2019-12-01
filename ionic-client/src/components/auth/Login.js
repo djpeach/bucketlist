@@ -61,14 +61,14 @@ class Login extends React.Component {
               <IonInput
                 type="email"
                 value={this.state.email}
-                oninput={(e) => this.onChange('email', e)}></IonInput>
+                oninput={(e) => this.onChange('email', e)}/>
             </IonItem>
             <IonItem>
               <IonLabel position="stacked">Password</IonLabel>
               <IonInput
                 type="password"
                 value={this.state.password}
-                oninput={(e) => this.onChange('password', e)}></IonInput>
+                oninput={(e) => this.onChange('password', e)}/>
             </IonItem>
           </form>
           <IonRouterLink href={routes.auth.register}>
