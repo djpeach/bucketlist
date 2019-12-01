@@ -1,5 +1,3 @@
-const mongoose = require('mongoose')
-
 const { UserModel, ListModel, ItemModel, FriendRequestModel } = require('../models')
 
 module.exports.typeDefs = `
@@ -16,6 +14,7 @@ module.exports.typeDefs = `
 `
 
 module.exports.resolvers = {
+  id: (user) => { return user.fbId },
   lists: (user) => {
     return ListModel.find({ userId: user.id })
   },
@@ -23,7 +22,7 @@ module.exports.resolvers = {
     return ItemModel.find({ recipientId: user.id, listId: null })
   },
   friends: (user) => {
-    return UserModel.find({ _id: { $in: user.friends } })
+    return UserModel.find({ fbId: { $in: user.friends } })
   },
   friendRequests: (user) => {
     return FriendRequestModel.find({ recipientId: user.id })
@@ -49,7 +48,7 @@ module.exports.queryDefs = `
 
 module.exports.queries = {
   getUserById: (_, { id }) => {
-    return UserModel.findById(id)
+    return UserModel.findOne({fbId: id})
   },
   getAllUsers: () => {
     return UserModel.find()
@@ -101,19 +100,18 @@ module.exports.mutations = {
     return new UserModel({ firstName, lastName, email, fbId: id }).save()
   },
   deleteUser: (_, { id }) => {
-    return UserModel.findByIdAndDelete(id)
+    return UserModel.findOneAndDelete({fbId: id})
   },
   removeFriend: async (_, { userId, friendId }) => {
-    await UserModel.findByIdAndUpdate(friendId, {
+    await UserModel.findOneAndUpdate({fbId: friendId}, {
       $pull: {
         friends: userId,
       },
     })
-    await UserModel.findByIdAndUpdate(userId, {
+    return UserModel.findOneAndUpdate({fbId: userId}, {
       $pull: {
         friends: friendId,
       },
     })
-    return UserModel.findById(userId)
   },
 }

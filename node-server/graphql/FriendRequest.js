@@ -10,10 +10,10 @@ module.exports.typeDefs = `
 
 module.exports.resolvers = {
   from: (request) => {
-    return UserModel.findById(request.senderId)
+    return UserModel.findOne({fbId: request.senderId})
   },
   to: (request) => {
-    return UserModel.findById(request.recipientId)
+    return UserModel.findOne({fbId: request.recipientId})
   },
 }
 
@@ -43,10 +43,10 @@ module.exports.mutations = {
   },
   acceptFriendRequest: async (_, { id }) => {
     const request = await FriendRequestModel.findById(id)
-    await UserModel.findByIdAndUpdate(request.senderId, { $push: {
+    await UserModel.findOneAndUpdate({fbId: request.senderId}, { $push: {
       friends: request.recipientId
     }})
-    await UserModel.findByIdAndUpdate(request.recipientId, { $push: {
+    await UserModel.findOneAndUpdate({fbId: request.recipientId}, { $push: {
       friends: request.senderId
     }})
     return FriendRequestModel.findByIdAndDelete(id)
