@@ -26,7 +26,7 @@ export default {
   `,
   getListsByQuery: gql`
     query($userId: ID!, $query: String!, $limit: Int = 10) {
-      getListsByQuery(id: $userId, query: $query, limit: $limit) {
+      getListsByQuery(userId: $userId, query: $query, limit: $limit) {
         id
         title
         items {
