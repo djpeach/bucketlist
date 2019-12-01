@@ -14,78 +14,57 @@ import {
 } from "@ionic/react";
 import {lists, newItems} from "../../state";
 import routes, {routeWithParams} from "../../conf/routes";
+import {useQuery} from "@apollo/react-hooks";
+import graphqlQueries from '../../graphql';
+import firebase from "firebase";
+
+function NewDropsPreview() {
+  const { loading, error, data } = useQuery(graphqlQueries.getNewItemsByUser, {
+    // variables: {userId: firebase.auth().currentUser.uid }
+    variables: {userId: "5de364477b415da2c14e0d9f" }
+  });
+
+  if (loading) return "Loading..."
+  if (error) return `Error! ${error.message}`
+  return (
+    <IonList>
+      {data.getNewItemsByUser.length > 0 ? data.getNewItemsByUser.map((item) => {
+        return (
+          <IonItem key={item.id}>
+            <IonLabel>
+              <p>From: {item.from.firstName} {item.from.lastName}</p>
+              <h3>{item.message}</h3>
+            </IonLabel>
+          </IonItem>
+        );
+      }) : (
+        <IonItem>
+          <IonLabel>
+            <h3>No Items Yet</h3>
+          </IonLabel>
+        </IonItem>
+      )}
+    </IonList>
+  )
+}
 
 class Dashboard extends React.Component {
   render() {
-    return(
+    return (
       <IonPage className="bl-page">
-        
-        <IonContent>
-          <IonGrid>
-            <IonRow>
-              <IonCol size="12" size-sm="6">
-              {(newItems.length > 0) ? (
-                <IonCard>
-                <IonTitle className="bl-card-padding">New Suggestions</IonTitle>
-                <IonList>
-                  {
-                    newItems.map((item) => {
-                      return (
-                        <IonItem key={item.message}>
-                          <IonLabel>
-                            <p>From: {item.from}</p>
-                            <h3>{item.message}</h3>
-                          </IonLabel>
-                        </IonItem>
-                      );
-                    })
-                  }
-                </IonList>
-                </IonCard>
-              ) : null }
-              </IonCol>
-
-              <IonCol size="12" size-sm="6">
-                <IonCard>
-                  <IonGrid>
-                    <IonRow>
-                      <IonTitle className="bl-card-padding">Your Lists</IonTitle>
-                      <IonButton color="success" strong type="button"
-                                className="ion-float-right ion-margin-end ion-margin-bottom bl-new-list-btn">
-                        + New List
-                      </IonButton>
-                    </IonRow>
-                    <IonList>
-                      {
-                        lists.map((list, index) => {
-                          return (
-                            <IonItem routerLink={routeWithParams(routes.lists.detail, index)} detail key={index}>
-                              <IonLabel>
-                                <p>{list.name}</p>
-                              </IonLabel>
-                              <IonLabel slot="end">
-                                <p>
-                                  {
-                                    (list.items.length > 0) ? 
-                                    (list.items.length === 1 ? list.items.length + ' item' : list.items.length + ' items') : 
-                                    'No items'
-                                  }
-                                </p>
-                              </IonLabel>
-                            </IonItem>
-                          );
-                        })
-                      }
-                    </IonList>
-                  </IonGrid>
-                </IonCard>
-              </IonCol>
-            </IonRow>
-          </IonGrid>
-        </IonContent>
+        <IonGrid>
+          <IonRow>
+            <IonCol size="12">
+              <IonCard>
+                <IonTitle className="bl-card-padding">New Drops</IonTitle>
+                <NewDropsPreview/>
+              </IonCard>
+            </IonCol>
+          </IonRow>
+        </IonGrid>
       </IonPage>
-    );
-  };
+    )
+  }
 };
 
 export default Dashboard;
