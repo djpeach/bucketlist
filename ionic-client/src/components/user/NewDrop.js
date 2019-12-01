@@ -13,6 +13,7 @@ import React, {useState} from 'react'
 import {useQuery} from '@apollo/react-hooks'
 import gql from '../../graphql'
 import firebase from 'firebase'
+import routes from '../../conf/routes';
 
 const friendSearchStyles = {
   menu: (provided, state) => ({
@@ -65,6 +66,11 @@ function NewDrop(props) {
           // TODO: set this up to not use mock state (options are label, value)
           options={friends}
         />
+        <IonItem>
+          <IonButton style={{ marginTop: '20px', height: '30px' }} href={routes.addFriend}>
+            + New Friend
+          </IonButton>
+        </IonItem>
 
 
         <IonItem style={{ marginTop: '20px' }}>

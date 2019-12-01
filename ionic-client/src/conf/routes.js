@@ -18,6 +18,7 @@ export default {
     login: '/auth/login',
     register: '/auth/register',
   },
+  addFriend: '/friends/new',
 }
 
 export const routeWithParams = (route, ...params) => {

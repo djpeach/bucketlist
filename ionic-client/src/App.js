@@ -23,6 +23,7 @@ import {
   More,
   Login,
   Register,
+  AddFriend,
 } from './components'
 import routes from './conf/routes'
 import { state } from './state'
@@ -68,6 +69,7 @@ export default function App() {
             <Route exact path={routes.lists.detail} component={List}/>
             <Route exact path={routes.suggestions.create} component={NewSuggestion}/>
             <Route exact path={routes.more} component={More}/>
+            <Route exact path={routes.addFriend} component={AddFriend}/>
             <Redirect exact from={routes.index} to={routes.suggestions.create}/>
           </IonRouterOutlet>
           <IonTabBar slot="bottom">

@@ -14,7 +14,7 @@ const requestLogger = require('./middleware/requestLogger')
 const app = express()
 
 mongoose
-  .connect(keys.mlab.uri, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(keys.mlab.uri, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
   .then(() => {
     dbLog(`Connected to mongodb`)
   })
