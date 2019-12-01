@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {
   IonPage,
   IonToolbar,
@@ -14,79 +14,90 @@ import {
 import firebase from 'firebase'
 import routes from '../../conf/routes'
 import unAuthedComponent from '../common/UnAuthedComponent'
+import {useMutation} from "@apollo/react-hooks";
+import gql from "../../graphql"
 
-class Register extends React.Component {
-  state = {
-    email: '',
-    password: '',
-    passwordConfirmation: '',
-  }
+function Register(props) {
+  const [inputs, setInputs] = useState({});
+  const [createUser, {data}] = useMutation(gql.createUser)
 
-  onSubmit = (event) => {
+  const onSubmit = (event) => {
     event.preventDefault()
     // TODO: Form validation, check passwords match
     firebase
       .auth()
-      .createUserWithEmailAndPassword(this.state.email, this.state.password)
+      .createUserWithEmailAndPassword(inputs.email, inputs.password)
       .then((res) => {
-        // TODO: Create user in mongodb
-        this.history.push(routes.home)
-      })
+        const {password, passwordConfirmation, ...accountInputs} = inputs
+        return createUser({variables: {...accountInputs}})
+      }).then((res) => {
+      props.history.push(routes.home)
+    })
       .catch((error) => {
         // TODO: User error and IonAlertControl to show alert
       })
   }
 
-  onChange = (id, event) => {
-    this.setState({
-      [id]: event.target.value,
-    })
+  const onChange = (id, event) => {
+    setInputs(inputs => ({...inputs, [id]: event.target.value}));
   }
 
-  render() {
-    return (
-      <IonPage className="bl-page">
-        <IonContent>
-          <p> Register an account for BucketList</p>
-          <form>
-            <IonItem>
-              <IonLabel position="stacked">Email</IonLabel>
-              <IonInput
-                type="email"
-                value={this.state.email}
-                oninput={(e) => this.onChange('email', e)}></IonInput>
-            </IonItem>
-            <IonItem>
-              <IonLabel position="stacked">Password</IonLabel>
-              <IonInput
-                type="password"
-                value={this.state.password}
-                oninput={(e) => this.onChange('password', e)}></IonInput>
-            </IonItem>
-            <IonItem>
-              <IonLabel position="stacked">Password Confirmation</IonLabel>
-              <IonInput
-                type="password"
-                value={this.state.passwordConfirmation}
-                oninput={(e) =>
-                  this.onChange('passwordConfirmation', e)
-                }></IonInput>
-            </IonItem>
-          </form>
-          <IonRouterLink href={routes.auth.login}>
-            Have an account? Login instead.
-          </IonRouterLink>
-        </IonContent>
-        <IonFooter>
-          <IonToolbar>
-            <IonButtons slot="primary">
-              <IonButton onClick={this.onSubmit}>Register</IonButton>
-            </IonButtons>
-          </IonToolbar>
-        </IonFooter>
-      </IonPage>
-    )
-  }
+  return (
+    <IonPage className="bl-page">
+      <IonContent>
+        <p> Register an account for BucketList</p>
+        <form>
+          <IonItem>
+            <IonLabel position="stacked">First Name</IonLabel>
+            <IonInput
+              type="text"
+              value={inputs['firstName']}
+              oninput={(e) => onChange('firstName', e)}/>
+          </IonItem>
+          <IonItem>
+            <IonLabel position="stacked">Last Name</IonLabel>
+            <IonInput
+              type="text"
+              value={inputs['lastName']}
+              oninput={(e) => onChange('lastName', e)}/>
+          </IonItem>
+          <IonItem>
+            <IonLabel position="stacked">Email</IonLabel>
+            <IonInput
+              type="email"
+              value={inputs['email']}
+              oninput={(e) => onChange('email', e)}/>
+          </IonItem>
+          <IonItem>
+            <IonLabel position="stacked">Password</IonLabel>
+            <IonInput
+              type="password"
+              value={inputs['password']}
+              oninput={(e) => onChange('password', e)}/>
+          </IonItem>
+          <IonItem>
+            <IonLabel position="stacked">Password Confirmation</IonLabel>
+            <IonInput
+              type="password"
+              value={inputs['passwordConfirmation']}
+              oninput={(e) =>
+                onChange('passwordConfirmation', e)
+              }/>
+          </IonItem>
+        </form>
+        <IonRouterLink href={routes.auth.login}>
+          Have an account? Login instead.
+        </IonRouterLink>
+      </IonContent>
+      <IonFooter>
+        <IonToolbar>
+          <IonButtons slot="primary">
+            <IonButton onClick={onSubmit}>Register</IonButton>
+          </IonButtons>
+        </IonToolbar>
+      </IonFooter>
+    </IonPage>
+  )
 }
 
 export default unAuthedComponent(Register)
