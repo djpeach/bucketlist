@@ -47,48 +47,46 @@ import './css/index.css'
 
 // TODO: Write wrapper component for auth guards
 
-const App = () => (
-  <IonApp>
-    <IonHeader>
-      <IonToolbar color="primary">
-        <div className="bl-icon-div">
-          <BucketListIcon className="bl-svg-icon" />
-        </div>
-        <IonTitle className="bl-nav-title">BucketList</IonTitle>
-      </IonToolbar>
-    </IonHeader>
-    <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route exact path={routes.auth.login} component={Login} />
-          <Route exact path={routes.auth.register} component={Register} />
-          <Route exact path={routes.home} component={Dashboard} />
-          <Route exact path={routes.lists.detail} component={List} />
-          <Route
-            exact
-            path={routes.suggestions.create}
-            component={NewDrop}
-          />
-          <Route exact path={routes.settings} component={ProfileSettings} />
-          <Redirect exact from={routes.index} to={routes.suggestions.create} />
-        </IonRouterOutlet>
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="lists" href={routes.home}>
-            <IonIcon icon={list} />
-            <IonLabel>Your Buckets</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="newDrop" href={routes.suggestions.create}>
-            <IonIcon icon={addCircleOutline} />
-            <IonLabel>New Drop</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="settings" href={routes.settings}>
-            <IonIcon icon={person} />
-            <IonLabel>Profile &amp; Settings</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
-    </IonReactRouter>
-  </IonApp>
-)
+export default function App() {
+  return (
+    <IonApp>
+      <IonHeader>
+        <IonToolbar color="primary">
+          <div className="bl-icon-div">
+            <BucketListIcon className="bl-svg-icon"/>
+          </div>
+          <IonTitle className="bl-nav-title">BucketList</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+      <IonReactRouter>
+        <IonTabs>
+          <IonRouterOutlet>
+            <Route exact path={routes.auth.login} component={Login}/>
+            <Route exact path={routes.auth.register} component={Register}/>
+            <Route exact path={routes.home} component={Dashboard}/>
+            <Route exact path={routes.lists.detail} component={List}/>
+            <Route exact path={routes.suggestions.create} component={NewSuggestion}/>
+            <Route exact path={routes.more} component={More}/>
+            <Redirect exact from={routes.index} to={routes.suggestions.create}/>
+          </IonRouterOutlet>
+          <IonTabBar slot="bottom">
+            <IonTabButton tab="lists" href={routes.home}>
+              <IonIcon icon={list}/>
+              <IonLabel>Your Lists</IonLabel>
+            </IonTabButton>
 
-export default App
+            <IonTabButton tab="newSuggestion" href={routes.suggestions.create}>
+              <IonIcon icon={addCircleOutline}/>
+              <IonLabel>New Suggestion</IonLabel>
+            </IonTabButton>
+
+            <IonTabButton tab="more" href={routes.more}>
+              <IonIcon icon={person}/>
+              <IonLabel>Profile &amp; Settings</IonLabel>
+            </IonTabButton>
+          </IonTabBar>
+        </IonTabs>
+      </IonReactRouter>
+    </IonApp>
+  )
+}

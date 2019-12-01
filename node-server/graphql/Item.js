@@ -12,10 +12,10 @@ module.exports.typeDefs = `
 
 module.exports.resolvers = {
   from: (item) => {
-    return UserModel.findById(item.senderId)
+    return UserModel.findOne({fbId: item.senderId})
   },
   to: (item) => {
-    return UserModel.findById(item.recipientId)
+    return UserModel.findOne({fbId: item.recipientId})
   },
 }
 

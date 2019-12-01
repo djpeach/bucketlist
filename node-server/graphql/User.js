@@ -1,4 +1,4 @@
-const { UserModel, ListModel, ItemModel } = require('../models')
+const { UserModel, ListModel, ItemModel, FriendRequestModel } = require('../models')
 
 module.exports.typeDefs = `
   type User {
@@ -9,10 +9,12 @@ module.exports.typeDefs = `
     lists: [List]
     newItems: [Item]
     friends: [User]
+    friendRequests: [FriendRequest]
   }
 `
 
 module.exports.resolvers = {
+  id: (user) => { return user.fbId },
   lists: (user) => {
     return ListModel.find({ userId: user.id })
   },
@@ -20,8 +22,11 @@ module.exports.resolvers = {
     return ItemModel.find({ recipientId: user.id, listId: null })
   },
   friends: (user) => {
-    return UserModel.find({ id: { $in: user.friends } })
+    return UserModel.find({ fbId: { $in: user.friends } })
   },
+  friendRequests: (user) => {
+    return FriendRequestModel.find({ recipientId: user.id })
+  }
 }
 
 module.exports.queryDefs = `
@@ -43,7 +48,7 @@ module.exports.queryDefs = `
 
 module.exports.queries = {
   getUserById: (_, { id }) => {
-    return UserModel.findById(id)
+    return UserModel.findOne({fbId: id})
   },
   getAllUsers: () => {
     return UserModel.find()
@@ -80,12 +85,9 @@ module.exports.mutationDefs = `
       firstName: String!
       lastName: String!
       email: String!
+      id: ID!
     ): User
     deleteUser(id: ID): User
-    addFriend(
-      userId: ID
-      friendId: ID
-    ): User
     removeFriend(
       userId: ID
       friendId: ID
@@ -94,36 +96,22 @@ module.exports.mutationDefs = `
 `
 
 module.exports.mutations = {
-  createUser: (_, { firstName, lastName, email }) => {
-    return new UserModel({ firstName, lastName, email }).save()
+  createUser: (_, { firstName, lastName, email, id }) => {
+    return new UserModel({ firstName, lastName, email, fbId: id }).save()
   },
   deleteUser: (_, { id }) => {
-    return UserModel.findByIdAndDelete(id)
-  },
-  addFriend: async (_, { userId, friendId }) => {
-    await UserModel.findByIdAndUpdate(friendId, {
-      $push: {
-        friends: userId,
-      },
-    })
-    await UserModel.findByIdAndUpdate(userId, {
-      $push: {
-        friends: friendId,
-      },
-    })
-    return UserModel.findById(userId)
+    return UserModel.findOneAndDelete({fbId: id})
   },
   removeFriend: async (_, { userId, friendId }) => {
-    await UserModel.findByIdAndUpdate(friendId, {
+    await UserModel.findOneAndUpdate({fbId: friendId}, {
       $pull: {
         friends: userId,
       },
     })
-    await UserModel.findByIdAndUpdate(userId, {
+    return UserModel.findOneAndUpdate({fbId: userId}, {
       $pull: {
         friends: friendId,
       },
     })
-    return UserModel.findById(userId)
   },
 }
