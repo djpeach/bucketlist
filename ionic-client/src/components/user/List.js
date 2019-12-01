@@ -34,8 +34,6 @@ function ListView(props) {
     )
   }
 
-  console.log(error)
-
   if (error) {
     return (
       <IonList>
@@ -48,11 +46,8 @@ function ListView(props) {
     )
   }
 
-  console.log(data)
-
   return (
     <IonList>
-      {console.log((Array.isArray(data.getListsByQuery[0].items) && data.getListsByQuery[0].items.length))}
       {(Array.isArray(data.getListsByQuery[0].items) && data.getListsByQuery[0].items.length) ? (
         data.getListsByQuery[0].items.map((item) => {
           return (
