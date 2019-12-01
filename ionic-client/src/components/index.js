@@ -1,7 +1,7 @@
 import Dashboard from './user/Dashboard'
 import List from './user/List'
-import NewSuggestion from './user/NewSuggestion'
-import More from './user/More'
+import NewSuggestion from './user/NewDrop'
+import More from './user/ProfileSettings'
 import Login from './auth/Login'
 import Register from './auth/Register'
 
