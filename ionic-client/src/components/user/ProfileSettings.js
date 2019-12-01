@@ -6,6 +6,8 @@ import {
   IonItem,
   IonList,
   IonLabel,
+  IonCard,
+  IonContent,
 } from '@ionic/react'
 import firebase from 'firebase'
 import { state } from '../../state'
@@ -42,7 +44,7 @@ const ListUsers = ({ getAllusers }) => {
   }
 }
 
-class More extends React.Component {
+class ProfileSettings extends React.Component {
   logout = () => {
     firebase.auth().signOut()
     state.user = null
@@ -51,10 +53,19 @@ class More extends React.Component {
 
   render() {
     const { getAllUsers } = this.props
+    console.log(getAllUsers)
     return (
       <IonPage className="bl-page">
-        <IonButton onClick={this.logout}>Logout</IonButton>
-        <ListUsers getAllusers={getAllUsers} />
+        <IonContent>
+          <IonCard className={"bl-card-padding"}>
+            <h1> User Information </h1>
+            <p>Name: {state.user.firstName} {state.user.lastName}</p>
+            <p>Email: {state.user.email}</p>
+            <p>UserID: {state.user.uid}</p>
+          </IonCard>
+          <ListUsers getAllusers={getAllUsers} />
+        </IonContent>
+        <IonButton onClick={this.logout} style={{ marginBottom: '20px' }}>Logout</IonButton>
       </IonPage>
     )
   }
@@ -63,4 +74,4 @@ class More extends React.Component {
 export default compose(
   graphql(graphqlQueries.getAllUsers, { name: 'getAllUsers' }),
   authedComponent
-)(More)
+)(ProfileSettings)

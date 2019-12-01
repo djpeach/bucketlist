@@ -1,7 +1,7 @@
 export default {
   index: '/',
   home: '/home',
-  more: '/more',
+  settings: '/settings',
   lists: {
     create: '/lists/new',
     list: '/lists',

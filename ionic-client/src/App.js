@@ -20,7 +20,7 @@ import {
   Dashboard,
   List,
   NewDrop,
-  More,
+  ProfileSettings,
   Login,
   Register,
 } from './components'
@@ -69,7 +69,7 @@ const App = () => (
             path={routes.suggestions.create}
             component={NewDrop}
           />
-          <Route exact path={routes.more} component={More} />
+          <Route exact path={routes.settings} component={ProfileSettings} />
           <Redirect exact from={routes.index} to={routes.suggestions.create} />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
@@ -81,7 +81,7 @@ const App = () => (
             <IonIcon icon={addCircleOutline} />
             <IonLabel>New Drop</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="more" href={routes.more}>
+          <IonTabButton tab="settings" href={routes.settings}>
             <IonIcon icon={person} />
             <IonLabel>Profile &amp; Settings</IonLabel>
           </IonTabButton>
