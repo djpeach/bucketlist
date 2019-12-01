@@ -13,6 +13,8 @@ import {
   IonCol,
   IonList,
   IonLabel,
+  IonSelect,
+  IonSelectOption,
 } from "@ionic/react";
 import authedComponent from "../common/AuthedComponent";
 import NewDropsPreview from './NewDropsPreview'
@@ -24,8 +26,6 @@ import firebase from 'firebase'
 
 function ListOfLists() {
   const {loading, error, data} = useQuery(gql.getListsByUser, {variables: {id: firebase.auth().currentUser.uid}})
-
-
 
   if (loading) {
     return (
@@ -57,18 +57,26 @@ function ListOfLists() {
 
   return (
     <IonList>
-      {data.getListsByUser.length > 0 ? (
-
-        <p>placeholder</p>
-
-        
-      ) : (
-        <IonItem>
+      <IonItem>
+        {data.getListsByUser.length > 0 ? (
+            <>
+              <IonLabel>Your Buckets: </IonLabel>
+              <IonSelect placeholder="Select a Bucket" okText="Select" cancelText="Cancel">
+                {data.getListsByUser.map((list, index) => {
+                  return (
+                      <IonSelectOption value={list.id} key={list.id}>
+                        {list.title}
+                      </IonSelectOption>
+                  )
+                })}
+              </IonSelect>
+            </>
+        ) : (
           <IonLabel>
-           No Buckets yet, go back and make one!
+          No Buckets yet, go back and make one!
           </IonLabel>
-        </IonItem>
-      )}
+        )}
+      </IonItem>
     </IonList>
   )
 }
@@ -92,7 +100,13 @@ function BucketSelectModal({acceptingItem, drop, setAcceptingItem}) {
             )}
           </IonItem>
         </IonCard>
-        <ListOfLists/>
+        <IonCard>
+          <IonCardHeader>Select a Bucket</IonCardHeader>
+          <ListOfLists/>
+        </IonCard>
+        <IonButton className="bl-list-back-btn">
+          Add to Bucket
+        </IonButton>
         <IonButton className="fix-to-bottom" color="danger" onClick={() => setAcceptingItem(false)}>Cancel</IonButton>
       </IonContent>
     </IonModal>
