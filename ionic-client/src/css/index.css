@@ -115,3 +115,8 @@
   bottom: 10px;
   right: 0;
 }
+
+.push-to-top {
+  display: inline;
+  padding: 20px 0;
+}

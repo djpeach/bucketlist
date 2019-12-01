@@ -14,7 +14,7 @@ import {useQuery, useMutation} from "@apollo/react-hooks";
 import gql from '../../graphql';
 import firebase from "firebase";
 
-export default function NewDropsPreview({setAcceptingItem}) {
+export default function NewDropsPreview({setAcceptingItem, setDrop}) {
   const {loading, error, data} = useQuery(gql.getNewItemsByUser, {
     variables: {userId: firebase.auth().currentUser.uid},
     pollInterval: 100
@@ -73,6 +73,7 @@ export default function NewDropsPreview({setAcceptingItem}) {
                   deleteItem({variables: { id: item.id }})
                 }}>Reject</IonItemOption>
                 <IonItemOption onClick={() => {
+                  setDrop(item)
                   setAcceptingItem(true)
                 }}>Accept</IonItemOption>
               </IonItemOptions>
