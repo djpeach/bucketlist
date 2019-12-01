@@ -86,6 +86,7 @@ module.exports.mutationDefs = `
       firstName: String!
       lastName: String!
       email: String!
+      id: ID!
     ): User
     deleteUser(id: ID): User
     removeFriend(
@@ -96,8 +97,8 @@ module.exports.mutationDefs = `
 `
 
 module.exports.mutations = {
-  createUser: (_, { firstName, lastName, email }) => {
-    return new UserModel({ firstName, lastName, email }).save()
+  createUser: (_, { firstName, lastName, email, id }) => {
+    return new UserModel({ firstName, lastName, email, fbId: id }).save()
   },
   deleteUser: (_, { id }) => {
     return UserModel.findByIdAndDelete(id)

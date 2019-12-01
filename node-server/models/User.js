@@ -6,6 +6,7 @@ const UserSchema = new Schema({
   lastName: { type: String },
   email: { type: String },
   friends: { type: [String] },
+  fbId: { type: String },
 })
 
 module.exports = mongoose.model('User', UserSchema)

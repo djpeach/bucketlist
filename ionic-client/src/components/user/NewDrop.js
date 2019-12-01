@@ -12,10 +12,10 @@ import Select from 'react-select';
 import authedComponent from '../common/AuthedComponent'
 import {state as userState} from "../../state";
 
-// userState.user.friends.map((obj) => {
-//   obj.value = obj.email
-//   obj.label = `${obj.firstName} ${obj.lastName}`
-// })
+userState.user.friends.map((obj) => {
+  obj.value = obj.email
+  obj.label = `${obj.firstName} ${obj.lastName}`
+})
 
 const friendSearchStyles = {
   menu: (provided, state) => ({
