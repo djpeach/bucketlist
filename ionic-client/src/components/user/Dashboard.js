@@ -25,6 +25,8 @@ import firebase from 'firebase'
 function ListOfLists() {
   const {loading, error, data} = useQuery(gql.getListsByUser, {variables: {id: firebase.auth().currentUser.uid}})
 
+
+
   if (loading) {
     return (
       <IonList>
@@ -56,11 +58,10 @@ function ListOfLists() {
   return (
     <IonList>
       {data.getListsByUser.length > 0 ? (
-        <IonItem>
-          <IonLabel>
-          Placeholder
-          </IonLabel>
-        </IonItem>
+
+        <p>placeholder</p>
+
+        
       ) : (
         <IonItem>
           <IonLabel>
@@ -77,9 +78,9 @@ function BucketSelectModal({acceptingItem, drop, setAcceptingItem}) {
   return (
     <IonModal isOpen={acceptingItem}>
       <IonContent>
-        <IonTitle className="push-to-top">Select a list to add this new drop to:</IonTitle>
+        <h1 className="bl-list-title">Add New Drop to a Bucket</h1>
         <IonCard className="mt-5">
-          <IonCardHeader>Item to add:</IonCardHeader>
+          <IonCardHeader>New Drop</IonCardHeader>
           <IonItem>
             {drop !== {} ? (
               <div>
@@ -87,7 +88,7 @@ function BucketSelectModal({acceptingItem, drop, setAcceptingItem}) {
                 <h5>{drop.message}</h5>
               </div>
             ) : (
-              <p>No Item</p>
+              <p>No Drops</p>
             )}
           </IonItem>
         </IonCard>
