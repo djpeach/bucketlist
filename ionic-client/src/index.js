@@ -11,7 +11,7 @@ import keys from './conf/secret-keys'
 import App from './App'
 
 const httpLink = new HttpLink({
-  uri: 'http://bucketlist.us-east-2.elasticbeanstalk.com/graphql',
+  uri: 'http://localhost:8081/graphql',
 })
 
 const authMiddleware = new ApolloLink((operation, forward) => {

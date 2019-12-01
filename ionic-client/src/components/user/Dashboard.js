@@ -1,7 +1,8 @@
 import React from 'react';
 import {
   IonPage,
-  IonListHeader,
+  IonTitle,
+  IonCard,
   IonContent,
   IonList,
   IonItem,
@@ -14,32 +15,34 @@ import graphqlQueries from '../../graphql';
 import firebase from "firebase";
 
 function NewDropsPreview() {
-  const { loading, error, data } = useQuery(graphqlQueries.getNewItemsByUser, {
-    variables: {userId: firebase.auth().currentUser.uid }
+  const {loading, error, data} = useQuery(graphqlQueries.getNewItemsByUser, {
+    variables: {userId: firebase.auth().currentUser.uid}
   });
 
   if (loading) return "Loading..."
   if (error) return `Error! ${error.message}`
   return (
-    <IonList>
-      <IonListHeader>New Drops</IonListHeader>
-      {data.getNewItemsByUser.length > 0 ? data.getNewItemsByUser.map((item) => {
-        return (
-          <IonItem key={item.id}>
+    <IonCard>
+      <IonTitle className="bl-card-padding">New Drops</IonTitle>
+      <IonList>
+        {data.getNewItemsByUser.length > 0 ? data.getNewItemsByUser.map((item) => {
+          return (
+            <IonItem key={item.id}>
+              <IonLabel>
+                <p>From: {item.from.firstName} {item.from.lastName}</p>
+                <h3>{item.message}</h3>
+              </IonLabel>
+            </IonItem>
+          );
+        }) : (
+          <IonItem>
             <IonLabel>
-              <p>From: {item.from.firstName} {item.from.lastName}</p>
-              <h3>{item.message}</h3>
+              <h3>No Items Yet</h3>
             </IonLabel>
           </IonItem>
-        );
-      }) : (
-        <IonItem>
-          <IonLabel>
-            <h3>No Items Yet</h3>
-          </IonLabel>
-        </IonItem>
-      )}
-    </IonList>
+        )}
+      </IonList>
+    </IonCard>
   )
 }
 

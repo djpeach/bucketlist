@@ -29,7 +29,7 @@ function Register(props) {
       .createUserWithEmailAndPassword(inputs.email, inputs.password)
       .then((res) => {
         const {password, passwordConfirmation, ...accountInputs} = inputs
-        return createUser({variables: {...accountInputs}})
+        return createUser({variables: {...accountInputs, id: res.user.uid}})
       }).then((res) => {
       props.history.push(routes.home)
     })
