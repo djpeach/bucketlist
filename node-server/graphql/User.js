@@ -2,6 +2,7 @@ const { UserModel, ListModel, ItemModel, FriendRequestModel } = require('../mode
 
 module.exports.typeDefs = `
   type User {
+    _id: ID!
     id: ID!
     firstName: String!
     lastName: String!

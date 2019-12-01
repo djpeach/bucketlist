@@ -34,13 +34,13 @@ function UserInfo() {
     )
   }
 
-  console.log(data)
+  const {getUserById: user} = data
 
   return (
     <div>
-      <p>Name: Got User</p>
-      <p>Email: Got User</p>
-      <p>MongoDB Id: Got User</p>
+      <p>Name: {user.firstName} {user.lastName}</p>
+      <p>Email: {user.email}</p>
+      <p>MongoDB Id: {user._id}</p>
       <p>Firebase Id: {firebase.auth().currentUser.uid}</p>
     </div>
   )
