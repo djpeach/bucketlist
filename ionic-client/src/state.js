@@ -1,9 +1,11 @@
 export const newItems = [
   {
+    id: '1',
     from: 'Trenton Spice',
     message: 'Develop BucketList',
   },
   {
+    id: '2',
     from: 'Daniel Peach',
     message: 'Learn GraphQL',
   },
