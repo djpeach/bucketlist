@@ -53,6 +53,8 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  --ion-font-family: 'Muli', sans-serif;
 }
 
 .bl-card-padding {
@@ -64,10 +66,13 @@
 }
 
 .bl-icon-div {
-  height: 100px;
-  width: 100px;
+  height: 80px;
+  width: 80px;
   float: left;
-  padding-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
 }
 
 .bl-svg-icon {
@@ -76,8 +81,8 @@
 }
 
 .bl-nav-title {
-  margin-top: 25px;
-  font-size: 40px;
+  margin-top: 14px;
+  font-size: 38px;
 }
 
 .bl-list-title {
