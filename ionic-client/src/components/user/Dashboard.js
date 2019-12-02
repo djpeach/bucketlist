@@ -126,6 +126,7 @@ function Dashboard() {
   const [createList] = useMutation(gql.createList, {
     onCompleted() {
       setCreatingBucket(false)
+      setBucketName('')
     }
   })
 
@@ -140,10 +141,12 @@ function Dashboard() {
         <IonButton color="success" strong type="button"
                   className="ion-float-right ion-margin-end ion-margin-bottom bl-new-list-btn" onClick={() => {
                     if (creatingBucket) {
-                      createList({variables: {
-                        title: bucketName,
-                        userId: firebase.auth().currentUser.uid
-                      }})
+                      if (bucketName !== '') {
+                        createList({variables: {
+                          title: bucketName,
+                          userId: firebase.auth().currentUser.uid
+                        }})
+                      }
                     } else {
                       setCreatingBucket(true)
                     }

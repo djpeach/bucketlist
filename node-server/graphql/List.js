@@ -22,6 +22,7 @@ module.exports.queryDefs = `
       query: String!
       limit: Int = 10
     ): [List]
+    getListById(id: ID!) : List
   }
 `
 
@@ -35,6 +36,9 @@ module.exports.queries = {
       title: { $regex: query, $options: 'i' },
     }).limit(limit)
   },
+  getListById: (_, {id}) => {
+    return ListModel.findById(id);
+  }
 }
 
 module.exports.mutationDefs = `

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import authedComponent from '../common/AuthedComponent'
 import {
   IonPage,
@@ -11,18 +11,21 @@ import {
   IonGrid,
   IonCol,
   IonButton,
+  IonItemSliding,
+  IonItemOptions,
+  IonItemOption,
 } from '@ionic/react'
-import { lists } from '../../state'
 import MdArrowDropleft from 'react-ionicons/lib/MdArrowDropleft'
 import routes from '../../conf/routes'
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 import gql from '../../graphql'
-import firebase from 'firebase'
 
-function ListView(props) {
-  const {loading, error, data} = useQuery(gql.getListsByQuery, {variables: {userId: firebase.auth().currentUser.uid, query: props.title}})
+function ListView({setTitle, id}) {
+  const {loading, error, data} = useQuery(gql.getListById, { variables: {id: id}, pollInterval: 100})
+  const [deleteItem] = useMutation(gql.deleteItem)
 
   if (loading) {
+    setTitle('Loading ...')
     return (
       <IonList>
         <IonItem>
@@ -35,6 +38,7 @@ function ListView(props) {
   }
 
   if (error) {
+    setTitle('Error!')
     return (
       <IonList>
         <IonItem>
@@ -46,35 +50,57 @@ function ListView(props) {
     )
   }
 
+  setTitle(data.getListById ? data.getListById.title : '')
+
+  if (!data.getListById) {
+    return ''
+  }
+  
+  if (data.getListById.items.length <= 0) {
+    return (
+      <IonList>
+        <IonItem>
+          <IonLabel>
+           No Drops in the Bucket yet
+          </IonLabel>
+        </IonItem>
+      </IonList>
+    )
+  }
+
   return (
     <IonList>
-      {(Array.isArray(data.getListsByQuery[0].items) && data.getListsByQuery[0].items.length) ? (
-        data.getListsByQuery[0].items.map((item) => {
-          return (
-            <IonItem key={item.message}>
+      {data.getListById.items.map(item => {
+        return (
+          <IonItemSliding>
+            <IonItem>
               <IonLabel>
-                {item.from ? <p>From: {item.from.firstName} {item.from.lastName}</p> : null}
-                {item.link ? (
-                  <a href={item.link} target="_">
-                    <h3>{item.message}</h3>
-                  </a>
-                ) : (
-                  <h3>{item.message}</h3>
-                )}
+                <p>From: {item.from.firstName} {item.from.lastName}</p>
+                <h3>{item.message}</h3>
               </IonLabel>
             </IonItem>
-          )
-        })
-      ) : (
-        <p className="bl-card-padding"> No items </p>
-      )}
+            <IonItemOptions>
+              <IonItemOption color="secondary" onClick={() => {
+                deleteItem({variables: {id: item.id}})
+              }}>
+                Complete
+              </IonItemOption>
+            </IonItemOptions>
+          </IonItemSliding>
+        )
+      })}
     </IonList>
   )
 };
 
 
-function List() {
-  const title = window.location.href.split('/lists/')[1]
+function List(props) {
+  const [title, setTitle] = useState('')
+  const [deleteList] = useMutation(gql.deleteList, {
+    onCompleted() {
+      props.history.push(routes.home)
+    }
+  })
   return (
     <IonPage className="bl-page">
       <IonContent>
@@ -89,8 +115,14 @@ function List() {
             </IonButton>
             <IonCard>
               <IonTitle className="bl-list-title">{title}</IonTitle>
-              <ListView title={title} />
+              <ListView setTitle={setTitle} id={props.match.params.id}/>
             </IonCard>
+            <IonButton color="danger" strong type="button"
+              className="ion-float-right ion-margin-end ion-margin-bottom bl-new-list-btn" onClick={() => {
+                deleteList({variables: {id: props.match.params.id}})
+              }}>
+            Delete Bucket
+          </IonButton>
           </IonCol>
         </IonGrid>
       </IonContent>
