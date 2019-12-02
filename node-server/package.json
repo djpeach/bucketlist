@@ -7,7 +7,7 @@
     "start": "DEBUG=app:* nodemon ./bin/www",
     "devstart": "ENV=dev DEBUG=app:* nodemon ./bin/www",
     "test": "mocha",
-    "ci": "server-test 8081"
+    "ci": "start-test 8081"
   },
   "repository": {
     "type": "git",
