@@ -22,7 +22,7 @@ import { useQuery, useMutation } from '@apollo/react-hooks';
 import gql from '../../graphql'
 import firebase from 'firebase'
 
-function ListOfLists() {
+function ListOfLists({onSelected}) {
   const {loading, error, data} = useQuery(gql.getListsByUser, {variables: {id: firebase.auth().currentUser.uid}})
 
   if (loading) {
@@ -49,15 +49,13 @@ function ListOfLists() {
     )
   }
 
-  console.log(data)
-
   return (
     <IonList>
       <IonItem>
         {data.getListsByUser.length > 0 ? (
             <>
               <IonLabel>Your Buckets: </IonLabel>
-              <IonSelect placeholder="Select a Bucket" okText="Select" cancelText="Cancel">
+              <IonSelect placeholder="Select a Bucket" okText="Select" cancelText="Cancel" onIonChange={(e) => onSelected(e.target.value)}>
                 {data.getListsByUser.map((list, index) => {
                   return (
                       <IonSelectOption value={list.id} key={list.id}>
@@ -78,6 +76,12 @@ function ListOfLists() {
 }
 
 function BucketSelectModal({acceptingItem, drop, setAcceptingItem}) {
+  const [selectedBucket, changeSelectedBucket] = useState('')
+  const [assignItemToList] = useMutation(gql.assignItemToList, {
+    onCompleted() {
+      setAcceptingItem(false)
+    }
+  })
 
   return (
     <IonModal isOpen={acceptingItem}>
@@ -98,9 +102,14 @@ function BucketSelectModal({acceptingItem, drop, setAcceptingItem}) {
         </IonCard>
         <IonCard>
           <IonCardHeader>Select a Bucket</IonCardHeader>
-          <ListOfLists/>
+          <ListOfLists onSelected={changeSelectedBucket}/>
         </IonCard>
-        <IonButton className="bl-list-back-btn">
+        <IonButton className="bl-list-back-btn" onClick={() => {
+          assignItemToList({variables: {
+            id: drop.id,
+            listId: selectedBucket
+          }})
+        }}>
           Add to Bucket
         </IonButton>
         <IonButton className="fix-to-bottom" color="danger" onClick={() => setAcceptingItem(false)}>Cancel</IonButton>
