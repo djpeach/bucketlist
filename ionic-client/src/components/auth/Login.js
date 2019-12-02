@@ -51,24 +51,22 @@ class Login extends React.Component {
   render() {
     return (
       <IonPage className="bl-page">
-        <IonContent>
+        <IonContent className="ion-padding-horizontal">
           <p> Login to BucketList</p>
-          <form>
-            <IonItem>
-              <IonLabel position="stacked">Email</IonLabel>
-              <IonInput
-                type="email"
-                value={this.state.email}
-                oninput={(e) => this.onChange('email', e)}/>
-            </IonItem>
-            <IonItem>
-              <IonLabel position="stacked">Password</IonLabel>
-              <IonInput
-                type="password"
-                value={this.state.password}
-                oninput={(e) => this.onChange('password', e)}/>
-            </IonItem>
-          </form>
+          <IonItem>
+            <IonLabel position="stacked">Email</IonLabel>
+            <IonInput
+              type="email"
+              value={this.state.email}
+              oninput={(e) => this.onChange('email', e)} />
+          </IonItem>
+          <IonItem className="ion-margin-bottom">
+            <IonLabel position="stacked">Password</IonLabel>
+            <IonInput
+              type="password"
+              value={this.state.password}
+              oninput={(e) => this.onChange('password', e)} />
+          </IonItem>
           <IonRouterLink href={routes.auth.register}>
             Need an account? Register instead.
           </IonRouterLink>
