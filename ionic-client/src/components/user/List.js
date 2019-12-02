@@ -11,14 +11,18 @@ import {
   IonGrid,
   IonCol,
   IonButton,
+  IonItemSliding,
+  IonItemOptions,
+  IonItemOption,
 } from '@ionic/react'
 import MdArrowDropleft from 'react-ionicons/lib/MdArrowDropleft'
 import routes from '../../conf/routes'
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 import gql from '../../graphql'
 
 function ListView({setTitle, id}) {
-  const {loading, error, data} = useQuery(gql.getListById, { variables: {id: id}})
+  const {loading, error, data} = useQuery(gql.getListById, { variables: {id: id}, pollInterval: 100})
+  const [deleteItem] = useMutation(gql.deleteItem)
 
   if (loading) {
     setTitle('Loading ...')
@@ -64,12 +68,21 @@ function ListView({setTitle, id}) {
     <IonList>
       {data.getListById.items.map(item => {
         return (
-          <IonItem>
-            <IonLabel>
-              <p>From: {item.from.firstName} {item.from.lastName}</p>
-              <h3>{item.message}</h3>
-            </IonLabel>
-          </IonItem>
+          <IonItemSliding>
+            <IonItem>
+              <IonLabel>
+                <p>From: {item.from.firstName} {item.from.lastName}</p>
+                <h3>{item.message}</h3>
+              </IonLabel>
+            </IonItem>
+            <IonItemOptions>
+              <IonItemOption color="secondary" onClick={() => {
+                deleteItem({variables: {id: item.id}})
+              }}>
+                Complete
+              </IonItemOption>
+            </IonItemOptions>
+          </IonItemSliding>
         )
       })}
     </IonList>
