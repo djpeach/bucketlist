@@ -14,7 +14,8 @@ import firebase from "firebase";
 
 export default function ListsPreview() {
   const {loading, error, data} = useQuery(gql.getListsByUser, {
-    variables: {id: firebase.auth().currentUser.uid}
+    variables: {id: firebase.auth().currentUser.uid},
+    pollInterval: 100
   })
   if (loading) {
     return (

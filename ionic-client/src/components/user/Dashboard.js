@@ -12,12 +12,13 @@ import {
   IonLabel,
   IonSelect,
   IonSelectOption,
+  IonInput,
 } from "@ionic/react";
 import authedComponent from "../common/AuthedComponent";
 import NewDropsPreview from './NewDropsPreview'
 import ListsPreview from './ListsPreview'
 import {useState} from 'react'
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 import gql from '../../graphql'
 import firebase from 'firebase'
 
@@ -35,8 +36,6 @@ function ListOfLists() {
       </IonList>
     )
   }
-
-  console.log(error)
 
   if (error) {
     return (
@@ -113,6 +112,13 @@ function BucketSelectModal({acceptingItem, drop, setAcceptingItem}) {
 function Dashboard() {
   const [acceptingItem, setAcceptingItem] = useState(false)
   const [drop, setDrop] = useState({})
+  const [creatingBucket, setCreatingBucket] = useState(false)
+  const [bucketName, setBucketName] = useState('')
+  const [createList] = useMutation(gql.createList, {
+    onCompleted() {
+      setCreatingBucket(false)
+    }
+  })
 
   return (
     <IonPage className="bl-page">
@@ -120,9 +126,20 @@ function Dashboard() {
         <BucketSelectModal acceptingItem={acceptingItem} drop={drop} setAcceptingItem={setAcceptingItem}/>
         <NewDropsPreview setAcceptingItem={setAcceptingItem} setDrop={setDrop}/>
         <ListsPreview/>
+        {creatingBucket && <IonInput placeholder="Bucket Name" value={ bucketName }
+               onInput={ e => setBucketName(e.target.value) } />}
         <IonButton color="success" strong type="button"
-                  className="ion-float-right ion-margin-end ion-margin-bottom bl-new-list-btn">
-          + New Bucket
+                  className="ion-float-right ion-margin-end ion-margin-bottom bl-new-list-btn" onClick={() => {
+                    if (creatingBucket) {
+                      createList({variables: {
+                        title: bucketName,
+                        userId: firebase.auth().currentUser.uid
+                      }})
+                    } else {
+                      setCreatingBucket(true)
+                    }
+                  }}>
+          {creatingBucket ? 'Add Bucket' : '+ New Bucket'}
         </IonButton>
       </IonContent>
     </IonPage>
