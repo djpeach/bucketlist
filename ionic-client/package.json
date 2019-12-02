@@ -1,5 +1,6 @@
 {
   "name": "bucketlist",
+  "homepage": "http://djpeach.github.io/bucketlist",
   "version": "0.0.1",
   "private": true,
   "dependencies": {
@@ -21,6 +22,7 @@
     "apollo-link": "^1.2.13",
     "apollo-link-http": "^1.5.16",
     "firebase": "^7.3.0",
+    "gh-pages": "^2.1.1",
     "graphql": "^14.5.8",
     "graphql-tag": "^2.10.1",
     "ionicons": "^4.6.3",
@@ -38,7 +40,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
