@@ -47,4 +47,27 @@ export default {
       }
     }
   `,
+  getListById: gql`
+    query($id: ID!) {
+      getListById(id: $id) {
+        id
+        title
+        items {
+          id
+          from {
+            id
+            firstName
+            lastName
+          }
+          to {
+            id
+            firstName
+            lastName
+          }
+          message
+          link
+        }
+      }
+    }
+  `
 }

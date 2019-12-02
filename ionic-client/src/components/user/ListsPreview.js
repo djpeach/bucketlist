@@ -59,7 +59,7 @@ export default function ListsPreview() {
       <IonList>
         {data.getListsByUser.length > 0 ? data.getListsByUser.map((list, index) => {
           return (
-            <IonItem routerLink={routeWithParams(routes.lists.detail, list.title)} detail key={index}>
+            <IonItem routerLink={routeWithParams(routes.lists.detail, list.id)} detail key={index}>
               <IonLabel>
                 <p>{list.title}</p>
               </IonLabel>
