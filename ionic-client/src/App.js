@@ -26,7 +26,6 @@ import {
   AddFriend,
 } from './components'
 import routes from './conf/routes'
-import { state } from './state'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css'

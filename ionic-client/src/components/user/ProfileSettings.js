@@ -2,10 +2,6 @@ import React from 'react'
 import {
   IonPage,
   IonButton,
-  IonTitle,
-  IonItem,
-  IonList,
-  IonLabel,
   IonCard,
   IonContent,
 } from '@ionic/react'

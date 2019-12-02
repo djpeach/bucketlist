@@ -2,7 +2,6 @@ import {
   IonPage,
   IonCard,
   IonButton,
-  IonSearchbar,
   IonItem,
   IonLabel,
   IonTextarea
@@ -47,6 +46,7 @@ function NewDrop(props) {
   friends.map((obj) => {
     obj.value = obj.id
     obj.label = `${obj.firstName} ${obj.lastName}`
+    return obj
   })
 
   return (
