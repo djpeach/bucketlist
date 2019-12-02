@@ -1,15 +1,15 @@
 import React from 'react'
 import {
   IonPage,
-  IonToolbar,
-  IonFooter,
   IonRouterLink,
   IonButton,
-  IonButtons,
   IonContent,
   IonInput,
   IonLabel,
   IonItem,
+  IonRow,
+  IonCol,
+  IonText
 } from '@ionic/react'
 import firebase from 'firebase'
 import routes from '../../conf/routes'
@@ -52,32 +52,34 @@ class Login extends React.Component {
     return (
       <IonPage className="bl-page">
         <IonContent className="ion-padding-horizontal">
-          <p> Login to BucketList</p>
-          <IonItem>
-            <IonLabel position="stacked">Email</IonLabel>
-            <IonInput
-              type="email"
-              value={this.state.email}
-              oninput={(e) => this.onChange('email', e)} />
-          </IonItem>
-          <IonItem className="ion-margin-bottom">
-            <IonLabel position="stacked">Password</IonLabel>
-            <IonInput
-              type="password"
-              value={this.state.password}
-              oninput={(e) => this.onChange('password', e)} />
-          </IonItem>
-          <IonRouterLink href={routes.auth.register}>
-            Need an account? Register instead.
-          </IonRouterLink>
+          <IonRow>
+            <IonCol size={12} sizeSm={8} sizeMd={6} offsetSm={2} offsetMd={3}>
+              <IonText> Login to BucketList</IonText>
+              <form style={{ marginTop: 16 }}>
+                <IonItem>
+                  <IonLabel position="stacked">Email</IonLabel>
+                  <IonInput
+                    type="email"
+                    value={this.state.email}
+                    oninput={(e) => this.onChange('email', e)} />
+                </IonItem>
+                <IonItem className="ion-margin-bottom">
+                  <IonLabel position="stacked">Password</IonLabel>
+                  <IonInput
+                    type="password"
+                    value={this.state.password}
+                    oninput={(e) => this.onChange('password', e)} />
+                </IonItem>
+              </form>
+              <IonRow className="ion-align-items-center ion-justify-content-between">
+                <IonRouterLink href={routes.auth.register}>
+                  Need an account? Register here.
+              </IonRouterLink>
+                <IonButton onClick={this.onSubmit} style={{ float: 'right' }}>Login</IonButton>
+              </IonRow>
+            </IonCol>
+          </IonRow>
         </IonContent>
-        <IonFooter>
-          <IonToolbar>
-            <IonButtons slot="primary">
-              <IonButton onClick={this.onSubmit}>Login</IonButton>
-            </IonButtons>
-          </IonToolbar>
-        </IonFooter>
       </IonPage>
     )
   }
