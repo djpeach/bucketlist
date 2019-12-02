@@ -50,7 +50,11 @@ function ListView({setTitle, id}) {
     )
   }
 
-  setTitle(data.getListById.title)
+  setTitle(data.getListById ? data.getListById.title : '')
+
+  if (!data.getListById) {
+    return ''
+  }
   
   if (data.getListById.items.length <= 0) {
     return (
@@ -87,36 +91,16 @@ function ListView({setTitle, id}) {
       })}
     </IonList>
   )
-
-  // return (
-  //   <IonList>
-  //     {(Array.isArray(data.getListsByQuery[0].items) && data.getListsByQuery[0].items.length) ? (
-  //       data.getListsByQuery[0].items.map((item) => {
-  //         return (
-  //           <IonItem key={item.message}>
-  //             <IonLabel>
-  //               {item.from ? <p>From: {item.from.firstName} {item.from.lastName}</p> : null}
-  //               {item.link ? (
-  //                 <a href={item.link} target="_">
-  //                   <h3>{item.message}</h3>
-  //                 </a>
-  //               ) : (
-  //                 <h3>{item.message}</h3>
-  //               )}
-  //             </IonLabel>
-  //           </IonItem>
-  //         )
-  //       })
-  //     ) : (
-  //       <p className="bl-card-padding"> No items </p>
-  //     )}
-  //   </IonList>
-  // )
 };
 
 
 function List(props) {
   const [title, setTitle] = useState('')
+  const [deleteList] = useMutation(gql.deleteList, {
+    onCompleted() {
+      props.history.push(routes.home)
+    }
+  })
   return (
     <IonPage className="bl-page">
       <IonContent>
@@ -133,6 +117,12 @@ function List(props) {
               <IonTitle className="bl-list-title">{title}</IonTitle>
               <ListView setTitle={setTitle} id={props.match.params.id}/>
             </IonCard>
+            <IonButton color="danger" strong type="button"
+              className="ion-float-right ion-margin-end ion-margin-bottom bl-new-list-btn" onClick={() => {
+                deleteList({variables: {id: props.match.params.id}})
+              }}>
+            Delete Bucket
+          </IonButton>
           </IonCol>
         </IonGrid>
       </IonContent>
