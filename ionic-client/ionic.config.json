@@ -1,5 +1,7 @@
 {
   "name": "ionic-client",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "react"
 }
